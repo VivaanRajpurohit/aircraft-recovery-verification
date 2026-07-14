@@ -1,0 +1,20 @@
+experiment_name: verification_policy_seed_303
+dataset_directory: datasets/phase3_quick
+split_manifest: datasets/phase3_quick/split_manifest.json
+output_directory: checkpoints/verification_policy_seed_303
+seed: 303
+device: auto
+architecture: {input_dim: 42, hidden_dimensions: [256, 128], activation: relu, predict_stabilization_targets: true, emergency_mode_count: 5}
+batch_size: 512
+learning_rate: 0.001
+epochs: 4
+weight_decay: 0.0001
+gradient_clip_norm: 1.0
+early_stopping_patience: 3
+checkpoint_every_epochs: 2
+clip_standard_deviations: 5.0
+balance_emergency_modes: true
+automatic_mixed_precision: false
+num_workers: 0
+resume_checkpoint: null
+losses: {controls: 1.0, emergency_mode: 0.25, stabilization_targets: 0.1}

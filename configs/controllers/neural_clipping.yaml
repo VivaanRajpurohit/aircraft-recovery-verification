@@ -1,0 +1,7 @@
+variant: neural_clipping
+neural_policy: true
+command_clipping: true
+runtime_monitor: false
+projection: false
+rejection: false
+fallback: false

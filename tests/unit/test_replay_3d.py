@@ -12,6 +12,8 @@ def test_parent_replay_axes_match_aviation_conventions():
     right_wing=_direction(*replay_parent_hpr(0,0,10),Vec3(1,0,0)); assert right_wing.z<0
 
 def test_default_cessna_profile_has_forward_axes_and_reasonable_scale():
+    if not Path("assets/aircraft/cessna/cessna.fbx").is_file():
+        pytest.skip("user-supplied Cessna FBX is intentionally excluded")
     settings=load_replay_3d_settings("configs/visualization/replay_3d.yaml"); result=validate_model(settings)
     assert result["loaded"] and result["nose_points_forward"] and result["model_up_is_world_up"]
     assert 9<result["dimensions_m"]["wingspan_m"]<12
