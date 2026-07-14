@@ -41,6 +41,13 @@ def test_transition_has_stable_dimensions_finite_ordered_bounds_and_residual_inf
     assert np.all(inflated.lower[:5]<nominal.lower[:5])
     assert np.all(inflated.upper[:5]>nominal.upper[:5])
     assert tuple(nominal.as_dict())==STATE_NAMES
+    expected_pitch=.1*12*.1
+    expected_bank=(.2*.5+.12*(0-1))*30*.1
+    expected_vertical=140*101.269*np.sin(np.radians(expected_pitch))
+    assert nominal.lower[1]<=expected_pitch<=nominal.upper[1]
+    assert nominal.lower[2]<=expected_bank<=nominal.upper[2]
+    assert nominal.lower[3]<=expected_vertical<=nominal.upper[3]
+    assert nominal.lower[4]<=2000+expected_vertical*.1/60<=nominal.upper[4]
 
 
 def test_validity_rejects_extrapolation():

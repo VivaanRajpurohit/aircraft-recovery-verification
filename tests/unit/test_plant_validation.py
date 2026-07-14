@@ -22,3 +22,8 @@ def test_held_out_validation_reports_one_step_and_rollout_containment(tmp_path):
     assert report["rollout"]["trace_count"]==2
     assert len(report["rollout"]["containment_percent_by_step"])==5
     assert json.loads(output.read_text())["report_sha256"]==report["report_sha256"]
+    perturbed=json.loads(model_path.read_text()); perturbed["coefficients"]["airspeed_kts"][0]+=1.0
+    perturbed_path=tmp_path/"perturbed-model.json"; perturbed_path.write_text(json.dumps(perturbed),encoding="utf-8")
+    failed=validate_formal_plant(perturbed_path,calibration.output_directory,validation.output_directory,tmp_path/"failed-report.json",horizons=(5,))
+    assert failed["one_step"]["containment_failures"]
+    assert failed["rollout"]["first_containment_failures"]
