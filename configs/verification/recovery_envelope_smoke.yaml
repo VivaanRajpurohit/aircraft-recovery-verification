@@ -1,0 +1,41 @@
+protocol_version: v1.1.0-formal-smoke
+purpose: implementation_diagnostic_only
+time_step_seconds: 0.1
+horizon_steps: 5
+recovery_dwell_steps: 3
+solver_timeout_seconds: 2.0
+set_representation: intervals
+neural_backend: exact_policy_ibp
+checkpoint: checkpoints/phase3_quick/best.pt
+branching: {strategy: split_then_join, maximum_branches: 64, maximum_interval_width: 120.0}
+initial_state:
+  airspeed_kts: [125.0, 145.0]
+  pitch_deg: [-3.0, 3.0]
+  bank_deg: [-10.0, 10.0]
+  vertical_speed_fpm: [-600.0, 600.0]
+  terrain_clearance_ft: [1500.0, 9000.0]
+  previous_elevator: [-0.1, 0.1]
+  previous_aileron: [-0.1, 0.1]
+  previous_rudder: [-0.1, 0.1]
+  previous_throttle_left: [0.0, 0.0]
+  previous_throttle_right: [0.45, 0.75]
+failures:
+  left_thrust_availability: [0.0, 0.0]
+  right_thrust_availability: [1.0, 1.0]
+  aileron_effectiveness: [0.55, 0.65]
+  actuator_delay_seconds: [0.0, 0.1]
+disturbances:
+  crosswind_kts: [-15.0, 15.0]
+  lateral_roll_residual_deg_per_step: [-0.5, 0.5]
+  turbulence_pitch_deg_per_step: [-0.25, 0.25]
+sensor_error:
+  airspeed_kts: [-1.0, 1.0]
+  bank_deg: [-0.5, 0.5]
+  terrain_clearance_ft: [-10.0, 10.0]
+validity_region: {airspeed_kts: [100.0, 180.0], pitch_deg: [-20.0, 20.0], bank_deg: [-50.0, 50.0], terrain_clearance_ft: [100.0, 12000.0]}
+safety: {airspeed_kts: [100.0, 205.0], pitch_deg: [-20.0, 25.0], maximum_absolute_bank_deg: 60.0, minimum_terrain_clearance_ft: 0.0, maximum_command_delta_per_step: 0.25, check_angle_of_attack: false, check_load_factor: false}
+recovery: {airspeed_kts: [115.0, 160.0], pitch_deg: [-8.0, 8.0], maximum_absolute_bank_deg: 10.0, maximum_absolute_vertical_speed_fpm: 800.0, minimum_terrain_clearance_ft: 500.0}
+grid:
+  bank_deg: [-10.0, 0.0, 10.0]
+  aileron_effectiveness: [0.55, 0.65]
+output_directory: results/recovery_envelope_smoke_v1

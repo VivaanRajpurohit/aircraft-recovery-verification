@@ -1,0 +1,19 @@
+protocol_version: v1.2.0-recovery-envelope-pilot
+purpose: approval_required_method_evaluation
+time_step_seconds: 0.1
+horizon_steps: 30
+recovery_dwell_steps: 20
+solver_timeout_seconds: 15.0
+set_representation: intervals
+neural_backend: exact_policy_ibp
+checkpoint: checkpoints/phase3_quick/best.pt
+branching: {strategy: adaptive_split, maximum_branches: 512, maximum_interval_width: 80.0}
+initial_state: {airspeed_kts: [110.0, 165.0], pitch_deg: [-8.0, 8.0], bank_deg: [-30.0, 30.0], vertical_speed_fpm: [-1500.0, 1500.0], terrain_clearance_ft: [500.0, 10000.0], previous_elevator: [-0.4, 0.4], previous_aileron: [-0.4, 0.4], previous_rudder: [-0.4, 0.4], previous_throttle_left: [0.0, 0.0], previous_throttle_right: [0.25, 1.0]}
+failures: {left_thrust_availability: [0.0, 0.0], right_thrust_availability: [0.95, 1.0], aileron_effectiveness: [0.4, 0.8], actuator_delay_seconds: [0.0, 0.2]}
+disturbances: {crosswind_kts: [-25.0, 25.0], lateral_roll_residual_deg_per_step: [-0.75, 0.75], turbulence_pitch_deg_per_step: [-0.4, 0.4]}
+sensor_error: {airspeed_kts: [-3.0, 3.0], bank_deg: [-1.5, 1.5], terrain_clearance_ft: [-25.0, 25.0]}
+validity_region: {airspeed_kts: [100.0, 180.0], pitch_deg: [-20.0, 20.0], bank_deg: [-50.0, 50.0], terrain_clearance_ft: [100.0, 12000.0]}
+safety: {airspeed_kts: [100.0, 205.0], pitch_deg: [-20.0, 25.0], maximum_absolute_bank_deg: 60.0, minimum_terrain_clearance_ft: 0.0, maximum_command_delta_per_step: 0.25, check_angle_of_attack: false, check_load_factor: false}
+recovery: {airspeed_kts: [115.0, 160.0], pitch_deg: [-8.0, 8.0], maximum_absolute_bank_deg: 10.0, maximum_absolute_vertical_speed_fpm: 800.0, minimum_terrain_clearance_ft: 500.0}
+grid: {bank_deg: [-30, -20, -10, 0, 10, 20, 30], aileron_effectiveness: [0.4, 0.5, 0.6, 0.7, 0.8], airspeed_kts: [110, 125, 140, 155, 165], crosswind_kts: [-25, -12.5, 0, 12.5, 25], actuator_delay_seconds: [0, 0.1, 0.2]}
+output_directory: results/recovery_envelope_pilot_v1

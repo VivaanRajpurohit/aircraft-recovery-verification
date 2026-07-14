@@ -1,18 +1,5 @@
-# Verification Scope and Claims
+# Verification scope
 
-Phase 1 contains runtime data validation and empirical automated tests only. It
-does **not** deliver or claim formal verification.
+Formal results are scoped to the declared abstraction, configuration bounds, exact checkpoint hash, enabled properties, solver settings, and finite horizon. The initial focused family combines complete left-engine failure, partial aileron effectiveness loss, bounded crosswind, bounded actuator delay, and bounded sensor errors.
 
-Phase 4 will encode bounded abstractions in Z3 for command bounds and rate
-limits, monitor decision completeness, unsafe-action disposition, invalid-data
-fallback activation, and selected discrete safety-envelope transitions.
-Satisfiable/unsatisfiable examples, counterexamples, solver bounds, assumptions,
-duration, and limitations will be recorded.
-
-Dynamics fidelity, learned-controller quality, recovery success, diversion
-feasibility, numerical implementation behavior, latency, and performance under
-sampled failures remain empirical. A solver result will cover only the written
-formula, finite bounds, discretization, and model assumptions. It will not prove
-the full neural network, continuous real dynamics, sensors, actuators, hardware,
-weather, pilot interaction, or any real aircraft universally safe.
-
+The existing one-step runtime check remains an online assurance mechanism; it is not described as multi-step closed-loop verification. Recovery-envelope results must keep unsafe, timeout, conservative-unknown, and outside-validity cells distinct.
