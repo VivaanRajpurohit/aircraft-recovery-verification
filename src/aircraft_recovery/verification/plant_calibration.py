@@ -7,7 +7,6 @@ import json
 import os
 from pathlib import Path
 import subprocess
-from time import perf_counter
 from typing import Any, Literal
 
 import numpy as np
@@ -226,7 +225,7 @@ def _make_record(config: PlantDatasetConfig, aircraft: AircraftConfig, simulator
 
 
 def generate_dataset(config: PlantDatasetConfig) -> dict[str, Any]:
-    started = perf_counter(); commit, dirty = _git_metadata()
+    commit, dirty = _git_metadata()
     if dirty and not config.allow_dirty_tree:
         raise RuntimeError("Refusing formal plant data generation from a dirty tree")
     aircraft = load_config(config.aircraft_config, AircraftConfig); config_hash = file_hash(config.aircraft_config)
@@ -263,7 +262,6 @@ def generate_dataset(config: PlantDatasetConfig) -> dict[str, Any]:
         "transitions_sha256": hashlib.sha256(lines.encode("utf-8")).hexdigest(),
         "configuration_sha256": canonical_hash(config.model_dump(mode="json")),
         "simulator_config_sha256": config_hash, "git_commit": commit, "dirty_tree": dirty,
-        "generation_runtime_seconds": perf_counter() - started,
     }
     manifest["manifest_sha256"] = canonical_hash(manifest); _atomic_text(output / "manifest.json", json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     return manifest

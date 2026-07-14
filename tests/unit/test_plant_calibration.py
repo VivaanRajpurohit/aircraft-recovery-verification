@@ -26,6 +26,7 @@ def test_generation_is_deterministic_schema_valid_and_atomic(tmp_path) -> None:
     second = generate_dataset(config)
     assert content == (Path(config.output_directory) / "transitions.jsonl").read_bytes()
     assert first["transitions_sha256"] == second["transitions_sha256"]
+    assert first["manifest_sha256"] == second["manifest_sha256"]
     assert not list(Path(config.output_directory).glob("*.tmp-*"))
     records = load_records(config.output_directory)
     assert len(records) == 9
