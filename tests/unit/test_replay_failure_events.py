@@ -1,9 +1,19 @@
 import json
 from pathlib import Path
 import pytest
-from aircraft_recovery.visualization.replay_events import ReplayEventState,normalize_replay_data
+from aircraft_recovery.visualization.replay_events import ReplayEventState,ReplayTimelineEvent,normalize_replay_data
 
 ACTUAL=Path("results/phase5_quick/runs/phase2_engine_aileron_5103_monitored")
+
+@pytest.fixture
+def simultaneous_failure_timeline():
+    return [ReplayTimelineEvent(
+        event_id="failure:activated:2.0",
+        time_s=2.0,
+        kind="activated",
+        labels=("Left engine failure (thrust 0%)","Aileron effectiveness reduced to 45%"),
+        failure_ids=("left_engine_1","aileron_loss_1"),
+    )]
 
 def test_actual_run_failures_activation_knowledge_health_and_monitor_events():
     if not ACTUAL.exists(): pytest.skip("quick replay artifact unavailable")
@@ -21,8 +31,8 @@ def test_actual_run_failures_activation_knowledge_health_and_monitor_events():
     statuses=[event.status for event in data.monitor_events]
     assert statuses.count("modify")==54 and statuses.count("reject_fallback")==14
 
-def test_backward_seek_rearms_simultaneous_activation_and_restart_resets():
-    data=normalize_replay_data(ACTUAL); state=ReplayEventState(data.failure_events)
+def test_backward_seek_rearms_simultaneous_activation_and_restart_resets(simultaneous_failure_timeline):
+    state=ReplayEventState(simultaneous_failure_timeline)
     first=state.advance(2.0); assert len(first)==1 and len(first[0].failure_ids)==2
     assert state.advance(2.1)==[]
     state.advance(1.9)
