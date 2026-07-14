@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "protocol_version": "gate-c-smoke-v1",
+  "generator_commit": "e178f2f5f75c2cb6f2409180048c540a212ba3ff",
+  "calibration": {
+    "seed": 7101,
+    "one_step_samples": 160,
+    "trace_count": 6,
+    "trace_length_steps": 20,
+    "manifest_sha256": "8bab1ed065dda00ad4377f454c1eefbacbeff564b3380860d6799d1662f6fe95",
+    "transitions_sha256": "7a47fa17db10c881aeea619e7bdb5f976d6fdcab3728384c63d89a8c8ff1ce08"
+  },
+  "validation": {
+    "seed": 8101,
+    "one_step_samples": 100,
+    "trace_count": 4,
+    "trace_length_steps": 20,
+    "manifest_sha256": "df2f8cb1d8a8c4ee5f4afc3c2af798d88ddb6c60e855e6e4aa7874dad91b8718",
+    "transitions_sha256": "bbbc09b34d1d333e140a0d382633246071611a7262f7b347cd0aa7896a8b27f2"
+  },
+  "split_isolation": {"sample_ids_disjoint": true, "scenario_ids_disjoint": true, "seeds_disjoint": true},
+  "fit": {"fit_samples": 128, "development_residual_samples": 32, "validation_used_for_fit": false, "model_file_sha256": "448f69a4d40bde310d73f2c8c9696f244405fb4a498ea7fc5f39593b2ff80e85"},
+  "one_step": {
+    "evaluated": 100,
+    "outside_model_validity": 0,
+    "containment_failures": 0,
+    "all_state_containment_percent": 100.0,
+    "maximum_absolute_error": {
+      "airspeed_kts": 2.8421709430404007e-13,
+      "pitch_deg": 5.329070518200751e-15,
+      "bank_deg": 1.4210854715202004e-14,
+      "vertical_speed_fpm": 7.275957614183426e-12,
+      "terrain_clearance_ft": 7.275957614183426e-12
+    }
+  },
+  "rollout": {"horizons_steps": [5, 10, 20], "traces": 4, "containment_percent_at_every_step": 100.0, "first_containment_failures": 0, "maximum_vertical_speed_interval_width_fpm": 0.00011756692720155115},
+  "report_sha256": "69ed588b5d209e642efc23cc8df37aef8bc02c01745c0a6b01a3f28319f852f6",
+  "raw_smoke_directory": "results/formal_plant_smoke_v1",
+  "raw_smoke_bytes": 1162439,
+  "publication_evidence": false
+}
