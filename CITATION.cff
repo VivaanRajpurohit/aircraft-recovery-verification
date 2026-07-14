@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this research software, cite the archived software release."
+type: software
+title: "Aircraft Recovery Verification"
+authors:
+  - name: "Research software contributors"
+version: "1.0.0-pilot-prototype"
+date-released: 2026-07-13
+abstract: "Simulation-only closed-loop neural aircraft recovery, runtime assurance, and bounded formal verification software."
+keywords:
+  - aircraft simulation
+  - neural control
+  - formal verification
+  - runtime assurance
+license: proprietary

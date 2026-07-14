@@ -1,0 +1,20 @@
+experiment_name: phase3_large_imitation
+dataset_directory: datasets/phase3_full
+split_manifest: datasets/phase3_full/split_manifest.json
+output_directory: checkpoints/phase3_large
+seed: 4403
+device: auto
+architecture: {input_dim: 42, hidden_dimensions: [1024, 1024, 512], activation: relu, predict_stabilization_targets: true, emergency_mode_count: 5}
+batch_size: 512
+learning_rate: 0.0005
+epochs: 50
+weight_decay: 0.0002
+gradient_clip_norm: 1.0
+early_stopping_patience: 10
+checkpoint_every_epochs: 5
+clip_standard_deviations: 5.0
+balance_emergency_modes: true
+automatic_mixed_precision: false
+num_workers: 0
+resume_checkpoint: null
+losses: {controls: 1.0, emergency_mode: 0.25, stabilization_targets: 0.1}

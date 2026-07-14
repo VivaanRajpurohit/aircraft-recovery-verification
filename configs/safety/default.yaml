@@ -1,0 +1,58 @@
+configuration_name: bounded_one_step_default
+thresholds:
+  stall_speed_kts: 85.0
+  stall_margin_kts: 15.0
+  overspeed_kts: 220.0
+  overspeed_margin_kts: 15.0
+  maximum_absolute_bank_deg: 60.0
+  minimum_pitch_deg: -20.0
+  maximum_pitch_deg: 25.0
+  maximum_angle_of_attack_deg: 14.0
+  minimum_load_factor_g: -1.0
+  maximum_load_factor_g: 3.5
+  minimum_terrain_clearance_ft: 0.0
+  maximum_control_rate_per_second: 2.5
+dynamics:
+  time_step_seconds: 0.1
+  horizon_steps: 1
+  cruise_speed_kts: 140.0
+  thrust_gain_kts_per_second: 8.0
+  drag_gain_per_second: 0.02
+  pitch_rate_deg_per_second: 12.0
+  roll_rate_deg_per_second: 30.0
+  angle_of_attack_gain: 4.0
+  load_factor_gain: 0.15
+  maximum_speed_disturbance_kts: 0.25
+  maximum_pitch_disturbance_deg: 0.25
+  maximum_roll_disturbance_deg: 0.5
+  maximum_aoa_disturbance_deg: 0.25
+  maximum_load_disturbance_g: 0.1
+  maximum_terrain_loss_ft: 25.0
+checked_state_bounds:
+  minimum_airspeed_kts: 70.0
+  maximum_airspeed_kts: 240.0
+  minimum_pitch_deg: -30.0
+  maximum_pitch_deg: 35.0
+  maximum_absolute_roll_deg: 80.0
+  minimum_angle_of_attack_deg: -10.0
+  maximum_angle_of_attack_deg: 18.0
+  minimum_load_factor_g: -1.5
+  maximum_load_factor_g: 4.0
+  minimum_terrain_clearance_ft: -100.0
+monitor:
+  solver_timeout_ms: 20
+  projection_blend_factors: [0.25, 0.5, 0.75, 1.0]
+  reject_invalid_navigation: true
+  reject_nonfinite_input: true
+assumptions:
+  - The observed state is within the documented checked bounds.
+  - One discrete step uses the configured affine dynamics abstraction.
+  - Disturbances are independent and remain within configured bounds.
+  - Control-effectiveness values in the observation are conservative.
+  - Terrain clearance is locally represented by the observed scalar value.
+limitations:
+  - The abstraction is not the full nonlinear simulator or a real aircraft model.
+  - The neural network itself is not formally verified.
+  - Only a one-step bounded horizon is checked in the default configuration.
+  - Unmodeled coupling, sensor faults, terrain geometry, and hardware are excluded.
+

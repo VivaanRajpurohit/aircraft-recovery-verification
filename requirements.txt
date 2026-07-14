@@ -1,0 +1,8 @@
+numpy>=1.26,<3
+pydantic>=2.7,<3
+PyYAML>=6.0,<7
+torch>=2.3,<3
+z3-solver>=4.13,<5
+matplotlib>=3.8,<4
+psutil>=5.9,<8
+pytest>=8.0,<10

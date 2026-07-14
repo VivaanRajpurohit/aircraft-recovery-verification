@@ -1,0 +1,14 @@
+scenario_id: phase2_sensor_actuator
+description: Hidden airspeed bias with observable elevator degradation and actuator delay.
+seed: 2104
+duration_seconds: 30.0
+expected_recoverability: marginal
+initial_state: {altitude_ft: 7000.0, airspeed_kts: 135.0, pitch_deg: 2.0, roll_deg: 3.0, yaw_deg: 0.0, heading_deg: 250.0, latitude_deg: 37.0, longitude_deg: -120.0}
+airports:
+  - {airport_id: TEST1, distance_nm: 10.0, bearing_deg: 240.0, runway_heading_deg: 230.0, runway_length_ft: 5200.0, terrain_clearance_ft: 1400.0, within_glide_range: false, elevation_ft: 300.0, terrain_penalty: 0.1}
+environment: {wind_speed_kts: 8.0, wind_direction_deg: 300.0, turbulence_intensity: 0.05, visibility_nm: 10.0, terrain_clearance_ft: 1800.0}
+failures:
+  - {failure_id: airspeed_bias_hidden, failure_type: airspeed_bias, affected_subsystem: airspeed_sensor, severity: 0.8, activation: time, activation_time_seconds: 2.0, permanent: true, ramp_duration_seconds: 2.0, observable: false, detected: false, parameters: {maximum_bias: 22.0}}
+  - {failure_id: elevator_loss_1, failure_type: reduced_elevator_effectiveness, affected_subsystem: elevator, severity: 0.35, activation: time, activation_time_seconds: 3.0, permanent: true, observable: true, detected: true}
+  - {failure_id: actuator_delay_1, failure_type: actuator_delay, affected_subsystem: flight_controls, severity: 0.6, activation: time, activation_time_seconds: 3.0, permanent: true, observable: true, detected: true, parameters: {maximum_delay_seconds: 0.8}}
+

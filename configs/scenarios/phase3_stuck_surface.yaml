@@ -1,0 +1,12 @@
+scenario_id: phase3_stuck_surface
+description: Timed stuck aileron at a small nonzero deflection.
+seed: 3102
+duration_seconds: 20.0
+expected_recoverability: marginal
+initial_state: {altitude_ft: 7800.0, airspeed_kts: 140.0, pitch_deg: 1.0, roll_deg: -3.0, yaw_deg: 0.0, heading_deg: 250.0, latitude_deg: 37.0, longitude_deg: -120.0}
+airports:
+  - {airport_id: TEST1, distance_nm: 10.0, bearing_deg: 240.0, runway_heading_deg: 230.0, runway_length_ft: 6500.0, terrain_clearance_ft: 1700.0, within_glide_range: false, elevation_ft: 250.0, terrain_penalty: 0.1}
+environment: {wind_speed_kts: 8.0, wind_direction_deg: 300.0, turbulence_intensity: 0.04, visibility_nm: 10.0, terrain_clearance_ft: 2000.0}
+failures:
+  - {failure_id: stuck_aileron, failure_type: stuck_aileron, affected_subsystem: aileron, severity: 1.0, activation: time, activation_time_seconds: 2.0, permanent: true, observable: true, detected: true, parameters: {stuck_value: 0.08}}
+

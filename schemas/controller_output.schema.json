@@ -1,0 +1,230 @@
+{
+  "$defs": {
+    "ControlCommands": {
+      "additionalProperties": false,
+      "properties": {
+        "elevator": {
+          "maximum": 1.0,
+          "minimum": -1.0,
+          "title": "Elevator",
+          "type": "number"
+        },
+        "aileron": {
+          "maximum": 1.0,
+          "minimum": -1.0,
+          "title": "Aileron",
+          "type": "number"
+        },
+        "rudder": {
+          "maximum": 1.0,
+          "minimum": -1.0,
+          "title": "Rudder",
+          "type": "number"
+        },
+        "throttle_left": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Throttle Left",
+          "type": "number"
+        },
+        "throttle_right": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Throttle Right",
+          "type": "number"
+        }
+      },
+      "required": [
+        "elevator",
+        "aileron",
+        "rudder",
+        "throttle_left",
+        "throttle_right"
+      ],
+      "title": "ControlCommands",
+      "type": "object"
+    },
+    "NavigationCommands": {
+      "additionalProperties": false,
+      "properties": {
+        "target_heading_deg": {
+          "exclusiveMaximum": 360.0,
+          "minimum": 0.0,
+          "title": "Target Heading Deg",
+          "type": "number"
+        },
+        "selected_airport": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Airport"
+        },
+        "selected_runway_heading_deg": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 360.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Runway Heading Deg"
+        },
+        "approach_phase": {
+          "default": "none",
+          "enum": [
+            "none",
+            "diversion",
+            "approach",
+            "landing"
+          ],
+          "title": "Approach Phase",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_heading_deg"
+      ],
+      "title": "NavigationCommands",
+      "type": "object"
+    },
+    "SafetyDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "not_checked",
+            "accepted",
+            "modified",
+            "rejected",
+            "fallback"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "ai_action_accepted": {
+          "title": "Ai Action Accepted",
+          "type": "boolean"
+        },
+        "fallback_activated": {
+          "title": "Fallback Activated",
+          "type": "boolean"
+        },
+        "violated_constraints": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Violated Constraints",
+          "type": "array"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "ai_action_accepted",
+        "fallback_activated",
+        "explanation"
+      ],
+      "title": "SafetyDecision",
+      "type": "object"
+    },
+    "StabilizationTargets": {
+      "additionalProperties": false,
+      "properties": {
+        "target_pitch_deg": {
+          "maximum": 90.0,
+          "minimum": -90.0,
+          "title": "Target Pitch Deg",
+          "type": "number"
+        },
+        "target_roll_deg": {
+          "maximum": 180.0,
+          "minimum": -180.0,
+          "title": "Target Roll Deg",
+          "type": "number"
+        },
+        "target_airspeed_kts": {
+          "maximum": 600.0,
+          "minimum": 0.0,
+          "title": "Target Airspeed Kts",
+          "type": "number"
+        },
+        "target_altitude_ft": {
+          "maximum": 60000.0,
+          "minimum": -1000.0,
+          "title": "Target Altitude Ft",
+          "type": "number"
+        }
+      },
+      "required": [
+        "target_pitch_deg",
+        "target_roll_deg",
+        "target_airspeed_kts",
+        "target_altitude_ft"
+      ],
+      "title": "StabilizationTargets",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Complete serializable controller command packet.",
+  "properties": {
+    "timestamp_seconds": {
+      "minimum": 0.0,
+      "title": "Timestamp Seconds",
+      "type": "number"
+    },
+    "control_commands": {
+      "$ref": "#/$defs/ControlCommands"
+    },
+    "stabilization_targets": {
+      "$ref": "#/$defs/StabilizationTargets"
+    },
+    "navigation_commands": {
+      "$ref": "#/$defs/NavigationCommands"
+    },
+    "emergency_mode": {
+      "enum": [
+        "normal",
+        "stabilize",
+        "divert",
+        "approach",
+        "land"
+      ],
+      "title": "Emergency Mode",
+      "type": "string"
+    },
+    "safety_decision": {
+      "$ref": "#/$defs/SafetyDecision"
+    },
+    "confidence": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    }
+  },
+  "required": [
+    "timestamp_seconds",
+    "control_commands",
+    "stabilization_targets",
+    "navigation_commands",
+    "emergency_mode",
+    "safety_decision",
+    "confidence"
+  ],
+  "title": "ControllerOutput",
+  "type": "object"
+}

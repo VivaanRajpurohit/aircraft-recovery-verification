@@ -1,0 +1,11 @@
+scenario_id: validation_diversion_infeasible
+description: Controlled request where every airport is deliberately infeasible.
+seed: 6005
+duration_seconds: 20.0
+expected_recoverability: marginal
+diversion_requested: true
+initial_state: {altitude_ft: 2000.0, airspeed_kts: 135.0, pitch_deg: 0.0, roll_deg: 0.0, yaw_deg: 0.0, heading_deg: 90.0, latitude_deg: 37.0, longitude_deg: -120.0}
+airports:
+  - {airport_id: BAD1, distance_nm: 50.0, bearing_deg: 90.0, runway_heading_deg: 90.0, runway_length_ft: 2000.0, terrain_clearance_ft: 500.0, elevation_ft: 1500.0, terrain_penalty: 1.0, available: false, surface_suitable: false, minimum_control_authority: 0.9}
+environment: {wind_speed_kts: 45.0, wind_direction_deg: 0.0, turbulence_intensity: 0.0, visibility_nm: 20.0, terrain_clearance_ft: 1000.0}
+failures: []

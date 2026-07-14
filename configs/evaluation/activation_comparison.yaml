@@ -1,0 +1,6 @@
+comparison_name: phase3_relu_vs_silu
+base_training_config: configs/training/imitation_quick.yaml
+evaluation_config: configs/evaluation/phase3_quick.yaml
+output_directory: results/phase3_activation_comparison
+activations: [relu, silu]
+

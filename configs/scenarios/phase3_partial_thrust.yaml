@@ -1,0 +1,12 @@
+scenario_id: phase3_partial_thrust
+description: Moderate partial bilateral thrust loss for imitation demonstrations.
+seed: 3101
+duration_seconds: 20.0
+expected_recoverability: recoverable
+initial_state: {altitude_ft: 7800.0, airspeed_kts: 140.0, pitch_deg: 1.0, roll_deg: 0.0, yaw_deg: 0.0, heading_deg: 250.0, latitude_deg: 37.0, longitude_deg: -120.0}
+airports:
+  - {airport_id: TEST1, distance_nm: 11.0, bearing_deg: 240.0, runway_heading_deg: 230.0, runway_length_ft: 6200.0, terrain_clearance_ft: 1700.0, within_glide_range: false, elevation_ft: 250.0, terrain_penalty: 0.1}
+environment: {wind_speed_kts: 10.0, wind_direction_deg: 300.0, turbulence_intensity: 0.05, visibility_nm: 10.0, terrain_clearance_ft: 2000.0}
+failures:
+  - {failure_id: partial_thrust, failure_type: partial_thrust_loss, affected_subsystem: engines, severity: 0.45, activation: time, activation_time_seconds: 2.0, permanent: true, ramp_duration_seconds: 2.0, observable: true, detected: true, parameters: {engine: both}}
+

@@ -1,0 +1,402 @@
+{
+  "$defs": {
+    "AircraftState": {
+      "additionalProperties": false,
+      "properties": {
+        "altitude_ft": {
+          "maximum": 60000.0,
+          "minimum": -1000.0,
+          "title": "Altitude Ft",
+          "type": "number"
+        },
+        "airspeed_kts": {
+          "maximum": 600.0,
+          "minimum": 0.0,
+          "title": "Airspeed Kts",
+          "type": "number"
+        },
+        "pitch_deg": {
+          "maximum": 90.0,
+          "minimum": -90.0,
+          "title": "Pitch Deg",
+          "type": "number"
+        },
+        "roll_deg": {
+          "maximum": 180.0,
+          "minimum": -180.0,
+          "title": "Roll Deg",
+          "type": "number"
+        },
+        "yaw_deg": {
+          "maximum": 180.0,
+          "minimum": -180.0,
+          "title": "Yaw Deg",
+          "type": "number"
+        },
+        "vertical_speed_fpm": {
+          "maximum": 20000.0,
+          "minimum": -20000.0,
+          "title": "Vertical Speed Fpm",
+          "type": "number"
+        },
+        "heading_deg": {
+          "exclusiveMaximum": 360.0,
+          "minimum": 0.0,
+          "title": "Heading Deg",
+          "type": "number"
+        }
+      },
+      "required": [
+        "altitude_ft",
+        "airspeed_kts",
+        "pitch_deg",
+        "roll_deg",
+        "yaw_deg",
+        "vertical_speed_fpm",
+        "heading_deg"
+      ],
+      "title": "AircraftState",
+      "type": "object"
+    },
+    "Airport": {
+      "additionalProperties": false,
+      "properties": {
+        "airport_id": {
+          "maxLength": 16,
+          "minLength": 1,
+          "title": "Airport Id",
+          "type": "string"
+        },
+        "distance_nm": {
+          "maximum": 1000.0,
+          "minimum": 0.0,
+          "title": "Distance Nm",
+          "type": "number"
+        },
+        "bearing_deg": {
+          "exclusiveMaximum": 360.0,
+          "minimum": 0.0,
+          "title": "Bearing Deg",
+          "type": "number"
+        },
+        "runway_heading_deg": {
+          "exclusiveMaximum": 360.0,
+          "minimum": 0.0,
+          "title": "Runway Heading Deg",
+          "type": "number"
+        },
+        "runway_length_ft": {
+          "exclusiveMinimum": 0.0,
+          "maximum": 30000.0,
+          "title": "Runway Length Ft",
+          "type": "number"
+        },
+        "terrain_clearance_ft": {
+          "title": "Terrain Clearance Ft",
+          "type": "number"
+        },
+        "within_glide_range": {
+          "title": "Within Glide Range",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "airport_id",
+        "distance_nm",
+        "bearing_deg",
+        "runway_heading_deg",
+        "runway_length_ft",
+        "terrain_clearance_ft",
+        "within_glide_range"
+      ],
+      "title": "Airport",
+      "type": "object"
+    },
+    "ControlHealth": {
+      "additionalProperties": false,
+      "properties": {
+        "elevator_effectiveness": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Elevator Effectiveness",
+          "type": "number"
+        },
+        "aileron_effectiveness": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Aileron Effectiveness",
+          "type": "number"
+        },
+        "rudder_effectiveness": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Rudder Effectiveness",
+          "type": "number"
+        },
+        "elevator_stuck": {
+          "default": false,
+          "title": "Elevator Stuck",
+          "type": "boolean"
+        },
+        "aileron_stuck": {
+          "default": false,
+          "title": "Aileron Stuck",
+          "type": "boolean"
+        },
+        "rudder_stuck": {
+          "default": false,
+          "title": "Rudder Stuck",
+          "type": "boolean"
+        },
+        "actuator_delay_ms": {
+          "default": 0.0,
+          "maximum": 10000.0,
+          "minimum": 0.0,
+          "title": "Actuator Delay Ms",
+          "type": "number"
+        }
+      },
+      "title": "ControlHealth",
+      "type": "object"
+    },
+    "EngineHealth": {
+      "additionalProperties": false,
+      "properties": {
+        "left_engine_thrust_available": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Left Engine Thrust Available",
+          "type": "number"
+        },
+        "right_engine_thrust_available": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Right Engine Thrust Available",
+          "type": "number"
+        },
+        "left_engine_failed": {
+          "default": false,
+          "title": "Left Engine Failed",
+          "type": "boolean"
+        },
+        "right_engine_failed": {
+          "default": false,
+          "title": "Right Engine Failed",
+          "type": "boolean"
+        },
+        "asymmetric_thrust": {
+          "default": false,
+          "title": "Asymmetric Thrust",
+          "type": "boolean"
+        }
+      },
+      "title": "EngineHealth",
+      "type": "object"
+    },
+    "Environment": {
+      "additionalProperties": false,
+      "properties": {
+        "wind_speed_kts": {
+          "maximum": 250.0,
+          "minimum": 0.0,
+          "title": "Wind Speed Kts",
+          "type": "number"
+        },
+        "wind_direction_deg": {
+          "exclusiveMaximum": 360.0,
+          "minimum": 0.0,
+          "title": "Wind Direction Deg",
+          "type": "number"
+        },
+        "turbulence_intensity": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Turbulence Intensity",
+          "type": "number"
+        },
+        "visibility_nm": {
+          "maximum": 200.0,
+          "minimum": 0.0,
+          "title": "Visibility Nm",
+          "type": "number"
+        },
+        "terrain_clearance_ft": {
+          "title": "Terrain Clearance Ft",
+          "type": "number"
+        }
+      },
+      "required": [
+        "wind_speed_kts",
+        "wind_direction_deg",
+        "turbulence_intensity",
+        "visibility_nm",
+        "terrain_clearance_ft"
+      ],
+      "title": "Environment",
+      "type": "object"
+    },
+    "FlightEnvelope": {
+      "additionalProperties": false,
+      "properties": {
+        "angle_of_attack_deg": {
+          "maximum": 40.0,
+          "minimum": -20.0,
+          "title": "Angle Of Attack Deg",
+          "type": "number"
+        },
+        "load_factor_g": {
+          "maximum": 9.0,
+          "minimum": -3.0,
+          "title": "Load Factor G",
+          "type": "number"
+        },
+        "stall_margin_kts": {
+          "title": "Stall Margin Kts",
+          "type": "number"
+        },
+        "overspeed_margin_kts": {
+          "title": "Overspeed Margin Kts",
+          "type": "number"
+        }
+      },
+      "required": [
+        "angle_of_attack_deg",
+        "load_factor_g",
+        "stall_margin_kts",
+        "overspeed_margin_kts"
+      ],
+      "title": "FlightEnvelope",
+      "type": "object"
+    },
+    "Mission": {
+      "additionalProperties": false,
+      "properties": {
+        "phase": {
+          "$ref": "#/$defs/MissionPhase"
+        },
+        "emergency_declared": {
+          "title": "Emergency Declared",
+          "type": "boolean"
+        },
+        "original_destination": {
+          "maxLength": 16,
+          "minLength": 1,
+          "title": "Original Destination",
+          "type": "string"
+        }
+      },
+      "required": [
+        "phase",
+        "emergency_declared",
+        "original_destination"
+      ],
+      "title": "Mission",
+      "type": "object"
+    },
+    "MissionPhase": {
+      "description": "Supported high-level mission phases.",
+      "enum": [
+        "takeoff",
+        "climb",
+        "cruise",
+        "descent",
+        "approach",
+        "landing",
+        "diversion"
+      ],
+      "title": "MissionPhase",
+      "type": "string"
+    },
+    "Navigation": {
+      "additionalProperties": false,
+      "properties": {
+        "latitude_deg": {
+          "maximum": 90.0,
+          "minimum": -90.0,
+          "title": "Latitude Deg",
+          "type": "number"
+        },
+        "longitude_deg": {
+          "maximum": 180.0,
+          "minimum": -180.0,
+          "title": "Longitude Deg",
+          "type": "number"
+        },
+        "nearest_airports": {
+          "items": {
+            "$ref": "#/$defs/Airport"
+          },
+          "maxItems": 20,
+          "title": "Nearest Airports",
+          "type": "array"
+        },
+        "data_valid": {
+          "default": true,
+          "title": "Data Valid",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "latitude_deg",
+        "longitude_deg"
+      ],
+      "title": "Navigation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Complete serializable controller observation packet.",
+  "properties": {
+    "timestamp_seconds": {
+      "minimum": 0.0,
+      "title": "Timestamp Seconds",
+      "type": "number"
+    },
+    "aircraft_state": {
+      "$ref": "#/$defs/AircraftState"
+    },
+    "flight_envelope": {
+      "$ref": "#/$defs/FlightEnvelope"
+    },
+    "control_health": {
+      "$ref": "#/$defs/ControlHealth"
+    },
+    "engine_health": {
+      "$ref": "#/$defs/EngineHealth"
+    },
+    "navigation": {
+      "$ref": "#/$defs/Navigation"
+    },
+    "environment": {
+      "$ref": "#/$defs/Environment"
+    },
+    "mission": {
+      "$ref": "#/$defs/Mission"
+    },
+    "active_failures": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Active Failures",
+      "type": "array"
+    }
+  },
+  "required": [
+    "timestamp_seconds",
+    "aircraft_state",
+    "flight_envelope",
+    "control_health",
+    "engine_health",
+    "navigation",
+    "environment",
+    "mission"
+  ],
+  "title": "ControllerInput",
+  "type": "object"
+}

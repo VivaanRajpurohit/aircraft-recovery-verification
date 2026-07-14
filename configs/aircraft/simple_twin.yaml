@@ -1,0 +1,11 @@
+time_step_seconds: 0.1
+controller_frequency_hz: 10.0
+stall_speed_kts: 85.0
+overspeed_kts: 220.0
+cruise_speed_kts: 140.0
+max_thrust_accel_kts_s: 8.0
+drag_coefficient_per_s: 0.02
+pitch_rate_deg_s: 12.0
+roll_rate_deg_s: 30.0
+yaw_rate_deg_s: 10.0
+

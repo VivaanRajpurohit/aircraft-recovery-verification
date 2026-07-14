@@ -1,0 +1,27 @@
+dataset_name: phase3_quick_demonstrations
+output_directory: datasets/phase3_quick
+seed: 3300
+episode_count: 15
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+train_fraction: 0.70
+validation_fraction: 0.15
+test_fraction: 0.15
+ood_categories: [three_failure, unrecoverable]
+scenarios:
+  - {category: nominal, scenario: configs/scenarios/phase2_nominal.yaml, weight: 1.0}
+  - {category: single_engine, scenario: configs/scenarios/phase2_single_engine.yaml, weight: 1.0}
+  - {category: partial_thrust, scenario: configs/scenarios/phase3_partial_thrust.yaml, weight: 1.0}
+  - {category: control_degradation, scenario: configs/scenarios/phase2_engine_aileron.yaml, weight: 1.0}
+  - {category: stuck_surface, scenario: configs/scenarios/phase3_stuck_surface.yaml, weight: 1.0}
+  - {category: actuator_delay, scenario: configs/scenarios/phase2_sensor_actuator.yaml, weight: 1.0}
+  - {category: sensor_bias, scenario: configs/scenarios/phase3_sensor_faults.yaml, weight: 1.0}
+  - {category: frozen_missing_sensor, scenario: configs/scenarios/phase3_sensor_faults.yaml, weight: 1.0}
+  - {category: navigation_invalidation, scenario: configs/scenarios/phase2_navigation_engine.yaml, weight: 1.0}
+  - {category: turbulence, scenario: configs/scenarios/phase2_actuator_turbulence_thrust.yaml, weight: 1.0}
+  - {category: crosswind, scenario: configs/scenarios/phase2_rudder_crosswind.yaml, weight: 1.0}
+  - {category: engine_control, scenario: configs/scenarios/phase2_engine_aileron.yaml, weight: 1.0}
+  - {category: sensor_actuator, scenario: configs/scenarios/phase2_sensor_actuator.yaml, weight: 1.0}
+  - {category: three_failure, scenario: configs/scenarios/phase2_actuator_turbulence_thrust.yaml, weight: 1.0}
+  - {category: unrecoverable, scenario: configs/scenarios/phase2_unrecoverable.yaml, weight: 1.0}
+

@@ -1,0 +1,14 @@
+scenario_id: phase2_actuator_turbulence_thrust
+description: Actuator delay, turbulence increase, and partial bilateral thrust loss.
+seed: 2107
+duration_seconds: 30.0
+expected_recoverability: marginal
+initial_state: {altitude_ft: 8200.0, airspeed_kts: 142.0, pitch_deg: 1.0, roll_deg: -2.0, yaw_deg: 0.0, heading_deg: 250.0, latitude_deg: 37.0, longitude_deg: -120.0}
+airports:
+  - {airport_id: TEST1, distance_nm: 11.0, bearing_deg: 240.0, runway_heading_deg: 230.0, runway_length_ft: 6500.0, terrain_clearance_ft: 1800.0, within_glide_range: false, elevation_ft: 250.0, terrain_penalty: 0.1}
+environment: {wind_speed_kts: 12.0, wind_direction_deg: 300.0, turbulence_intensity: 0.1, visibility_nm: 8.0, terrain_clearance_ft: 2000.0}
+failures:
+  - {failure_id: actuator_delay_1, failure_type: actuator_delay, affected_subsystem: flight_controls, severity: 0.7, activation: time, activation_time_seconds: 2.0, permanent: true, observable: true, detected: true, parameters: {maximum_delay_seconds: 0.8}}
+  - {failure_id: turbulence_1, failure_type: turbulence_increase, affected_subsystem: environment, severity: 0.55, activation: time, activation_time_seconds: 2.0, permanent: true, ramp_duration_seconds: 3.0, observable: true, detected: true}
+  - {failure_id: thrust_loss_1, failure_type: partial_thrust_loss, affected_subsystem: engines, severity: 0.45, activation: time, activation_time_seconds: 2.0, permanent: true, ramp_duration_seconds: 2.0, observable: true, detected: true, parameters: {engine: both}}
+

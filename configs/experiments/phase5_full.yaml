@@ -1,0 +1,28 @@
+batch_name: phase5_full
+output_directory: results/phase5_full
+checkpoint: checkpoints/phase3_quick/best.pt
+safety_config: configs/safety/default.yaml
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+device: auto
+repetitions: 25
+seed_stride: 1000
+bootstrap_seed: 5050
+bootstrap_resamples: 10000
+success_definitions:
+  minimum_stall_margin_kts: 15.0
+  minimum_overspeed_margin_kts: 15.0
+  maximum_absolute_bank_deg: 30.0
+  maximum_absolute_pitch_deg: 15.0
+  stabilization_dwell_seconds: 5.0
+  diversion_arrival_distance_nm: 1.0
+  diversion_heading_tolerance_deg: 15.0
+scenarios:
+  - {scenario: configs/scenarios/phase2_nominal.yaml, category: nominal, distribution: in_distribution}
+  - {scenario: configs/scenarios/phase2_single_engine.yaml, category: single_failure, distribution: in_distribution}
+  - {scenario: configs/scenarios/phase2_engine_aileron.yaml, category: concurrent_failure, distribution: in_distribution}
+  - {scenario: configs/scenarios/phase2_rudder_crosswind.yaml, category: concurrent_weather, distribution: out_of_distribution}
+  - {scenario: configs/scenarios/phase2_sensor_actuator.yaml, category: sensor_actuator, distribution: in_distribution}
+  - {scenario: configs/scenarios/phase2_navigation_engine.yaml, category: navigation_engine, distribution: out_of_distribution}
+  - {scenario: configs/scenarios/phase2_actuator_turbulence_thrust.yaml, category: three_failure, distribution: out_of_distribution}
+  - {scenario: configs/scenarios/phase2_unrecoverable.yaml, category: unrecoverable, distribution: out_of_distribution}

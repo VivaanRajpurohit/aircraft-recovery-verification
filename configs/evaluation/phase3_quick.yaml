@@ -1,0 +1,14 @@
+evaluation_name: phase3_quick_evaluation
+dataset_directory: datasets/phase3_quick
+split_manifest: datasets/phase3_quick/split_manifest.json
+checkpoint: checkpoints/phase3_quick/best.pt
+output_directory: results/phase3_quick_evaluation
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+device: auto
+offline_splits: [test, ood]
+disagreement_threshold: 0.1
+scenarios:
+  - {scenario: configs/scenarios/phase2_nominal.yaml, category: nominal, seed_offsets: [100]}
+  - {scenario: configs/scenarios/phase2_engine_aileron.yaml, category: concurrent_failure, seed_offsets: [100]}
+

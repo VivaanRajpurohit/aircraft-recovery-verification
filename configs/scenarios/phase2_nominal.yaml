@@ -1,0 +1,12 @@
+scenario_id: phase2_nominal
+description: Phase 2 nominal control run without injected failures.
+seed: 2101
+duration_seconds: 20.0
+expected_recoverability: recoverable
+initial_state: {altitude_ft: 8500.0, airspeed_kts: 140.0, pitch_deg: 2.0, roll_deg: -5.0, yaw_deg: 0.0, heading_deg: 250.0, latitude_deg: 37.0, longitude_deg: -120.0}
+airports: &airports
+  - {airport_id: TEST1, distance_nm: 12.0, bearing_deg: 240.0, runway_heading_deg: 230.0, runway_length_ft: 4200.0, runway_width_ft: 80.0, terrain_clearance_ft: 1400.0, terrain_penalty: 0.25, within_glide_range: false, elevation_ft: 300.0, available: true, surface_suitable: true, minimum_control_authority: 0.3}
+  - {airport_id: TEST2, distance_nm: 16.0, bearing_deg: 265.0, runway_heading_deg: 270.0, runway_length_ft: 7500.0, runway_width_ft: 150.0, terrain_clearance_ft: 2200.0, terrain_penalty: 0.05, within_glide_range: false, elevation_ft: 150.0, available: true, surface_suitable: true, minimum_control_authority: 0.2}
+environment: &environment {wind_speed_kts: 12.0, wind_direction_deg: 310.0, turbulence_intensity: 0.05, visibility_nm: 10.0, terrain_clearance_ft: 2200.0}
+failures: []
+

@@ -1,0 +1,12 @@
+evaluation_name: phase4_quick_monitor
+checkpoint: checkpoints/phase3_quick/best.pt
+safety_config: configs/safety/default.yaml
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+output_directory: results/phase4_quick_monitor
+device: auto
+scenarios:
+  - {scenario: configs/scenarios/phase2_nominal.yaml, category: nominal, seed_offsets: [400]}
+  - {scenario: configs/scenarios/phase2_engine_aileron.yaml, category: two_failure, seed_offsets: [400]}
+  - {scenario: configs/scenarios/phase2_sensor_actuator.yaml, category: sensor_actuator, seed_offsets: [400]}
+

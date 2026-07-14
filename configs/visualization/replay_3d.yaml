@@ -1,0 +1,32 @@
+aircraft:
+  model_path: assets/aircraft/cessna/cessna.fbx
+  scale: 0.00056
+  pitch_offset_deg: 90.0
+  yaw_offset_deg: 180.0
+  roll_offset_deg: 0.0
+  position_offset_m: [0.0, 0.0, 0.0]
+  neutral_color_rgba: [0.82, 0.84, 0.88, 1.0]
+camera:
+  chase_distance_m: 18.0
+  chase_height_m: 6.0
+  look_ahead_m: 6.0
+  lateral_offset_m: 0.0
+  smoothing: 8.0
+  min_distance_m: 6.0
+  max_distance_m: 40.0
+  zoom_speed_m: 2.0
+  orbit_sensitivity_x: 0.18
+  orbit_sensitivity_y: 0.14
+  orbit_pitch_min_deg: -25.0
+  orbit_pitch_max_deg: 65.0
+  free_move_speed_mps: 20.0
+  free_fast_multiplier: 4.0
+  field_of_view_deg: 62.0
+world:
+  runway_length_m: 1200.0
+  runway_width_m: 30.0
+  path_altitude_offset_m: 0.5
+  horizontal_scale: 1.0
+  vertical_scale: 0.12
+  ground_size_m: 12000.0
+  grid_spacing_m: 500.0

@@ -1,0 +1,15 @@
+evaluation_name: phase3_in_distribution
+dataset_directory: datasets/phase3_full
+split_manifest: datasets/phase3_full/split_manifest.json
+checkpoint: checkpoints/phase3_default/best.pt
+output_directory: results/phase3_in_distribution
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+device: auto
+offline_splits: [test]
+disagreement_threshold: 0.1
+scenarios:
+  - {scenario: configs/scenarios/phase2_nominal.yaml, category: nominal, seed_offsets: [200, 201]}
+  - {scenario: configs/scenarios/phase2_single_engine.yaml, category: single_engine, seed_offsets: [200, 201]}
+  - {scenario: configs/scenarios/phase2_engine_aileron.yaml, category: two_failure, seed_offsets: [200, 201]}
+

@@ -1,0 +1,5 @@
+experiment_id: phase1_smoke
+scenario: configs/scenarios/phase1_nominal.yaml
+controller: phase1_stabilization_controller
+seeds: [20260713]
+
