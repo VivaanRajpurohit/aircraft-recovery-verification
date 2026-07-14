@@ -47,6 +47,11 @@ class PlantDatasetConfig(BaseModel):
     failure_ranges: dict[str, tuple[float, float]]
     disturbance_ranges: dict[str, tuple[float, float]]
     sensor_error_ranges: dict[str, tuple[float, float]]
+    validity_ranges: dict[str, tuple[float, float]] = Field(default_factory=lambda: {
+        "airspeed_kts": (100.0, 180.0), "pitch_deg": (-20.0, 20.0),
+        "bank_deg": (-50.0, 50.0), "vertical_speed_fpm": (-20000.0, 20000.0),
+        "terrain_clearance_ft": (100.0, 12000.0),
+    })
 
     @model_validator(mode="after")
     def bounds_are_ordered(self) -> "PlantDatasetConfig":
@@ -54,7 +59,7 @@ class PlantDatasetConfig(BaseModel):
         required_failures = {"right_thrust_availability", "aileron_effectiveness", "actuator_delay_seconds"}
         if not required_state <= self.state_ranges.keys() or not required_failures <= self.failure_ranges.keys():
             raise ValueError("Dataset configuration is missing required state or failure ranges")
-        for group in (self.state_ranges, self.failure_ranges, self.disturbance_ranges, self.sensor_error_ranges):
+        for group in (self.state_ranges, self.failure_ranges, self.disturbance_ranges, self.sensor_error_ranges, self.validity_ranges):
             if any(lower > upper for lower, upper in group.values()):
                 raise ValueError("Every configured lower bound must be <= its upper bound")
         return self

@@ -48,7 +48,7 @@ def fit_formal_plant(calibration_directory:str|Path,configuration_path:str|Path,
     coefficients["vertical_speed_fpm"]=[float(np.median(ratios))]
     config:PlantDatasetConfig=load_dataset_config(configuration_path)
     validity={
-        "state":{**config.state_ranges,"vertical_speed_fpm":(-20000.0,20000.0)},
+        "state":config.validity_ranges,
         "failures":{"left_thrust_availability":(0.0,0.0),**config.failure_ranges},
         "disturbances":{"pitch_delta_deg":(-1.0,1.0),"roll_delta_deg":(-2.0,2.0),"crosswind_kts":config.disturbance_ranges["crosswind_kts"]},
         "sensor_errors":config.sensor_error_ranges,
