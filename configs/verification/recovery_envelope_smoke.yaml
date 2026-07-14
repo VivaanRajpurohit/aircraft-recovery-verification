@@ -36,6 +36,7 @@ validity_region: {airspeed_kts: [100.0, 180.0], pitch_deg: [-20.0, 20.0], bank_d
 safety: {airspeed_kts: [100.0, 205.0], pitch_deg: [-20.0, 25.0], maximum_absolute_bank_deg: 60.0, minimum_terrain_clearance_ft: 0.0, maximum_command_delta_per_step: 0.25, check_angle_of_attack: false, check_load_factor: false}
 recovery: {airspeed_kts: [115.0, 160.0], pitch_deg: [-8.0, 8.0], maximum_absolute_bank_deg: 10.0, maximum_absolute_vertical_speed_fpm: 800.0, minimum_terrain_clearance_ft: 500.0}
 grid:
-  bank_deg: [-10.0, 0.0, 10.0]
-  aileron_effectiveness: [0.55, 0.65]
+  combination_mode: pairwise_maps
+  maps:
+    - {x: bank_deg, values_x: [-10.0, 0.0, 10.0], y: aileron_effectiveness, values_y: [0.55, 0.65]}
 output_directory: results/recovery_envelope_smoke_v1
