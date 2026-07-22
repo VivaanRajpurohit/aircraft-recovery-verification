@@ -1,0 +1,15 @@
+protocol_version: gate-c-pilot-v1
+split: calibration
+seed: 7201
+one_step_samples: 2500
+trace_count: 80
+trace_length_steps: 100
+pre_roll_steps: 4
+aircraft_config: configs/aircraft/simple_twin.yaml
+output_directory: results/formal_plant_pilot_v1/calibration
+protocol_timestamp_utc: "2026-07-14T00:00:00Z"
+allow_dirty_tree: false
+state_ranges: {airspeed_kts: [100.0, 180.0], pitch_deg: [-20.0, 20.0], bank_deg: [-50.0, 50.0], terrain_clearance_ft: [100.0, 12000.0]}
+failure_ranges: {right_thrust_availability: [0.9, 1.0], aileron_effectiveness: [0.3, 1.0], actuator_delay_seconds: [0.0, 0.3]}
+disturbance_ranges: {crosswind_kts: [-35.0, 35.0], turbulence_intensity: [0.0, 0.3]}
+sensor_error_ranges: {airspeed_kts: [-5.0, 5.0], bank_deg: [-3.0, 3.0], terrain_clearance_ft: [-50.0, 50.0]}

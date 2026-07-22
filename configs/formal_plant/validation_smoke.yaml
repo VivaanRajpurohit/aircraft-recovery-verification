@@ -1,0 +1,15 @@
+protocol_version: gate-c-smoke-v1
+split: validation
+seed: 8101
+one_step_samples: 100
+trace_count: 4
+trace_length_steps: 20
+pre_roll_steps: 3
+aircraft_config: configs/aircraft/simple_twin.yaml
+output_directory: results/formal_plant_smoke_v1/validation
+protocol_timestamp_utc: "2026-07-14T00:00:00Z"
+allow_dirty_tree: false
+state_ranges: {airspeed_kts: [105.0, 175.0], pitch_deg: [-15.0, 15.0], bank_deg: [-45.0, 45.0], terrain_clearance_ft: [500.0, 10000.0]}
+failure_ranges: {right_thrust_availability: [0.95, 1.0], aileron_effectiveness: [0.4, 0.8], actuator_delay_seconds: [0.0, 0.1]}
+disturbance_ranges: {crosswind_kts: [-25.0, 25.0], turbulence_intensity: [0.0, 0.2]}
+sensor_error_ranges: {airspeed_kts: [-3.0, 3.0], bank_deg: [-1.5, 1.5], terrain_clearance_ft: [-25.0, 25.0]}

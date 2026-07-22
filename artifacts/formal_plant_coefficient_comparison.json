@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "classification": "intervalized formal representation of the existing low-order simulator dynamics",
+  "simulator_configuration": "configs/aircraft/simple_twin.yaml",
+  "model": "results/formal_plant_smoke_v1/formal_plant_model.json",
+  "comparison": {
+    "airspeed_kts": [
+      {"term": "intercept", "fitted": -0.11999999999997257, "expected": -0.12, "absolute_difference": 2.7422508708241367e-14, "relative_difference": 2.285209059020114e-13},
+      {"term": "current_airspeed", "fitted": 0.9979999999999983, "expected": 0.998, "absolute_difference": 1.6653345369377348e-15, "relative_difference": 1.6686718806991331e-15},
+      {"term": "left_available_throttle", "fitted": 0.0, "expected": 0.4, "absolute_difference": 0.4, "relative_difference": 1.0, "note": "unidentifiable and algebraically irrelevant within validity because left availability is fixed at zero"},
+      {"term": "right_available_throttle", "fitted": 0.40000000000000663, "expected": 0.4, "absolute_difference": 6.6058269965196814e-15, "relative_difference": 1.6514567491299204e-14}
+    ],
+    "pitch_deg": [
+      {"term": "intercept", "fitted": 1.046065906046359e-15, "expected": 0.0, "absolute_difference": 1.046065906046359e-15, "relative_difference": null},
+      {"term": "current_pitch", "fitted": 1.0000000000000002, "expected": 1.0, "absolute_difference": 2.220446049250313e-16, "relative_difference": 2.220446049250313e-16},
+      {"term": "executed_elevator", "fitted": 1.2000000000000004, "expected": 1.2, "absolute_difference": 4.440892098500626e-16, "relative_difference": 3.7007434154171886e-16},
+      {"term": "realized_pitch_disturbance", "fitted": 0.999999999999984, "expected": 1.0, "absolute_difference": 1.5987211554602254e-14, "relative_difference": 1.5987211554602254e-14}
+    ],
+    "bank_deg": [
+      {"term": "intercept", "fitted": 2.456338332994044e-12, "expected": 0.0, "absolute_difference": 2.456338332994044e-12, "relative_difference": null},
+      {"term": "current_bank", "fitted": 1.0000000000000013, "expected": 1.0, "absolute_difference": 1.3322676295501878e-15, "relative_difference": 1.3322676295501878e-15},
+      {"term": "effective_aileron", "fitted": 2.999999999999991, "expected": 3.0, "absolute_difference": 8.881784197001252e-15, "relative_difference": 2.960594732333751e-15},
+      {"term": "thrust_asymmetry", "fitted": 0.36000000000251653, "expected": 0.36, "absolute_difference": 2.5165425299178423e-12, "relative_difference": 6.990395916438451e-12},
+      {"term": "realized_roll_disturbance", "fitted": 1.0000000000000064, "expected": 1.0, "absolute_difference": 6.439293542825908e-15, "relative_difference": 6.439293542825908e-15}
+    ],
+    "vertical_speed_fpm": [
+      {"term": "airspeed_sine_pitch_scale", "fitted": 101.269, "expected": 101.269, "absolute_difference": 0.0, "relative_difference": 0.0}
+    ],
+    "terrain_clearance_ft": [
+      {"term": "intercept", "fitted": 3.843090470508204e-12, "expected": 0.0, "absolute_difference": 3.843090470508204e-12, "relative_difference": null},
+      {"term": "current_clearance", "fitted": 0.9999999999999989, "expected": 1.0, "absolute_difference": 1.1102230246251565e-15, "relative_difference": 1.1102230246251565e-15},
+      {"term": "vertical_speed_integration", "fitted": 0.0016666666666671215, "expected": 0.0016666666666666668, "absolute_difference": 4.547143911404206e-16, "relative_difference": 2.7282863468425234e-13}
+    ]
+  },
+  "residual_source": "calibration-development floating-point fit/evaluation error expanded by 1e-8 numerical tolerance",
+  "validation_data_used": false,
+  "publication_evidence": false
+}
