@@ -267,7 +267,27 @@ def generate_dataset(config: PlantDatasetConfig) -> dict[str, Any]:
     return manifest
 
 
+def verify_dataset_integrity(directory: str | Path) -> dict[str, bool]:
+    """Verify that the stored records still match their deterministic manifest."""
+    root = Path(directory)
+    content = (root / "transitions.jsonl").read_text(encoding="utf-8")
+    records = [PlantTransitionRecord.model_validate_json(line) for line in content.splitlines()]
+    manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+    declared_manifest_hash = manifest.pop("manifest_sha256")
+    checks = {
+        "manifest_hash_matches": canonical_hash(manifest) == declared_manifest_hash,
+        "transitions_hash_matches": hashlib.sha256(content.encode("utf-8")).hexdigest() == manifest["transitions_sha256"],
+        "record_count_matches": len(records) == manifest["record_count"],
+        "sample_ids_hash_matches": canonical_hash([item.sample_id for item in records]) == manifest["sample_ids_sha256"],
+        "scenario_ids_hash_matches": canonical_hash(sorted({item.scenario_id for item in records})) == manifest["scenario_ids_sha256"],
+    }
+    if not all(checks.values()):
+        raise ValueError(f"Formal-plant dataset integrity failed for {root}: {checks}")
+    return checks
+
+
 def load_records(directory: str | Path) -> list[PlantTransitionRecord]:
+    verify_dataset_integrity(directory)
     return [PlantTransitionRecord.model_validate_json(line) for line in (Path(directory) / "transitions.jsonl").read_text(encoding="utf-8").splitlines()]
 
 

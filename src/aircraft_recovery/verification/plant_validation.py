@@ -7,7 +7,7 @@ from typing import Any
 import numpy as np
 from aircraft_recovery.data.hashing import canonical_hash,file_hash
 from aircraft_recovery.verification.formal_plant import MODELED_STATES,FormalPlantModel,StateInterval,transition,within_validity
-from aircraft_recovery.verification.plant_calibration import ACTION_NAMES,assert_split_isolation,load_records
+from aircraft_recovery.verification.plant_calibration import ACTION_NAMES,assert_split_isolation,load_records,verify_dataset_integrity
 from aircraft_recovery.verification.plant_calibration_fit import load_formal_plant,predict_point
 
 
@@ -33,6 +33,7 @@ def _contains(interval:StateInterval,state:dict[str,float],index:int)->bool:
 
 
 def validate_formal_plant(model_path:str|Path,calibration_directory:str|Path,validation_directory:str|Path,output_path:str|Path,horizons:tuple[int,...]=(5,10,20))->dict[str,Any]:
+    calibration_integrity=verify_dataset_integrity(calibration_directory); validation_integrity=verify_dataset_integrity(validation_directory)
     model=load_formal_plant(model_path); records=load_records(validation_directory); isolation=assert_split_isolation(calibration_directory,validation_directory)
     one_step=[item for item in records if item.record_kind=="one_step"]
     errors={name:[] for name in MODELED_STATES}; contained={name:0 for name in MODELED_STATES}; outside=[]; failures=[]
@@ -78,5 +79,20 @@ def validate_formal_plant(model_path:str|Path,calibration_directory:str|Path,val
         "interval_width_by_state":{name:{"initial":values[0][0] if values[0] else None,"maximum":max((max(step) for step in values if step),default=None),"at_horizons":{str(h):float(np.mean(values[h-1])) if h<=len(values) and values[h-1] else None for h in horizons}} for name,values in width_by_state.items()},
     }
     validation_manifest=json.loads((Path(validation_directory)/"manifest.json").read_text(encoding="utf-8"))
-    report={"schema_version":1,"model_sha256":file_hash(model_path),"validation_manifest_sha256":validation_manifest["manifest_sha256"],"split_isolation":isolation,"one_step":{"total":len(one_step),"evaluated":evaluated,"outside_model_validity":outside,"containment_failures":failures,"metrics":metrics},"rollout":rollout}
+    report={
+        "schema_version":1,
+        "model_sha256":file_hash(model_path),
+        "validation_manifest_sha256":validation_manifest["manifest_sha256"],
+        "dataset_integrity":{"calibration":calibration_integrity,"validation":validation_integrity},
+        "split_isolation":isolation,
+        "scientific_classification":{
+            "formal_model":"intervalized formal representation of the existing low-order simulator dynamics",
+            "one_step_expected_values":"stored numerical simulator next_state records",
+            "rollout_kind":"interval propagation under fixed recorded executed actions and realized disturbances",
+            "closed_loop_controller_validation":False,
+            "initial_interval":{"kind":"narrow numerical box","radius":1e-9},
+        },
+        "one_step":{"total":len(one_step),"evaluated":evaluated,"outside_model_validity":outside,"containment_failures":failures,"metrics":metrics},
+        "rollout":rollout,
+    }
     report["report_sha256"]=canonical_hash(report); _atomic(Path(output_path),json.dumps(report,indent=2,sort_keys=True)+"\n"); return report

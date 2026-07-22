@@ -34,7 +34,14 @@
     }
   },
   "rollout": {"horizons_steps": [5, 10, 20], "traces": 4, "containment_percent_at_every_step": 100.0, "first_containment_failures": 0, "maximum_vertical_speed_interval_width_fpm": 0.00011756692720155115},
-  "report_sha256": "69ed588b5d209e642efc23cc8df37aef8bc02c01745c0a6b01a3f28319f852f6",
+  "report_sha256": "2d88762a7947bcbadd25728e3578902903ad1f1cce4a787ed2c11f8e21a80492",
+  "scientific_classification": {
+    "formal_model": "intervalized formal representation of the existing low-order simulator dynamics",
+    "rollout_kind": "interval propagation under fixed recorded executed actions and realized disturbances",
+    "closed_loop_controller_validation": false,
+    "initial_interval_radius": 1e-9
+  },
+  "dataset_integrity_verified": true,
   "raw_smoke_directory": "results/formal_plant_smoke_v1",
   "raw_smoke_bytes": 1162439,
   "publication_evidence": false
