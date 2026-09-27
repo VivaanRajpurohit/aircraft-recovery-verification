@@ -17,7 +17,7 @@
 
 ## Research question
 
-How can a learned recovery policy be evaluated when several simulated aircraft failures occur at once—and how can a runtime monitor constrain that policy to an explicitly bounded safety envelope?
+How can a learned recovery policy be evaluated when several simulated aircraft failures occur at once, and how can a runtime monitor constrain that policy to an explicitly bounded safety envelope?
 
 This repository explores that question through a reproducible, five-phase pipeline. It compares an unmonitored numerical policy with a monitored controller that can accept, project, or reject proposed actions before falling back to deterministic recovery logic.
 
