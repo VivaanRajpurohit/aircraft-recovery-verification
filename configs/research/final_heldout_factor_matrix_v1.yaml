@@ -1,0 +1,33 @@
+contract_id: final_heldout_factor_matrix_v1
+status: planned_conditions_only_no_trajectory_data
+common:
+  tiers: [0, 1, 2, 3, 4, 5]
+  flights_per_tier: 24
+  flight_level_pairing: true
+  engine_side_balance_required: true
+  initial_state_dimensions: [airspeed_kts, bank_deg, pitch_deg, altitude_ft, terrain_clearance_ft]
+  vertical_speed_bins_fpm: [[-2500, -750], [-750, -150], [-150, 150], [150, 750], [750, 2500]]
+splits:
+  development:
+    seed_range: [21000, 21143]
+    severity_schedule: within_tier_even_grid_excluding_all_heldout_exact_values
+    activation_schedule_seconds: within_tier_even_grid_excluding_all_heldout_exact_values
+    use: tuning_and_early_stopping
+  challenge:
+    seed_range: [22000, 22143]
+    severity_values: [0.40, 0.65, 0.82]
+    activation_seconds: [2.5, 5.0, 7.5]
+    use: known_family_challenge_no_optimization
+  ood_stress:
+    seed_range: [23000, 23143]
+    severity_values: [0.22, 0.52, 0.85]
+    activation_seconds: [2.25, 5.5, 7.25]
+    use: supported_simulator_shift_no_optimization
+  final_sealed_test:
+    seed_range: [24000, 24143]
+    severity_values: [0.39, 0.64, 0.84]
+    activation_seconds: [2.75, 5.25, 7.75]
+    use: single_post_freeze_evaluation_only
+    execution_authorized: false
+crossing_rule: cycle severity_by_activation_by_initial_state_bin_by_vertical_speed_target_by_engine_side before repetition
+imbalance_rule: any planned-versus-achieved count deviation blocks_dataset_approval

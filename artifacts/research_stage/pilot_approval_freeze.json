@@ -1,0 +1,17 @@
+{
+  "freeze_version": 1,
+  "source_candidate_dataset_id": "final_policy_pilot_v2",
+  "approved_dataset_id": "final_policy_pilot_v2_approved_v1",
+  "source_git_revision": "d3df91ac4d92be40e029d9ab9df916c4222018f4",
+  "approved_flights": 36,
+  "approved_transitions": 9350,
+  "rejected_flights": 0,
+  "rejected_transitions": 0,
+  "validator_version": "candidate-validator-v3-independent-contracts",
+  "validator_report_hash": "78a9ae1c2861970ea0ac4622e13826337444195fa5db575c470b5bdaedd90680",
+  "disposition_audit_hash": "8fb5cda7eec6d7461820d6a038cc6a2410355e61409bbd842f8a230f34e24b74",
+  "approved_dataset_hash": "12ec8abc042dd37998cb36d5515bf9c29fe74a172ede5d6e5bdf460c7f2eb22b",
+  "sealed_test_opened": false,
+  "large_dataset_generated": false,
+  "final_training_run": false
+}

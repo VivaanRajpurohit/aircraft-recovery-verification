@@ -1,0 +1,13 @@
+dataset_id: candidate_audit_smoke_20260729_v1
+output_root: datasets/candidate_policy_data
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+maximum_steps_per_flight: 70
+label_semantics: expert_proposed_action
+synthetic_corruption: {flight_index: 0, timestep_index: 1, kind: wrong_feature_order}
+flights:
+  - {scenario: configs/scenarios/phase2_nominal.yaml, seed: 12001, split: train}
+  - {scenario: configs/scenarios/phase2_sensor_actuator.yaml, seed: 12002, split: train}
+  - {scenario: configs/scenarios/phase2_engine_aileron.yaml, seed: 12003, split: validation}
+  - {scenario: configs/scenarios/phase2_unrecoverable.yaml, seed: 12004, split: validation}
+

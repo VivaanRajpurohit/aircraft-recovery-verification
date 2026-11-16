@@ -1,0 +1,945 @@
+{
+  "dataset_integrity": {
+    "calibration": {
+      "manifest_hash_matches": true,
+      "record_count_matches": true,
+      "sample_ids_hash_matches": true,
+      "scenario_ids_hash_matches": true,
+      "transitions_hash_matches": true
+    },
+    "validation": {
+      "manifest_hash_matches": true,
+      "record_count_matches": true,
+      "sample_ids_hash_matches": true,
+      "scenario_ids_hash_matches": true,
+      "transitions_hash_matches": true
+    }
+  },
+  "model_sha256": "db2e86c6860017283f45d922eb06ca5f83563c301b31ae19e7dcf84b6a96bd57",
+  "one_step": {
+    "containment_failures": [
+      {
+        "sample_id": "validation-sample-000000",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000001",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000002",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000003",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000004",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000006",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000007",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000008",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000009",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000010",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000011",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000012",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000013",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000014",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000016",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000017",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000018",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000019",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000020",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000021",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000022",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000023",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000024",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000026",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000027",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000028",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000029",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000030",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000031",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000032",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000033",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000034",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000036",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000037",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000038",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000039",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000040",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000041",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000042",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000043",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000044",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000046",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000047",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000048",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000049",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000050",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000051",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000052",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000053",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000054",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000056",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000057",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000058",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000059",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000060",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000061",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000062",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000063",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000064",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000066",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000067",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000068",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000069",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000070",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000071",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000072",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000073",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000074",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000076",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000077",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000078",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000079",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000080",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000081",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000082",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000083",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000084",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000086",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000087",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000088",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000089",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000090",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000091",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000092",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000093",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000094",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000096",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000097",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000098",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000099",
+        "states": [
+          "airspeed_kts",
+          "vertical_speed_fpm",
+          "terrain_clearance_ft"
+        ]
+      }
+    ],
+    "evaluated": 100,
+    "metrics": {
+      "airspeed_kts": {
+        "contained": 10,
+        "containment_percent": 10.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 0.4977406955000845,
+        "maximum_signed_error": 2.8421709430404007e-13,
+        "mean_absolute_error": 0.2326351652290515,
+        "mean_signed_error": -0.23263516522900943,
+        "median_absolute_error": 0.2443375244452568,
+        "minimum_signed_error": -0.4977406955000845,
+        "p95_absolute_error": 0.4843200939337521,
+        "residual_bound": [
+          -9.999843680598135e-09,
+          1.0000284217094306e-08
+        ]
+      },
+      "bank_deg": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 1.4210854715202004e-14,
+        "maximum_signed_error": 3.552713678800501e-15,
+        "mean_absolute_error": 2.42861286636753e-15,
+        "mean_signed_error": -2.037814361699475e-15,
+        "median_absolute_error": 1.7763568394002505e-15,
+        "minimum_signed_error": -1.4210854715202004e-14,
+        "p95_absolute_error": 7.105427357601002e-15,
+        "residual_bound": [
+          -1.000000710542736e-08,
+          1.000000355271368e-08
+        ]
+      },
+      "pitch_deg": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 5.329070518200751e-15,
+        "maximum_signed_error": 1.7763568394002505e-15,
+        "mean_absolute_error": 1.7062046220317483e-15,
+        "mean_signed_error": -1.2887607647726895e-15,
+        "median_absolute_error": 1.5543122344752192e-15,
+        "minimum_signed_error": -5.329070518200751e-15,
+        "p95_absolute_error": 5.329070518200751e-15,
+        "residual_bound": [
+          -1.000000710542736e-08,
+          1.0000001776356841e-08
+        ]
+      },
+      "terrain_clearance_ft": {
+        "contained": 10,
+        "containment_percent": 10.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 0.019797029721587478,
+        "maximum_signed_error": 0.019797029721587478,
+        "mean_absolute_error": 0.005317401614015012,
+        "mean_signed_error": 0.00022288485394881264,
+        "median_absolute_error": 0.0034317255187943374,
+        "minimum_signed_error": -0.016758160245444742,
+        "p95_absolute_error": 0.01603953771859778,
+        "residual_bound": [
+          -1.0002046363078991e-08,
+          1.0007275957614185e-08
+        ]
+      },
+      "vertical_speed_fpm": {
+        "contained": 10,
+        "containment_percent": 10.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 11.878217834347652,
+        "maximum_signed_error": 11.878217834347652,
+        "mean_absolute_error": 3.190440969332015,
+        "mean_signed_error": 0.13373091133109238,
+        "median_absolute_error": 2.0590353124375724,
+        "minimum_signed_error": -10.054896151008052,
+        "p95_absolute_error": 9.623722632470685,
+        "residual_bound": [
+          -1.000545696821064e-08,
+          1.0006366462912412e-08
+        ]
+      }
+    },
+    "outside_model_validity": [],
+    "total": 100
+  },
+  "report_sha256": "6e86ce4a870e19b16da04b8393ea5fb4bb350fdff3f3bf6ac34a77f3a385fd12",
+  "rollout": {
+    "containment_percent_by_step": [
+      50.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "first_containment_failures": [
+      {
+        "reason": "containment_failure",
+        "step": 1,
+        "trace_id": "validation-trace-0000"
+      },
+      {
+        "reason": "containment_failure",
+        "step": 2,
+        "trace_id": "validation-trace-0001"
+      },
+      {
+        "reason": "containment_failure",
+        "step": 1,
+        "trace_id": "validation-trace-0002"
+      },
+      {
+        "reason": "containment_failure",
+        "step": 2,
+        "trace_id": "validation-trace-0003"
+      }
+    ],
+    "horizons_tested": [
+      5,
+      10,
+      20
+    ],
+    "interval_width_by_state": {
+      "airspeed_kts": {
+        "at_horizons": {
+          "10": 2.0017223079094038e-07,
+          "20": 3.944164106428616e-07,
+          "5": 1.0158206009691639e-07
+        },
+        "initial": 2.1996299892634852e-08,
+        "maximum": 3.94416815652221e-07
+      },
+      "bank_deg": {
+        "at_horizons": {
+          "10": 2.0200025163674695e-07,
+          "20": 4.0200049777894264e-07,
+          "5": 1.0200012767747069e-07
+        },
+        "initial": 2.200003379471127e-08,
+        "maximum": 4.020007580152196e-07
+      },
+      "pitch_deg": {
+        "at_horizons": {
+          "10": 2.0200014350102435e-07,
+          "20": 4.02000283172832e-07,
+          "5": 1.0200007305449788e-07
+        },
+        "initial": 2.2000021360213395e-08,
+        "maximum": 4.020003565585739e-07
+      },
+      "terrain_clearance_ft": {
+        "at_horizons": {
+          "10": 6.830036340943479e-07,
+          "20": 2.229111544238549e-06,
+          "5": 2.3489383238484152e-07
+        },
+        "initial": 3.302193363197148e-08,
+        "maximum": 2.534738086978905e-06
+      },
+      "vertical_speed_fpm": {
+        "at_horizons": {
+          "10": 5.2136357965082425e-05,
+          "20": 0.00010435643372375125,
+          "5": 2.6260722194137998e-05
+        },
+        "initial": 6.604012014577165e-06,
+        "maximum": 0.0001220553849634598
+      }
+    },
+    "trace_count": 4
+  },
+  "schema_version": 1,
+  "scientific_classification": {
+    "closed_loop_controller_validation": false,
+    "formal_model": "intervalized formal representation of the existing low-order simulator dynamics",
+    "initial_interval": {
+      "kind": "narrow numerical box",
+      "radius": 1e-09
+    },
+    "one_step_expected_values": "stored numerical simulator next_state records",
+    "rollout_kind": "interval propagation under fixed recorded executed actions and realized disturbances"
+  },
+  "split_isolation": {
+    "sample_ids_disjoint": true,
+    "scenario_ids_disjoint": true,
+    "seeds_disjoint": true
+  },
+  "validation_manifest_sha256": "df2f8cb1d8a8c4ee5f4afc3c2af798d88ddb6c60e855e6e4aa7874dad91b8718"
+}

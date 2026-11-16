@@ -1,0 +1,61 @@
+{
+  "qa_version": "final-pipeline-qa-v2.1b-v1",
+    "qa_logical_sha256": "d8c655471954b89288464d56e88117bad6b41a4ca6edf943a88957aeb9e0f0b9",
+  "date": "2026-09-20",
+  "status": "PASS_WITH_DOCUMENTED_HASH_TRANSCRIPTION_RECONCILIATION",
+  "repository": {
+    "branch": "codex/v2-1-architecture-screening",
+    "presealed_commit": "acff41b78fe29bbc642a45e696598845e9c69e4e",
+    "complete_test_suite": "344 passed",
+    "git_diff_check": "PASS"
+  },
+  "frozen_integrity": {
+    "presealed_freeze_logical_sha256": "1f48d27cede12d0ba5053fd9fc1e0b59f3fd155d849745ccd6b48e0f781c114c",
+    "presealed_freeze_bound_file_count": 29,
+    "bound_files_match": true,
+    "representative_checkpoint_match": true,
+    "authoritative_five_seed_provenance_matches_all_checkpoint_files": true,
+        "hash_transcription_reconciliation_logical_sha256": "1958402f440ce9d78f4caa63132e33e236759574df7183949a41c97bfc7d9083",
+    "candidate_dataset_changed": false,
+    "approved_dataset_changed": false,
+    "normalization_changed": false,
+    "monitor_changed": false,
+    "fallback_changed": false,
+    "metric_contract_changed": false
+  },
+  "sealed_evaluation": {
+    "status": "COMPLETE",
+    "representative_seed": 17001,
+    "scenario_count": 144,
+    "paired_flight_record_count": 288,
+    "trace_record_count": 74880,
+    "invalid_experiment_count": 0,
+    "technical_rerun_count": 0,
+    "flight_records_sha256": "17897274f1095eddcc3425aa745e92943ffbb1f22536539488490a1d3e87b00c",
+    "action_traces_sha256": "41e0f3aa9abb3bb90dc6a6382fdc42ba8ddf2a35a3e164752e355415421ff8b8",
+    "summary_sha256": "4ff6c7cbc8e0fa1408339f53119cc7b85a824aab16ef5797ef55c06b8c1c562e"
+  },
+  "analysis": {
+    "status": "COMPLETE",
+    "analysis_sha256": "24c44f18d4fa66b665b8703f632e332df47cf9590f74494f132f8bcb5eb35b7c",
+    "primary_pair_count": 144,
+    "monitored_recovery": "144/144",
+    "unmonitored_recovery": "144/144",
+    "absolute_rate_difference": 0.0,
+    "paired_bootstrap_95_ci": [0.0, 0.0],
+    "sealed_safety_violation_flights_monitored": 0,
+    "sealed_safety_violation_flights_unmonitored": 0,
+    "post_outcome_tuning_or_reselection": false
+  },
+  "manuscript": {
+    "authoritative_source_sha256": "5b5feee514618b8bb16249fdcdd2ea6633e0ce5d3c10cfb24e0dd17c0d3f3824",
+    "authoritative_source_unchanged": true,
+    "final_docx_sha256": "38dd79e1d04dbf1e53ff771b106d3572025a71571ca69f4f922c1f77ee383e8c",
+    "final_pdf_sha256": "0b682903d8c347edad56e0a29f71b9383176f01bba88be411471e719d0605683",
+    "pdf_page_count": 19,
+    "all_pages_visually_inspected": true,
+    "drafting_placeholder_scan": "PASS",
+    "layout_check": "PASS",
+    "source_overwritten": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "controller_id": "phase2_deterministic_fallback",
+  "algorithm": "bounded PID/rule recovery with hysteretic emergency-mode state machine and diversion planner",
+  "git_commit": "d3df91ac4d92be40e029d9ab9df916c4222018f4",
+  "configuration_path": "configs/controllers/fallback.yaml",
+  "configuration_sha256": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+  "source_files": [
+    {"path":"src/aircraft_recovery/controllers/fallback.py","sha256":"2e2d97f01cec3acce9a919eccd7eeeff95e4a08539c6590932f946e120c1e119"},
+    {"path":"src/aircraft_recovery/controllers/emergency.py","sha256":"1df153860b311ba385e7481d94df5cda7697137106456aa08135b6e1fe8f8cb3"},
+    {"path":"src/aircraft_recovery/controllers/pid.py","sha256":"64b5b497bbb0448a744f9ea9dc62affdbc0101a9b143d2cbf10473661660bb4d"}
+  ],
+  "control_period_seconds": 0.1,
+  "control_order": ["elevator","aileron","rudder","throttle_left","throttle_right"],
+  "control_bounds": [[-1,1],[-1,1],[-1,1],[0,1],[0,1]],
+  "explicit_slew_rate_limit": null,
+  "label_action": "expert_proposed_controls",
+  "executed_action_recorded_separately": true,
+  "reads_ground_truth_audit_snapshot": false,
+  "privileged_relative_to_policy": true,
+  "privileged_context": ["full airport list", "PID integral/previous-error state", "emergency-mode history and dwell time", "selected diversion-plan state"],
+  "fixed_seed_deterministic": true,
+  "physics_claim": "low-order simulator only",
+  "limitations": ["not optimal", "not physically validated", "no explicit actuator slew-rate model", "may fail on valid scenarios"]
+}

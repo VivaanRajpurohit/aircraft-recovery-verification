@@ -268,4 +268,14 @@ def train_policy(config: TrainingConfig) -> dict[str, Any]:
     }
     (output / "training_history.json").write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
     (output / "training_summary.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    (output / "preprocessing_manifest.json").write_text(
+        json.dumps({
+            "fit_split": "train",
+            "train_episode_ids": sorted(manifest["train"]),
+            "statistics": preprocessor.statistics.to_dict(),
+            "clip_standard_deviations": config.clip_standard_deviations,
+            "test_data_used_for_fitting": False,
+        }, indent=2) + "\n",
+        encoding="utf-8",
+    )
     return result

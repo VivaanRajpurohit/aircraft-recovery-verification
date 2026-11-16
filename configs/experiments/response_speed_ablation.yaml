@@ -1,0 +1,20 @@
+ablation_name: response_speed_small_v1
+output_directory: results/response_speed_ablation_v2
+checkpoint: checkpoints/phase3_quick/best.pt
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+safety_config: configs/safety/default.yaml
+device: cpu
+recovery_bank_bound_deg: 30.0
+recovery_pitch_bound_deg: 15.0
+acceptable_vertical_speed_fpm: 500.0
+stabilization_dwell_seconds: 5.0
+variants:
+  - {name: baseline, maximum_control_rate_per_second: 2.5}
+  - {name: candidate_a, maximum_control_rate_per_second: 2.75}
+  - {name: candidate_b, maximum_control_rate_per_second: 3.0}
+scenarios:
+  - {scenario: configs/scenarios/phase2_engine_aileron.yaml, seed: 5103}
+  - {scenario: configs/scenarios/phase2_rudder_crosswind.yaml, seed: 6105}
+  - {scenario: configs/scenarios/phase2_sensor_actuator.yaml, seed: 7104}
+  - {scenario: configs/scenarios/phase2_actuator_turbulence_thrust.yaml, seed: 9107}

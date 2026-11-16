@@ -1,0 +1,25 @@
+{
+  "audit_version": 1,
+  "audit_date": "2026-08-15",
+  "source_commit": "d3df91ac4d92be40e029d9ab9df916c4222018f4",
+  "sealed_test_records_opened": false,
+  "checkpoints": [
+    {
+      "path": "checkpoints/phase3_quick/best.pt",
+      "sha256": "efbcc999dd43e7f9e75dc9738e67bb19f2b7fe994ecee626de10b296b8b62c25",
+      "first_git_commit": null,
+      "classification": "provenance-incomplete",
+      "scientific_comparison_suitability": "unsuitable-as-primary; historical-baseline-only"
+    },
+    {
+      "path": "checkpoints/policy_smoke_v1/best.pt",
+      "sha256": "daecaeb37eedd943804da7cf13ed90e4dccca4a80268f8003596f63d6dfbf4e4",
+      "first_git_commit": null,
+      "classification": "partially-reproducible",
+      "scientific_comparison_suitability": "historical-pipeline-validation-baseline-only",
+      "dataset": {"id": "3416816e1db32a9c0f3056ee49fbea954902e8c5ea1cc13a130e5b2819cc933f", "flights": 20, "transitions": 4651},
+      "architecture": {"input": 42, "hidden": [256, 128], "activation": "relu", "parameters": 45710},
+      "training": {"optimizer": "AdamW", "learning_rate": 0.001, "weight_decay": 0.0001, "batch_size": 256, "epochs": 8, "best_epoch": 8, "seed": 6300, "early_stopping_patience": 5}
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "dataset_integrity": {
+    "calibration": {
+      "manifest_hash_matches": true,
+      "record_count_matches": true,
+      "sample_ids_hash_matches": true,
+      "scenario_ids_hash_matches": true,
+      "transitions_hash_matches": true
+    },
+    "validation": {
+      "manifest_hash_matches": true,
+      "record_count_matches": true,
+      "sample_ids_hash_matches": true,
+      "scenario_ids_hash_matches": true,
+      "transitions_hash_matches": true
+    }
+  },
+  "model_sha256": "448f69a4d40bde310d73f2c8c9696f244405fb4a498ea7fc5f39593b2ff80e85",
+  "one_step": {
+    "containment_failures": [],
+    "evaluated": 100,
+    "metrics": {
+      "airspeed_kts": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 2.8421709430404007e-13,
+        "maximum_signed_error": 2.8421709430404007e-13,
+        "mean_absolute_error": 2.0520474208751693e-13,
+        "mean_signed_error": 2.0520474208751693e-13,
+        "median_absolute_error": 1.9895196601282805e-13,
+        "minimum_signed_error": 1.2789769243681803e-13,
+        "p95_absolute_error": 2.5579538487363607e-13,
+        "residual_bound": [
+          -9.999843680598135e-09,
+          1.0000284217094306e-08
+        ]
+      },
+      "bank_deg": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 1.4210854715202004e-14,
+        "maximum_signed_error": 3.552713678800501e-15,
+        "mean_absolute_error": 2.42861286636753e-15,
+        "mean_signed_error": -2.037814361699475e-15,
+        "median_absolute_error": 1.7763568394002505e-15,
+        "minimum_signed_error": -1.4210854715202004e-14,
+        "p95_absolute_error": 7.105427357601002e-15,
+        "residual_bound": [
+          -1.000000710542736e-08,
+          1.000000355271368e-08
+        ]
+      },
+      "pitch_deg": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 5.329070518200751e-15,
+        "maximum_signed_error": 1.7763568394002505e-15,
+        "mean_absolute_error": 1.7062046220317483e-15,
+        "mean_signed_error": -1.2887607647726895e-15,
+        "median_absolute_error": 1.5543122344752192e-15,
+        "minimum_signed_error": -5.329070518200751e-15,
+        "p95_absolute_error": 5.329070518200751e-15,
+        "residual_bound": [
+          -1.000000710542736e-08,
+          1.0000001776356841e-08
+        ]
+      },
+      "terrain_clearance_ft": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 7.275957614183426e-12,
+        "maximum_signed_error": 7.275957614183426e-12,
+        "mean_absolute_error": 2.423234946036246e-12,
+        "mean_signed_error": 1.7513457351014949e-12,
+        "median_absolute_error": 1.9326762412674725e-12,
+        "minimum_signed_error": -5.343281372915953e-12,
+        "p95_absolute_error": 5.4569682106375694e-12,
+        "residual_bound": [
+          -1.0002046363078991e-08,
+          1.0007275957614185e-08
+        ]
+      },
+      "vertical_speed_fpm": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 7.275957614183426e-12,
+        "maximum_signed_error": 7.275957614183426e-12,
+        "mean_absolute_error": 2.218971673073611e-12,
+        "mean_signed_error": 1.5196732761069142e-13,
+        "median_absolute_error": 2.2737367544323206e-12,
+        "minimum_signed_error": -4.092726157978177e-12,
+        "p95_absolute_error": 4.115463525522499e-12,
+        "residual_bound": [
+          -1.000545696821064e-08,
+          1.0006366462912412e-08
+        ]
+      }
+    },
+    "outside_model_validity": [],
+    "total": 100
+  },
+  "report_sha256": "2d88762a7947bcbadd25728e3578902903ad1f1cce4a787ed2c11f8e21a80492",
+  "rollout": {
+    "containment_percent_by_step": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ],
+    "first_containment_failures": [],
+    "horizons_tested": [
+      5,
+      10,
+      20
+    ],
+    "interval_width_by_state": {
+      "airspeed_kts": {
+        "at_horizons": {
+          "10": 2.0017219881651727e-07,
+          "20": 3.9441640353743423e-07,
+          "5": 1.0158204588606168e-07
+        },
+        "initial": 2.1996299892634852e-08,
+        "maximum": 3.94416815652221e-07
+      },
+      "bank_deg": {
+        "at_horizons": {
+          "10": 2.0200025163674695e-07,
+          "20": 4.0200049777894264e-07,
+          "5": 1.0200012767747069e-07
+        },
+        "initial": 2.200003379471127e-08,
+        "maximum": 4.020007580152196e-07
+      },
+      "pitch_deg": {
+        "at_horizons": {
+          "10": 2.0200014350102435e-07,
+          "20": 4.02000283172832e-07,
+          "5": 1.0200007305449788e-07
+        },
+        "initial": 2.2000021360213395e-08,
+        "maximum": 4.020003565585739e-07
+      },
+      "terrain_clearance_ft": {
+        "at_horizons": {
+          "10": 6.762543307559099e-07,
+          "20": 2.1829324055033794e-06,
+          "5": 2.3391748982248828e-07
+        },
+        "initial": 3.2990101317409426e-08,
+        "maximum": 2.479151589795947e-06
+      },
+      "vertical_speed_fpm": {
+        "at_horizons": {
+          "10": 5.1083421539033225e-05,
+          "20": 0.00010059984919053022,
+          "5": 2.597662378889254e-05
+        },
+        "initial": 6.585006758541567e-06,
+        "maximum": 0.00011756692720155115
+      }
+    },
+    "trace_count": 4
+  },
+  "schema_version": 1,
+  "scientific_classification": {
+    "closed_loop_controller_validation": false,
+    "formal_model": "intervalized formal representation of the existing low-order simulator dynamics",
+    "initial_interval": {
+      "kind": "narrow numerical box",
+      "radius": 1e-09
+    },
+    "one_step_expected_values": "stored numerical simulator next_state records",
+    "rollout_kind": "interval propagation under fixed recorded executed actions and realized disturbances"
+  },
+  "split_isolation": {
+    "sample_ids_disjoint": true,
+    "scenario_ids_disjoint": true,
+    "seeds_disjoint": true
+  },
+  "validation_manifest_sha256": "df2f8cb1d8a8c4ee5f4afc3c2af798d88ddb6c60e855e6e4aa7874dad91b8718"
+}

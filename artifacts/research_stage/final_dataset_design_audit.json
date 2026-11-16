@@ -1,0 +1,48 @@
+{
+  "design_id": "final_policy_dataset_design_v1",
+  "status": "PASS",
+  "errors": [],
+  "design_file_sha256": "21c59b3b805407c222ffbb509da34f7ef5e4f346fd3c5539c4cdef6c43e2ae9f",
+  "total_flights": 1152,
+  "split_totals": {
+    "train": 576,
+    "development": 144,
+    "challenge": 144,
+    "ood_stress": 144,
+    "final_sealed_test": 144
+  },
+  "tier_totals": {
+    "0": 192,
+    "1": 192,
+    "2": 192,
+    "3": 192,
+    "4": 192,
+    "5": 192
+  },
+  "family_count": 20,
+  "seed_overlap": false,
+  "factor_flight_counts": {
+    "no_failure": 192,
+    "reduced_aileron_effectiveness": 352,
+    "complete_engine_loss": 304,
+    "left_engine_loss": 152,
+    "right_engine_loss": 152,
+    "partial_thrust_loss": 160,
+    "actuator_delay": 336,
+    "deterministic_sensor_bias": 192,
+    "turbulence_or_crosswind_increase": 192,
+    "reduced_rudder_effectiveness": 48
+  },
+  "severity_band_counts": {
+    "none_tier_0": 192,
+    "mild_tier_1": 192,
+    "moderate_isolated_tier_2": 192,
+    "moderate_concurrent_tier_3": 192,
+    "severe_in_domain_tier_4": 192,
+    "boundary_in_domain_tier_5": 192
+  },
+  "engine_side_balanced": true,
+  "large_dataset_generated": false,
+  "sealed_test_opened": false,
+  "audit_hash": "5586574a8cd31b022f13b7f18a5ded2b6d5bdd55ad5e9d9eefcc5f44467a04fa"
+}

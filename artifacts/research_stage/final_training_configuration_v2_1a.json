@@ -1,0 +1,58 @@
+{
+  "freeze_version": "final-training-configuration-v2.1a-v1",
+  "freeze_logical_sha256": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+  "status": "FROZEN_PRE_FINAL_TRAINING",
+  "frozen_utc": "2026-09-20T17:15:20.559974+00:00",
+  "architecture": {
+    "architecture_id": "moderate",
+    "input_dimension": 42,
+    "hidden_dimensions": [256, 256, 128],
+    "activation": "silu",
+    "output_dimension": 5,
+    "parameter_count": 110341,
+    "target_order": ["elevator", "aileron", "rudder", "throttle_left", "throttle_right"]
+  },
+  "optimization": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "batch_size": 512,
+    "weight_decay": 0.0001,
+    "objective": "mean_squared_error",
+    "maximum_epochs": 50,
+    "early_stopping_patience": 8,
+    "improvement_tolerance": 1e-10,
+    "gradient_norm_clip": 1.0,
+    "checkpoint_selection": "minimum_development_mse"
+  },
+  "split_roles": {
+    "optimization": "train",
+    "checkpoint_and_model_selection": "development",
+    "post_selection_only": ["challenge", "ood_stress"],
+    "confirmatory_only": "final_sealed_test"
+  },
+  "final_training_seeds": [17001, 17002, 17003, 17004, 17005],
+  "optimizer_selection_seed": 17001,
+  "selection_evidence": {
+    "winning_run_id": "adamw_lr_0p001_bs_512",
+    "winning_best_epoch": 37,
+    "winning_development_mse": 0.0006286436267740122,
+    "winning_checkpoint_sha256": "a020cd88606e28d3a2eaee00a9e3108892d388b8ad441c776fb6cab2e29cfc66",
+    "optimizer_selection_result_logical_sha256": "44ee6b00779ba1b2e34ac0f64feb2e980540e60e36923aa6d606bde924198d94",
+    "optimizer_selection_runtime_sha256": "dacbfbb7764c6cf6949fa9401a9cc3d6435aac680cfcb5f1075f62e3b399081c"
+  },
+  "provenance": {
+    "approved_dataset_id": "final_policy_approved_v2_1",
+    "approved_dataset_logical_sha256": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+    "normalization_logical_sha256": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+    "amendment_logical_sha256": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+    "architecture_screen_runtime_sha256": "281699cb38c4c9594d8e24a356573a2df5e5e404a1a1011e5a06fbc3d4898726",
+    "architecture_screen_provenance_sha256": "6836e0e1111479e6aea165065f8442985172ff1b81817674c1212937de298a4d",
+    "optimizer_selection_configuration_sha256": "90b25be862860784ee74a71e2ab536ac130fea18a3467806b9cb756a00629def",
+    "optimizer_selection_source_sha256": "25187429f9871f8ee994874b6afff8af54284f9d9bd974e80fce2907468ab561",
+    "optimizer_selection_source_git_revision": "7dfbfcbf30034bbe2d3c3a159c2188047b146e4a"
+  },
+  "five_seed_final_training_started": false,
+  "challenge_opened": false,
+  "ood_opened": false,
+  "sealed_opened": false
+}

@@ -1,0 +1,33 @@
+{
+  "record_id": "final_policy_candidate_v2_1_data_approval",
+  "dataset_id": "final_policy_candidate_v2_1",
+  "dataset_logical_hash": "4db2d75ab341e4573019d09176507b03851d7d26dd2eb360d42ecfc2adc28706",
+  "source_freeze_id": "final_generation_freeze_v2_1",
+  "source_freeze_hash": "c0b831ede8a5d75027dcce70ec1c116fc5ec58d479cf500939f2075e3d16d0dc",
+  "validator_version": "candidate-validator-v3-independent-contracts",
+  "validator_report_hash": "81e1414aee4f34bc855d47ef78f2e0dcf15221f9c1bbb4b08de9b465cad2114f",
+  "leakage_audit_hash": "3dfe236e2efc9be284e8fecd50678b7b8ea8be41d44ff3581bb7ddca5734e585",
+  "holdout_audit_hash": "ad12548d106d79b47461805cc3160e6cff290c956676afb139444b76ff64a23c",
+  "sealed_boundary_audit_hash": "f5aa74e59be97bd5e38abf4fc8e5309dc53ea6c6e6333a5a5a326691f38855b4",
+  "flight_count": 1152,
+  "transition_count": 299520,
+  "record_status_counts": {
+    "PASS": 299520,
+    "FAIL": 0,
+    "REVIEW_REQUIRED": 0
+  },
+  "review_status": "reviewed",
+  "approval_status": "approved",
+  "review_method": "independent_contract_review",
+  "approval_method": "independent_contract_review",
+  "approval_timestamp_utc": "2026-08-15T19:04:34.217133+00:00",
+  "statement": "The candidate underwent independent contract-based review and passed all required integrity, validation, leakage, provenance, and holdout checks.",
+  "approved_scope": [
+    "train",
+    "development",
+    "challenge",
+    "ood_stress"
+  ],
+  "sealed_split_approval": "excluded_from_training_export",
+  "approval_record_hash": "9bab891b2bc129d50ef5e9a797d180b19f7ed728d27a20e90cf884c22bf4bad5"
+}

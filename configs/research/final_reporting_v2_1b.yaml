@@ -1,0 +1,27 @@
+configuration_id: final_reporting_v2_1b
+analysis_source: results/final_v2_1b_analysis/analysis.json
+table_outputs:
+  - overall_by_split_and_condition.csv
+  - sealed_primary_paired_effect.csv
+  - sealed_by_tier.csv
+  - sealed_by_concurrency.csv
+  - sealed_by_failure_family.csv
+  - five_seed_development_metrics.csv
+  - intervention_taxonomy.csv
+figure_outputs:
+  - recovery_by_split_and_condition.png
+  - sealed_recovery_by_tier.png
+  - sealed_safety_by_tier.png
+  - sealed_intervention_taxonomy.png
+figure_format: png
+figure_dpi: 240
+colors:
+  unmonitored: "#D55E00"
+  monitored: "#0072B2"
+split_labels:
+  challenge: Challenge
+  ood_stress: OOD-style simulator stress
+  final_sealed_test: Final sealed test
+caption_rule: identify_split_sample_size_controller_conditions_and_uncertainty
+source_manifest_required: true
+legacy_primary_evidence_permitted: false

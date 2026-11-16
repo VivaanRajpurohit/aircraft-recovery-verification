@@ -1,0 +1,59 @@
+{
+  "audit_id": "final_generation_design_amendment_v2_1_static_audit",
+  "status": "PASS",
+  "errors": [],
+  "base_v2_audit_hash": "c20b20d0947ac9826242612e33f9bcfd0588ed8dc473fd1c60262d178a00d945",
+  "holdout_exposure_audit_hash": "1b55c5b90fd4220ba96c829e53e0899be3dab3e7aa82c661b7c39ace9909b070",
+  "changed_values": {
+    "2": {
+      "component_severity": [
+        0.485,
+        0.52,
+        0.56
+      ],
+      "activation_seconds": [
+        2.625,
+        4.375,
+        6.375
+      ]
+    },
+    "3": {
+      "component_severity": [
+        0.345,
+        0.465,
+        0.56
+      ],
+      "activation_seconds": [
+        2.625,
+        4.375,
+        6.375
+      ]
+    },
+    "4": {
+      "activation_seconds": [
+        2.875,
+        3.75,
+        5.25
+      ]
+    }
+  },
+  "total_flights": 1152,
+  "split_counts": {
+    "train": 576,
+    "development": 144,
+    "challenge": 144,
+    "ood_stress": 144,
+    "final_sealed_test": 144
+  },
+  "tier_counts": {
+    "0": 192,
+    "1": 192,
+    "2": 192,
+    "3": 192,
+    "4": 192,
+    "5": 192
+  },
+  "generation_authorized": false,
+  "sealed_outcomes_accessed": false,
+  "audit_hash": "3e69b92c5cbdc5fd3d8cbf44d80c38a241975f2e2e72bc33ab1e2c9e835b1087"
+}

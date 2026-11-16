@@ -1,0 +1,687 @@
+{
+  "provenance_version": "final-five-seed-training-v2.1a-provenance-v1",
+  "provenance_logical_sha256": "b3c06be0a6f519f5860dae4acd18d758a22c2ba3178d5a5d52152a4d1a58c9de",
+  "status": "COMPLETE",
+  "training_source_git_revision": "5c26d03b62c15f94b7d67dedd4c7fed6bf96a71a",
+  "frozen_architecture": {
+    "architecture_id": "moderate",
+    "input_dimension": 42,
+    "hidden_dimensions": [
+      256,
+      256,
+      128
+    ],
+    "activation": "silu",
+    "output_dimension": 5,
+    "parameter_count": 110341,
+    "target_order": [
+      "elevator",
+      "aileron",
+      "rudder",
+      "throttle_left",
+      "throttle_right"
+    ]
+  },
+  "frozen_optimization": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "batch_size": 512,
+    "weight_decay": 0.0001,
+    "objective": "mean_squared_error",
+    "maximum_epochs": 50,
+    "early_stopping_patience": 8,
+    "improvement_tolerance": 1e-10,
+    "gradient_norm_clip": 1,
+    "checkpoint_selection": "minimum_development_mse"
+  },
+  "seeds": [
+    17001,
+    17002,
+    17003,
+    17004,
+    17005
+  ],
+  "individual_seed_runs": [
+    {
+      "seed": 17001,
+      "epochs_completed": 45,
+      "best_epoch": 37,
+      "development_selection_loss_name": "mean_squared_error",
+      "development_selection_loss": 0.0006286436267740122,
+      "development_metrics": {
+        "mse": 0.0006286436267740122,
+        "mae": 0.008481379642618057,
+        "rmse": 0.025072766635814488,
+        "per_output": {
+          "elevator": {
+            "mae": 0.004213588435888701,
+            "rmse": 0.011201954098795359
+          },
+          "aileron": {
+            "mae": 0.013795991181664045,
+            "rmse": 0.04418551553458838
+          },
+          "rudder": {
+            "mae": 0.008883017623564882,
+            "rmse": 0.02817272463616254
+          },
+          "throttle_left": {
+            "mae": 0.007533910587524308,
+            "rmse": 0.011481027815511356
+          },
+          "throttle_right": {
+            "mae": 0.007980390384448342,
+            "rmse": 0.0118261643002119
+          }
+        },
+        "saturation": {
+          "thresholds": {
+            "surface_absolute_threshold": 0.99,
+            "throttle_low_threshold": 0.01,
+            "throttle_high_threshold": 0.99
+          },
+          "any_output_count": 9471,
+          "any_output_frequency": 0.2529647435897436,
+          "per_output": {
+            "elevator": {
+              "count": 0,
+              "frequency": 0
+            },
+            "aileron": {
+              "count": 0,
+              "frequency": 0
+            },
+            "rudder": {
+              "count": 1053,
+              "frequency": 0.02812499925494194
+            },
+            "throttle_left": {
+              "count": 5196,
+              "frequency": 0.1387820541858673
+            },
+            "throttle_right": {
+              "count": 5678,
+              "frequency": 0.15165598690509796
+            }
+          }
+        },
+        "transition_count": 37440
+      },
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/best.pt",
+      "checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+      "last_checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/last.pt",
+      "last_checkpoint_sha256": "5577560cc81be1cd3ebee767cced2a6d40d7a071e981596c6cfa29a0a06d9cbb",
+      "training_history_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/training_history.json",
+      "training_history_sha256": "11341360babff2b0fabebe76eca6c8ccd914c6ff11f966df461d0558bd2d8d64",
+      "run_configuration_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/run_configuration.json",
+      "run_configuration_logical_hash": "b6c6ae83c64e3a0a433fdde1b204e93c39a929c942259b1f80920e5d909ce667",
+      "run_configuration_file_sha256": "07874c0a7645e0c2339b4619293f504bc3795cb069284be06a4e49e30515b84a",
+      "approved_dataset_logical_hash": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+      "normalization_logical_hash": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+      "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+      "final_training_configuration_logical_hash": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+      "final_training_configuration_file_sha256": "9379ebc93246fbfc0cf6981dc72be46126f59681569a0b937a54bdfe6d6e6e34",
+      "stage_configuration_file_sha256": "b78b6d05e0b1be26a345ba1704d1e874ada253a0e0695577251ba38fb37ebad8",
+      "source_file_sha256": "9623fe0c40b3b050b4114c65d37496a0c3b61c0c983390d8e43e2d9e384ffd23",
+      "source_git_revision": "5c26d03b62c15f94b7d67dedd4c7fed6bf96a71a",
+      "training_start_utc": "2026-09-20T17:27:32.974971+00:00",
+      "training_end_utc": "2026-09-20T17:29:10.917675+00:00",
+      "duration_seconds": 97.9811136000003,
+      "environment": {
+        "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "numpy": "2.4.6",
+        "torch": "2.13.0+cu130",
+        "cuda_version": "13.0",
+        "device": "cuda:0",
+        "gpu_name": "NVIDIA GeForce RTX 3060",
+        "deterministic_algorithms": true
+      },
+      "challenge_opened": false,
+      "ood_opened": false,
+      "sealed_opened": false
+    },
+    {
+      "seed": 17002,
+      "epochs_completed": 42,
+      "best_epoch": 34,
+      "development_selection_loss_name": "mean_squared_error",
+      "development_selection_loss": 0.0006477381821600854,
+      "development_metrics": {
+        "mse": 0.0006477381821600854,
+        "mae": 0.009133453726331493,
+        "rmse": 0.02545070101510144,
+        "per_output": {
+          "elevator": {
+            "mae": 0.005098133389625553,
+            "rmse": 0.011913845002954008
+          },
+          "aileron": {
+            "mae": 0.014895403087359536,
+            "rmse": 0.04447413278649081
+          },
+          "rudder": {
+            "mae": 0.00913433505892942,
+            "rmse": 0.028410708722256085
+          },
+          "throttle_left": {
+            "mae": 0.0081234294040147,
+            "rmse": 0.012219903073177486
+          },
+          "throttle_right": {
+            "mae": 0.008415967691728256,
+            "rmse": 0.012740028246313581
+          }
+        },
+        "saturation": {
+          "thresholds": {
+            "surface_absolute_threshold": 0.99,
+            "throttle_low_threshold": 0.01,
+            "throttle_high_threshold": 0.99
+          },
+          "any_output_count": 9463,
+          "any_output_frequency": 0.25275106837606837,
+          "per_output": {
+            "elevator": {
+              "count": 0,
+              "frequency": 0
+            },
+            "aileron": {
+              "count": 0,
+              "frequency": 0
+            },
+            "rudder": {
+              "count": 675,
+              "frequency": 0.018028846010565758
+            },
+            "throttle_left": {
+              "count": 5196,
+              "frequency": 0.1387820541858673
+            },
+            "throttle_right": {
+              "count": 5688,
+              "frequency": 0.1519230753183365
+            }
+          }
+        },
+        "transition_count": 37440
+      },
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17002/best.pt",
+      "checkpoint_sha256": "30175b6046f7fbf67b28e5fdcff04c10e6344a1030524f7d78c37dda2f4b3b27",
+      "last_checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17002/last.pt",
+      "last_checkpoint_sha256": "0f924eb933327fbb8d96c9946b0af7a154102a193912f7b7186a2565a3800021",
+      "training_history_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17002/training_history.json",
+      "training_history_sha256": "6855a6e4e0abb4cc7294cd37379e0caf8aeedbf5393acde5b4dfde46970c1f25",
+      "run_configuration_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17002/run_configuration.json",
+      "run_configuration_logical_hash": "ddc316b98dbe65a0757f6b68ba6900b4f50d2d55fb1d47a839ae535f998e0a4b",
+      "run_configuration_file_sha256": "faa9b98ae86cc04ac8b8fbfb7db277d965514f58a84aedfc0af1ee05ba972f72",
+      "approved_dataset_logical_hash": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+      "normalization_logical_hash": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+      "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+      "final_training_configuration_logical_hash": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+      "final_training_configuration_file_sha256": "9379ebc93246fbfc0cf6981dc72be46126f59681569a0b937a54bdfe6d6e6e34",
+      "stage_configuration_file_sha256": "b78b6d05e0b1be26a345ba1704d1e874ada253a0e0695577251ba38fb37ebad8",
+      "source_file_sha256": "9623fe0c40b3b050b4114c65d37496a0c3b61c0c983390d8e43e2d9e384ffd23",
+      "source_git_revision": "5c26d03b62c15f94b7d67dedd4c7fed6bf96a71a",
+      "training_start_utc": "2026-09-20T17:29:11.045294+00:00",
+      "training_end_utc": "2026-09-20T17:30:41.875513+00:00",
+      "duration_seconds": 90.87161860000015,
+      "environment": {
+        "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "numpy": "2.4.6",
+        "torch": "2.13.0+cu130",
+        "cuda_version": "13.0",
+        "device": "cuda:0",
+        "gpu_name": "NVIDIA GeForce RTX 3060",
+        "deterministic_algorithms": true
+      },
+      "challenge_opened": false,
+      "ood_opened": false,
+      "sealed_opened": false
+    },
+    {
+      "seed": 17003,
+      "epochs_completed": 36,
+      "best_epoch": 28,
+      "development_selection_loss_name": "mean_squared_error",
+      "development_selection_loss": 0.0006517091984328021,
+      "development_metrics": {
+        "mse": 0.0006517091984328021,
+        "mae": 0.008814042985998301,
+        "rmse": 0.02552859570036711,
+        "per_output": {
+          "elevator": {
+            "mae": 0.004573860621360576,
+            "rmse": 0.011987191438639386
+          },
+          "aileron": {
+            "mae": 0.014265750786784858,
+            "rmse": 0.04470559348111269
+          },
+          "rudder": {
+            "mae": 0.009534769690631387,
+            "rmse": 0.028673884629472193
+          },
+          "throttle_left": {
+            "mae": 0.007824470223746703,
+            "rmse": 0.012190722281585518
+          },
+          "throttle_right": {
+            "mae": 0.007871363607467983,
+            "rmse": 0.012060587696621092
+          }
+        },
+        "saturation": {
+          "thresholds": {
+            "surface_absolute_threshold": 0.99,
+            "throttle_low_threshold": 0.01,
+            "throttle_high_threshold": 0.99
+          },
+          "any_output_count": 9443,
+          "any_output_frequency": 0.25221688034188033,
+          "per_output": {
+            "elevator": {
+              "count": 0,
+              "frequency": 0
+            },
+            "aileron": {
+              "count": 0,
+              "frequency": 0
+            },
+            "rudder": {
+              "count": 429,
+              "frequency": 0.01145833358168602
+            },
+            "throttle_left": {
+              "count": 5194,
+              "frequency": 0.13872863352298737
+            },
+            "throttle_right": {
+              "count": 5702,
+              "frequency": 0.1522970050573349
+            }
+          }
+        },
+        "transition_count": 37440
+      },
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17003/best.pt",
+      "checkpoint_sha256": "662a04811bacae16d4f416563b2c84f42c908ab27d5d166a3c753a52b69260ad",
+      "last_checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17003/last.pt",
+      "last_checkpoint_sha256": "bc3f82c79b4f9497d9f69a102195595d95842078f090167d794a6cb9c3f37a20",
+      "training_history_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17003/training_history.json",
+      "training_history_sha256": "1cd819f675611cc822f766272306a6d007a410494e7252ff26c7fbf63aa0f023",
+      "run_configuration_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17003/run_configuration.json",
+      "run_configuration_logical_hash": "276a49a4ac990f694af49b051100ead45e6fddf40c61fb7cd97b2e3d6863368f",
+      "run_configuration_file_sha256": "bdb5dc5bb4426327db3e98d8c98ec1f2fefd74b81df7495908eba616b6e92efb",
+      "approved_dataset_logical_hash": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+      "normalization_logical_hash": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+      "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+      "final_training_configuration_logical_hash": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+      "final_training_configuration_file_sha256": "9379ebc93246fbfc0cf6981dc72be46126f59681569a0b937a54bdfe6d6e6e34",
+      "stage_configuration_file_sha256": "b78b6d05e0b1be26a345ba1704d1e874ada253a0e0695577251ba38fb37ebad8",
+      "source_file_sha256": "9623fe0c40b3b050b4114c65d37496a0c3b61c0c983390d8e43e2d9e384ffd23",
+      "source_git_revision": "5c26d03b62c15f94b7d67dedd4c7fed6bf96a71a",
+      "training_start_utc": "2026-09-20T17:30:42.013084+00:00",
+      "training_end_utc": "2026-09-20T17:31:59.954204+00:00",
+      "duration_seconds": 77.97970659999919,
+      "environment": {
+        "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "numpy": "2.4.6",
+        "torch": "2.13.0+cu130",
+        "cuda_version": "13.0",
+        "device": "cuda:0",
+        "gpu_name": "NVIDIA GeForce RTX 3060",
+        "deterministic_algorithms": true
+      },
+      "challenge_opened": false,
+      "ood_opened": false,
+      "sealed_opened": false
+    },
+    {
+      "seed": 17004,
+      "epochs_completed": 48,
+      "best_epoch": 40,
+      "development_selection_loss_name": "mean_squared_error",
+      "development_selection_loss": 0.000631657224827021,
+      "development_metrics": {
+        "mse": 0.000631657224827021,
+        "mae": 0.009688443133157648,
+        "rmse": 0.02513279182317438,
+        "per_output": {
+          "elevator": {
+            "mae": 0.004765362435736353,
+            "rmse": 0.012052186226652979
+          },
+          "aileron": {
+            "mae": 0.017040854454428017,
+            "rmse": 0.04389730615437102
+          },
+          "rudder": {
+            "mae": 0.010218281209049603,
+            "rmse": 0.02778226247279907
+          },
+          "throttle_left": {
+            "mae": 0.008457207364220726,
+            "rmse": 0.012768403014484862
+          },
+          "throttle_right": {
+            "mae": 0.007960510202353544,
+            "rmse": 0.012295170598035464
+          }
+        },
+        "saturation": {
+          "thresholds": {
+            "surface_absolute_threshold": 0.99,
+            "throttle_low_threshold": 0.01,
+            "throttle_high_threshold": 0.99
+          },
+          "any_output_count": 9464,
+          "any_output_frequency": 0.25277777777777777,
+          "per_output": {
+            "elevator": {
+              "count": 0,
+              "frequency": 0
+            },
+            "aileron": {
+              "count": 0,
+              "frequency": 0
+            },
+            "rudder": {
+              "count": 1098,
+              "frequency": 0.029326923191547394
+            },
+            "throttle_left": {
+              "count": 5197,
+              "frequency": 0.13880875706672668
+            },
+            "throttle_right": {
+              "count": 5691,
+              "frequency": 0.1520031988620758
+            }
+          }
+        },
+        "transition_count": 37440
+      },
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17004/best.pt",
+      "checkpoint_sha256": "06016ba49fdbf443e6d8967b7f2b93a159b6f4ff956afd62c728e49b21a9670d",
+      "last_checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17004/last.pt",
+      "last_checkpoint_sha256": "731664f1bee1025568729ab08a9a7bb248180473ee9e3a695ab0a74017a2c623",
+      "training_history_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17004/training_history.json",
+      "training_history_sha256": "cd557e1d947a78dc7494aaa62c06378c9cc46123feeaaa90ad4b186ebff353f8",
+      "run_configuration_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17004/run_configuration.json",
+      "run_configuration_logical_hash": "71c017e9d35e1d029f0bb1d809637028902018ee843cad8111f12569cdaa0889",
+      "run_configuration_file_sha256": "9f46a9966370ca528c5db0f2a1b6713e5a614ff0e497fdd1dc5db751e0200fd0",
+      "approved_dataset_logical_hash": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+      "normalization_logical_hash": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+      "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+      "final_training_configuration_logical_hash": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+      "final_training_configuration_file_sha256": "9379ebc93246fbfc0cf6981dc72be46126f59681569a0b937a54bdfe6d6e6e34",
+      "stage_configuration_file_sha256": "b78b6d05e0b1be26a345ba1704d1e874ada253a0e0695577251ba38fb37ebad8",
+      "source_file_sha256": "9623fe0c40b3b050b4114c65d37496a0c3b61c0c983390d8e43e2d9e384ffd23",
+      "source_git_revision": "5c26d03b62c15f94b7d67dedd4c7fed6bf96a71a",
+      "training_start_utc": "2026-09-20T17:32:00.077772+00:00",
+      "training_end_utc": "2026-09-20T17:33:45.016493+00:00",
+      "duration_seconds": 104.97566039999947,
+      "environment": {
+        "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "numpy": "2.4.6",
+        "torch": "2.13.0+cu130",
+        "cuda_version": "13.0",
+        "device": "cuda:0",
+        "gpu_name": "NVIDIA GeForce RTX 3060",
+        "deterministic_algorithms": true
+      },
+      "challenge_opened": false,
+      "ood_opened": false,
+      "sealed_opened": false
+    },
+    {
+      "seed": 17005,
+      "epochs_completed": 47,
+      "best_epoch": 39,
+      "development_selection_loss_name": "mean_squared_error",
+      "development_selection_loss": 0.0006224248429053628,
+      "development_metrics": {
+        "mse": 0.0006224248429053628,
+        "mae": 0.008480906208285356,
+        "rmse": 0.0249484436970598,
+        "per_output": {
+          "elevator": {
+            "mae": 0.004882350960203758,
+            "rmse": 0.012718730998989507
+          },
+          "aileron": {
+            "mae": 0.015411855912683925,
+            "rmse": 0.0443274293964053
+          },
+          "rudder": {
+            "mae": 0.008718661653813634,
+            "rmse": 0.027365907596442165
+          },
+          "throttle_left": {
+            "mae": 0.00638809673459596,
+            "rmse": 0.010394735665340259
+          },
+          "throttle_right": {
+            "mae": 0.007003565780129496,
+            "rmse": 0.011335504897425328
+          }
+        },
+        "saturation": {
+          "thresholds": {
+            "surface_absolute_threshold": 0.99,
+            "throttle_low_threshold": 0.01,
+            "throttle_high_threshold": 0.99
+          },
+          "any_output_count": 9438,
+          "any_output_frequency": 0.2520833333333333,
+          "per_output": {
+            "elevator": {
+              "count": 0,
+              "frequency": 0
+            },
+            "aileron": {
+              "count": 0,
+              "frequency": 0
+            },
+            "rudder": {
+              "count": 975,
+              "frequency": 0.02604166604578495
+            },
+            "throttle_left": {
+              "count": 5148,
+              "frequency": 0.13750000298023224
+            },
+            "throttle_right": {
+              "count": 5631,
+              "frequency": 0.15040063858032227
+            }
+          }
+        },
+        "transition_count": 37440
+      },
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17005/best.pt",
+      "checkpoint_sha256": "8d49bf9b975486dab43644cf664e4be45d55fc4b30c179da3e356a396e33eb8f",
+      "last_checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17005/last.pt",
+      "last_checkpoint_sha256": "ec442d2ee41b949eecabb89ebfef68f2ca6a8dadaec3c3acbccef41b2def7d91",
+      "training_history_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17005/training_history.json",
+      "training_history_sha256": "991b663de3fb6b28b69253e78ef73779d0e1341b7110b3ccacb1603ecf4e9c21",
+      "run_configuration_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17005/run_configuration.json",
+      "run_configuration_logical_hash": "01d33f528ffa58962904417d10465390b258f5111c6fd343aa53ed39c8918a4c",
+      "run_configuration_file_sha256": "e468cdfce229ea7f64ce10e37cb9fb4dab365c00f8c037cc54cd09213216121d",
+      "approved_dataset_logical_hash": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+      "normalization_logical_hash": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+      "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+      "final_training_configuration_logical_hash": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+      "final_training_configuration_file_sha256": "9379ebc93246fbfc0cf6981dc72be46126f59681569a0b937a54bdfe6d6e6e34",
+      "stage_configuration_file_sha256": "b78b6d05e0b1be26a345ba1704d1e874ada253a0e0695577251ba38fb37ebad8",
+      "source_file_sha256": "9623fe0c40b3b050b4114c65d37496a0c3b61c0c983390d8e43e2d9e384ffd23",
+      "source_git_revision": "5c26d03b62c15f94b7d67dedd4c7fed6bf96a71a",
+      "training_start_utc": "2026-09-20T17:33:45.135039+00:00",
+      "training_end_utc": "2026-09-20T17:35:26.851940+00:00",
+      "duration_seconds": 101.75510609999947,
+      "environment": {
+        "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "numpy": "2.4.6",
+        "torch": "2.13.0+cu130",
+        "cuda_version": "13.0",
+        "device": "cuda:0",
+        "gpu_name": "NVIDIA GeForce RTX 3060",
+        "deterministic_algorithms": true
+      },
+      "challenge_opened": false,
+      "ood_opened": false,
+      "sealed_opened": false
+    }
+  ],
+  "across_seed_development_summary": {
+    "mse": {
+      "mean": 0.0006364346150198567,
+      "sample_standard_deviation": 0.000012657805873592646,
+      "median": 0.000631657224827021,
+      "minimum": 0.0006224248429053628,
+      "maximum": 0.0006517091984328021
+    },
+    "mae": {
+      "mean": 0.008919645139278171,
+      "sample_standard_deviation": 0.000508056290483556,
+      "median": 0.008814042985998301,
+      "minimum": 0.008480906208285356,
+      "maximum": 0.009688443133157648
+    },
+    "rmse": {
+      "mean": 0.025226659774303443,
+      "sample_standard_deviation": 0.0002506283388736296,
+      "median": 0.02513279182317438,
+      "minimum": 0.0249484436970598,
+      "maximum": 0.02552859570036711
+    },
+    "per_output": {
+      "elevator": {
+        "mae": {
+          "mean": 0.004706659168562988,
+          "sample_standard_deviation": 0.00033478349217902855,
+          "median": 0.004765362435736353,
+          "minimum": 0.004213588435888701,
+          "maximum": 0.005098133389625553
+        },
+        "rmse": {
+          "mean": 0.011974781553206248,
+          "sample_standard_deviation": 0.0005386515116605853,
+          "median": 0.011987191438639386,
+          "minimum": 0.011201954098795359,
+          "maximum": 0.012718730998989507
+        }
+      },
+      "aileron": {
+        "mae": {
+          "mean": 0.015081971084584077,
+          "sample_standard_deviation": 0.0012550712688233737,
+          "median": 0.014895403087359536,
+          "minimum": 0.013795991181664045,
+          "maximum": 0.017040854454428017
+        },
+        "rmse": {
+          "mean": 0.04431799547059364,
+          "sample_standard_deviation": 0.00030382170444108057,
+          "median": 0.0443274293964053,
+          "minimum": 0.04389730615437102,
+          "maximum": 0.04470559348111269
+        }
+      },
+      "rudder": {
+        "mae": {
+          "mean": 0.009297813047197786,
+          "sample_standard_deviation": 0.0005995011927477831,
+          "median": 0.00913433505892942,
+          "minimum": 0.008718661653813634,
+          "maximum": 0.010218281209049603
+        },
+        "rmse": {
+          "mean": 0.02808109761142641,
+          "sample_standard_deviation": 0.0005170190137750172,
+          "median": 0.02817272463616254,
+          "minimum": 0.027365907596442165,
+          "maximum": 0.028673884629472193
+        }
+      },
+      "throttle_left": {
+        "mae": {
+          "mean": 0.00766542286282048,
+          "sample_standard_deviation": 0.0007922825045163096,
+          "median": 0.007824470223746703,
+          "minimum": 0.00638809673459596,
+          "maximum": 0.008457207364220726
+        },
+        "rmse": {
+          "mean": 0.011810958370019897,
+          "sample_standard_deviation": 0.000914152280261792,
+          "median": 0.012190722281585518,
+          "minimum": 0.010394735665340259,
+          "maximum": 0.012768403014484862
+        }
+      },
+      "throttle_right": {
+        "mae": {
+          "mean": 0.007846359533225523,
+          "sample_standard_deviation": 0.0005163270796116479,
+          "median": 0.007960510202353544,
+          "minimum": 0.007003565780129496,
+          "maximum": 0.008415967691728256
+        },
+        "rmse": {
+          "mean": 0.012051491147721473,
+          "sample_standard_deviation": 0.0005236779202588616,
+          "median": 0.012060587696621092,
+          "minimum": 0.011335504897425328,
+          "maximum": 0.012740028246313581
+        }
+      }
+    },
+    "epochs_completed": {
+      "mean": 43.6,
+      "sample_standard_deviation": 4.827007354458868,
+      "median": 45,
+      "minimum": 36,
+      "maximum": 48
+    },
+    "runtime_seconds": {
+      "mean": 94.71264105999971,
+      "sample_standard_deviation": 10.727923165021966,
+      "median": 97.9811136000003,
+      "minimum": 77.97970659999919,
+      "maximum": 104.97566039999947
+    }
+  },
+  "standard_deviation_definition": "sample_ddof_1",
+  "representative_model_rule_status": "absent_stop_before_challenge",
+  "representative_model_selected": false,
+  "next_stage_status": "blocked_pending_prospective_representative_model_rule",
+  "data": {
+    "train_flights": 576,
+    "train_transitions": 149760,
+    "train_record_id_order_sha256": "bc4977d541f86caa5ef2ee5af6b13ee861cde4b6d9a528998d71968d47de2281",
+    "development_flights": 144,
+    "development_transitions": 37440,
+    "development_record_id_order_sha256": "065ea40ea16c749913ad8b480fe20b11ec155ba71a124e1519842dad5ff9a4ab"
+  },
+  "approved_dataset_logical_hash": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+  "normalization_logical_hash": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+  "normalization_file_sha256": "3fa7538fabe52658ce10ed1606ae8ad0696c85ec5e517e691ba42e696a38f59f",
+  "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+  "final_training_configuration_logical_hash": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+  "final_training_configuration_file_sha256": "9379ebc93246fbfc0cf6981dc72be46126f59681569a0b937a54bdfe6d6e6e34",
+  "stage_configuration_file_sha256": "b78b6d05e0b1be26a345ba1704d1e874ada253a0e0695577251ba38fb37ebad8",
+  "source_file_sha256": "9623fe0c40b3b050b4114c65d37496a0c3b61c0c983390d8e43e2d9e384ffd23",
+  "runtime_preflight_sha256": "edbc0fcd4a689e7aca9e8f9c0b648cd0290efadc881d1d8bddb387eff885403f",
+  "runtime_summary_sha256": "8e4d98063d2f02a2dde868fea4df6692e0d19830762f47825a3fb06ba3803ce7",
+  "checkpoint_verification_sha256": "2335917164ba528f273d983511253b98a5d110814484913ca5e4521a31cf9f13",
+  "checkpoint_verification_status": "PASS",
+  "challenge_opened": false,
+  "ood_opened": false,
+  "sealed_opened": false
+}

@@ -1,0 +1,29 @@
+configuration_id: final_analysis_v2_1b
+experimental_unit: complete_flight
+primary_split: final_sealed_test
+primary_endpoint: strict_recovery_success
+primary_comparison: monitored_minus_unmonitored_representative_checkpoint
+representative_seed: 17001
+confidence_level: 0.95
+binary_controller_interval: wilson
+paired_binary_effect: paired_flight_bootstrap_mean_difference
+paired_continuous_effect: paired_flight_bootstrap_mean_difference
+bootstrap_resamples: 10000
+bootstrap_seed: 19001
+hypothesis_test: none_not_preregistered
+confirmatory_alpha: 0.05
+multiple_comparisons:
+  confirmatory_family: [final_neural_monitored_vs_final_neural_unmonitored]
+  secondary_and_subgroup_status: exploratory
+  exploratory_adjustment: benjamini_hochberg_fdr_0.10_if_preregistered_p_values_exist
+  generated_p_values: false
+splits:
+  - challenge
+  - ood_stress
+  - final_sealed_test
+split_wording:
+  challenge: Challenge
+  ood_stress: OOD-style simulator stress
+  final_sealed_test: Final sealed test
+legacy_primary_evidence_permitted: false
+real_world_ood_claim_permitted: false

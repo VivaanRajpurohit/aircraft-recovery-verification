@@ -34,6 +34,8 @@ def main() -> int:
     manifest = create_split_manifest(
         output, config.seed, config.train_fraction, config.validation_fraction,
         config.test_fraction, set(config.ood_categories),
+        set(config.reserved_test_categories),
+        {name: set(categories) for name, categories in config.test_reporting_categories.items()},
     )
     report = validate_dataset(output)
     print(json.dumps({

@@ -1,0 +1,17 @@
+{
+  "registry_id": "final_seed_registry_v1",
+  "immutable": true,
+  "dataset_generation": {
+    "train": {"first": 20000, "last": 20575, "count": 576},
+    "development": {"first": 21000, "last": 21143, "count": 144},
+    "challenge": {"first": 22000, "last": 22143, "count": 144},
+    "ood_stress": {"first": 23000, "last": 23143, "count": 144},
+    "final_sealed_test": {"first": 24000, "last": 24143, "count": 144}
+  },
+  "training_initialization": [17001, 17002, 17003, 17004, 17005],
+  "bootstrap": 19001,
+  "evaluation_disturbance_seeds": "exactly_the_dataset_generation_seed_for_each_split_and_flight",
+  "pairing_rule": "For every controller, reuse the exact scenario instance and simulator seed; never reuse mutable RNG state.",
+  "final_sealed_test_execution_authorized": false,
+  "logical_hash_excluding_this_field": "f09f45113ad4cdb531aa2e5bca8ea48ebc377490797b47b7656164bfaeb9e5bd"
+}

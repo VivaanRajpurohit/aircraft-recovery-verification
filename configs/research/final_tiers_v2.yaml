@@ -1,0 +1,10 @@
+contract_id: final_tiers_v2
+status: proposed_v2_numeric_ranges_unchanged
+supersedes: final_tiers_v1
+numeric_range_source: configs/research/final_tiers_v1.yaml
+range_semantics: all v1 closed numeric bounds remain authoritative; v2 only assigns split-specific values inside them
+per_tier_schedule: configs/research/final_heldout_factor_matrix_v2.yaml
+additional_explicit_bounds:
+  tier_4_crosswind_maximum_kts: [20.0, 35.0]
+  rationale: v1 named a crosswind family but did not define its numeric wind bound; v2 formalizes the existing simulator-supported scenario range
+generation_authorized: false

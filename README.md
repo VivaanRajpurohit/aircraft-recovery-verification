@@ -1,134 +1,52 @@
-# Bounded Runtime Assurance for Neural Aircraft Recovery
+# Runtime-Assured Neural Recovery Under Concurrent Simulated Failures
 
-<p align="center">
-  <strong>A simulation research prototype for studying neural control, concurrent failures, and formally specified recovery envelopes.</strong>
-</p>
+This is the versioned v2.1B research evidence release, audited on 15 November 2026. It contains the low-order simulator, frozen training/evaluation code, configurations, provenance, and scripts for checking the recorded results. The journal manuscript and identifying submission materials are excluded. This release does not signify journal acceptance.
 
-<p align="center">
-  <img alt="Python 3.11" src="https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white">
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-neural%20policy-EE4C2C?logo=pytorch&logoColor=white">
-  <img alt="Z3" src="https://img.shields.io/badge/Z3-bounded%20verification-5C2D91">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-2E7D32">
-</p>
+## Findings and interpretation
 
-> [!CAUTION]
-> **Simulation-only research software.** Do not connect this project to a real aircraft, drone, avionics system, actuator, or flight-control device. Simulator results do not establish airworthiness.
+The original experiment contains 432 distinct matched scenarios across Challenge, simulator stress, and final test, each evaluated with and without monitoring (864 runs). Both final-test conditions recovered in 144/144 flights with zero recorded simulator-domain safety violations. The zero observed difference and degenerate paired bootstrap interval [0,0] do not demonstrate equivalence or a recovery/safety benefit from monitoring.
 
-## Research question
+Recovery requires **50 consecutive in-envelope samples at 0.1-second intervals**. This nominal five-second hold spans **4.9 seconds between its first and last timestamps**. Onset is backdated to the first sample relative to the latest observable/detected failure activation (zero for nominal cases). The five recovery thresholds are independent of separately assessed safety properties. Continuous intersample containment and real-aircraft performance are not established. Formal interval checks concern the same low-order simulator under recorded actions, not closed-loop neural-controller proof.
 
-How can a learned recovery policy be evaluated when several simulated aircraft failures occur at once, and how can a runtime monitor constrain that policy to an explicitly bounded safety envelope?
+The supplementary three-architecture Challenge comparison is exploratory and postdates the original final test. It adds two fits and 576 runs; original moderate-policy records are reused. Combined totals are 14 fits and 1,440 condition records on 432 distinct scenarios.
 
-This repository explores that question through a reproducible, five-phase pipeline. It compares an unmonitored numerical policy with a monitored controller that can accept, project, or reject proposed actions before falling back to deterministic recovery logic.
+## Frozen data and checkpoints
 
-## What is implemented
+Use tag `v2.1b-research-audit-2026-11-15` or branch `publication/jate-v2.1b-2026-11-15`. Three ZIP assets in the matching GitHub release supply candidate data, approved nonsealed data, original evaluations, 14 best checkpoints, and training records. Download size is about 358 MB; allow 6 GB for extraction and outputs.
 
-| Research layer | Implementation |
-|---|---|
-| Simulation | Replaceable low-order twin-engine aircraft model with structured state and action interfaces |
-| Failure modeling | Engine, actuator, sensor, navigation, and disturbance scenarios, including concurrent failures |
-| Learning | PyTorch imitation-policy training, checkpointing, dataset validation, and in-/out-of-distribution evaluation |
-| Runtime assurance | Configurable bounds, action projection/rejection, deterministic fallback control, and emergency modes |
-| Formal methods | Named Z3 obligations over documented bounded abstractions and exact ReLU output bounds |
-| Evaluation | Paired experiment batches, uncertainty estimates, plots, tables, provenance metadata, and replay tooling |
-
-## System flow
-
-```text
-scenario + failures
-        |
-        v
-low-order simulator --> observation --> neural policy --> proposed action
-        ^                                      |
-        |                                      v
-        +---- final action <-- runtime monitor + bounded properties
-                               | accept
-                               | project
-                               ` reject --> deterministic fallback / emergency mode
+```console
+python scripts/fetch_research_release.py
 ```
 
-The safety claims are deliberately narrow: formal results apply only to the named properties, bounded state/action regions, plant abstraction, and assumptions documented in this repository.
+The downloader verifies the SHA-256 values in `artifacts/publication_release/release_assets.json`, rejects unsafe paths, and refuses to replace different existing artifacts. Alternatively, verify SHA256SUMS.txt and extract all three release ZIPs in the repository root. Do not retrain into frozen checkpoint paths.
 
-## Repository map
+## Clean environment and reproduction
 
-```text
-src/aircraft_recovery/
-|-- controllers/      neural, monitored, PID, fallback, and emergency control
-|-- failures/         configurable failure injection
-|-- simulator/        low-order simulation interface and implementation
-|-- safety/           runtime monitor and safety configuration
-|-- verification/     Z3 models, formal obligations, and neural bounds
-|-- training/         imitation learning and checkpointing
-|-- evaluation/       policy and monitor evaluation
-`-- analysis/         statistics, tables, and plots
+The audit used CPython 3.11.9 on Windows and PyTorch 2.13.0 CPU. The original used the CUDA variant; cross-device numerical tolerances are explicit in the scripts. Historical latency is reaggregated from stored timings, not claimed to transfer to other devices.
 
-configs/              versioned scenarios, controllers, training, and experiments
-scripts/              reproducible command-line entry points
-schemas/              validated controller input/output contracts
-tests/                unit, integration, and safety-property tests
-docs/                 architecture, assumptions, formal scope, and reproducibility
-artifacts/             public-release and environment manifests
+```console
+python -m venv .venv-publication
+# Activate the environment for your shell, then:
+python -m pip install -r requirements-publication-cpu.txt
+python -m pip install --no-deps -e .
+python scripts/audit_publication.py
+python scripts/audit_training_and_tables.py
+python scripts/publication_figures.py
+python -m pytest --ignore=tests/unit/test_generated_aircraft.py --ignore=tests/unit/test_generated_aircraft_v2.py --ignore=tests/unit/test_generated_aircraft_audit.py -k "not headless_viewer_identifies_live_simulation"
 ```
 
-## Reproduce the prototype
+New audit outputs go to `results/publication_audit`; figures (PDF/SVG and 600 dpi PNG/TIFF) go to `results/publication_figures`. Frozen outputs are not overwritten. The completed audit snapshot is in `artifacts/publication_release`.
 
-Python 3.11 is the supported runtime.
+All 224,640 original action steps were replayed and all 864 recovery/safety outcomes reproduced. Eighteen stratified 260-step traces were checked against fresh CPU neural proposals. Five final checkpoints reproduced development MSE/MAE/RMSE within 1e-7 absolute tolerance. No training or complete fresh monitored batch was rerun.
 
-```powershell
-py -3.11 -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[dev]"
-pytest
-```
+The relevant suite passed **326 tests, with nine existing skips and one deselected viewer test**. Three optional generated-aircraft asset test modules were excluded. Their demonstration assets are not part of this scientific release; the unrestricted visualization suite is not claimed to pass.
 
-Run a single scenario and inspect its structured outputs:
+## Provenance and limits
 
-```powershell
-python scripts/run_scenario.py --config configs/scenarios/phase2_engine_aileron.yaml
-```
+See `docs/research/PUBLICATION_AUDIT.md`. Historical manifests remain unchanged, including original source and file hashes. This public branch starts from public main `73aca720fac0769b405ddf1b868d6cc3734f5913` plus a reviewed science-only snapshot of local commit `7566df3`; private manuscript history was not merged. The new release commit identifies the public snapshot, while historical hashes identify the original runs. Existing reconciliation records correct earlier transcription of seed 17002--17005 hashes; representative seed 17001 was not changed or reselected.
 
-Each run records environment metadata, true and observed transitions, proposed and final actions, summary metrics, termination reasons, modes, and diversion decisions.
+The refitting pipeline is supplied but was not rerun. Independent high-fidelity validation, hardware tests, flight tests, standalone baseline comparisons and real-world generalization remain outside the evidence. Optional prototype outputs, duplicate generation batches, private diagnostics and worker logs are excluded. Historical manifests may reference private or historical artifacts outside this release.
 
-Run the compact end-to-end research pipeline:
+## License
 
-```powershell
-python scripts/generate_demonstrations.py --config configs/training/demonstrations_quick.yaml --force
-python scripts/validate_dataset.py --dataset datasets/phase3_quick
-python scripts/train_policy.py --config configs/training/imitation_quick.yaml --device cpu
-python scripts/evaluate_policy.py --config configs/evaluation/phase3_quick.yaml --device cpu
-python scripts/verify.py --config configs/safety/default.yaml
-python scripts/evaluate_monitor.py --config configs/evaluation/phase4_quick.yaml --device cpu
-python scripts/run_experiment_batch.py --config configs/experiments/phase5_quick.yaml --force
-python scripts/analyze_results.py results/phase5_quick
-python scripts/generate_plots.py results/phase5_quick
-```
-
-## Documentation
-
-- [Architecture](docs/architecture.md) — component boundaries and data flow
-- [Research scope](docs/research_scope.md) — claims the prototype does and does not make
-- [Model assumptions](docs/model_assumptions.md) — simulator and controller assumptions
-- [Verification scope](docs/verification_scope.md) — bounded properties and formal limitations
-- [Recovery-envelope specification](docs/formal/recovery_envelope_specification.md) — formal state, failure, and disturbance envelope
-- [Reproducibility](docs/reproducibility.md) — environments, artifacts, seeds, and rerun guidance
-- [3D replay](docs/replay_3d.md) — read-only visualization workflow
-- [Artifact guide](docs/artifact_guide.md) — public-release manifests and provenance
-
-## Project status
-
-- [x] Phase 1 — repository structure, configuration, schemas, simulator, runner, and logging
-- [x] Phase 2 — concurrent failures, deterministic fallback, emergency modes, diversion logic, and metrics
-- [x] Phase 3 — demonstrations, PyTorch imitation policy, checkpointing, and baseline evaluation
-- [x] Phase 4 — named properties, bounded Z3 abstraction, runtime monitor, and verification reports
-- [x] Phase 5 — paired experiments, uncertainty estimates, plots, tables, and replay
-
-## Limitations and ethics
-
-The simulator is intentionally simplified. This project does **not** prove a neural network, simulator, or aircraft universally safe. It does not model the full aerodynamic, structural, sensor, actuator, human-factors, hardware, certification, or regulatory environment required for real flight. Formal verification is meaningful only inside the documented abstraction and bounds.
-
-The optional Cessna FBX model is not distributed because its redistribution license could not be established. A legally licensed asset may be supplied locally, or the replay viewer will use its primitive fallback. See [asset licensing](docs/asset_licensing.md).
-
-## Citation and contribution
-
-Citation metadata is available in [CITATION.cff](CITATION.cff). Focused contributions that improve reproducibility, tests, documentation, or the fidelity of explicitly bounded models are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+The existing LICENSE retains all rights and its stated research-inspection/review scope, with other uses requiring separate authorization. This repository is **not MIT-licensed or advertised as open source**. The inconsistent MIT badge was removed; no license rights were changed. Third-party software retains its own licenses, and optional aircraft artwork is excluded.

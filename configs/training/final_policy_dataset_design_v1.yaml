@@ -1,0 +1,108 @@
+design_id: final_policy_dataset_design_v1
+status: design_only_generation_not_authorized
+source_pilot: final_policy_pilot_v2_approved_v1
+declared_simulator: SimpleAircraftSimulator
+total_flights: 1152
+expected_transitions: 299000
+maximum_transitions_range: [230400, 345600]
+split_counts:
+  train: 576
+  development: 144
+  challenge: 144
+  ood_stress: 144
+  final_sealed_test: 144
+seed_ranges:
+  train: [20000, 20575]
+  development: [21000, 21143]
+  challenge: [22000, 22143]
+  ood_stress: [23000, 23143]
+  final_sealed_test: [24000, 24143]
+tier_split_counts:
+  # Every tier totals 192: 96 train and 24 in each evaluation split.
+  tier_0: {train: 96, development: 24, challenge: 24, ood_stress: 24, final_sealed_test: 24}
+  tier_1: {train: 96, development: 24, challenge: 24, ood_stress: 24, final_sealed_test: 24}
+  tier_2: {train: 96, development: 24, challenge: 24, ood_stress: 24, final_sealed_test: 24}
+  tier_3: {train: 96, development: 24, challenge: 24, ood_stress: 24, final_sealed_test: 24}
+  tier_4: {train: 96, development: 24, challenge: 24, ood_stress: 24, final_sealed_test: 24}
+  tier_5: {train: 96, development: 24, challenge: 24, ood_stress: 24, final_sealed_test: 24}
+scenario_matrix:
+  - {tier: 0, family: nominal, count: 192, split_allocation: [96, 24, 24, 24, 24]}
+  - {tier: 1, family: isolated_aileron_mild, count: 64, split_allocation: [32, 8, 8, 8, 8]}
+  - {tier: 1, family: isolated_partial_thrust_mild, count: 64, split_allocation: [32, 8, 8, 8, 8]}
+  - {tier: 1, family: isolated_engine_loss_mild_state, count: 64, split_allocation: [32, 8, 8, 8, 8]}
+  - {tier: 2, family: isolated_aileron_moderate, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 2, family: isolated_engine_loss_moderate_state, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 2, family: deterministic_sensor_bias, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 2, family: isolated_actuator_delay, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 3, family: engine_plus_aileron, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 3, family: delay_plus_partial_thrust, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 3, family: aileron_plus_turbulence, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 3, family: sensor_bias_plus_actuator, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 4, family: severe_engine_plus_aileron, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 4, family: severe_delay_turbulence_partial_thrust, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 4, family: right_engine_rudder_crosswind, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 4, family: severe_sensor_bias_plus_delay, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 5, family: boundary_engine_aileron, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 5, family: boundary_sensor_delay, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 5, family: boundary_delay_turbulence, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+  - {tier: 5, family: boundary_aileron, count: 48, split_allocation: [24, 6, 6, 6, 6]}
+factor_flight_counts:
+  no_failure: 192
+  reduced_aileron_effectiveness: 352
+  complete_engine_loss: 304
+  left_engine_loss: 152
+  right_engine_loss: 152
+  partial_thrust_loss: 160
+  actuator_delay: 336
+  deterministic_sensor_bias: 192
+  turbulence_or_crosswind_increase: 192
+  reduced_rudder_effectiveness: 48
+severity_band_counts:
+  none_tier_0: 192
+  mild_tier_1: 192
+  moderate_isolated_tier_2: 192
+  moderate_concurrent_tier_3: 192
+  severe_in_domain_tier_4: 192
+  boundary_in_domain_tier_5: 192
+supported_parameter_ranges:
+  initial_airspeed_kts: [95, 180]
+  initial_bank_deg: [-40, 40]
+  initial_pitch_deg: [-15, 15]
+  altitude_ft: [1200, 10000]
+  terrain_clearance_ft: [500, 3000]
+  failure_activation_seconds: [2, 8]
+  surface_failure_severity: [0.20, 0.85]
+  actuator_delay_seconds: [0.10, 0.80]
+  sensor_bias_types: [airspeed_bias, altitude_bias, heading_bias]
+  turbulence_intensity: [0.0, 0.30]
+vertical_speed_plan:
+  direct_initial_override_supported: false
+  method: stratify measured vertical_speed_fpm at the end of a deterministic failure-free prelude
+  warmup_duration_seconds: 2.0
+  measurement_time_seconds: 2.0
+  warmup_controller: DeterministicFallbackController
+  failures_enabled_during_warmup: false
+  declared_environment_disturbances_enabled: true
+  bins_fpm: [[-2500, -750], [-750, -150], [-150, 150], [150, 750], [750, 2500]]
+  boundary_convention: lower_inclusive_upper_exclusive_except_last_upper_inclusive
+  target_balance: equal_within_each_tier_and_split_where_integer_counts_allow
+sensor_noise_plan:
+  gaussian_sensor_noise_enabled: false
+  decision: excluded_from_final_generation_v1
+  rationale: current simulator has deterministic bias faults but no audited pre-noise/post-noise observation contract
+  future_required_fields: [pre_noise_observation, post_noise_observation, noise_draw, noise_seed, noise_model_version]
+holdout_rules:
+  flight_level_grouping: true
+  seed_overlap_forbidden: true
+  challenge_severity_values: [0.40, 0.65, 0.82]
+  challenge_activation_seconds: [2.5, 5.0, 7.5]
+  ood_severity_values: [0.22, 0.52, 0.85]
+  ood_activation_seconds: [2.25, 5.5, 7.25]
+  final_sealed_severity_values: [0.39, 0.64, 0.84]
+  final_sealed_activation_seconds: [2.75, 5.25, 7.75]
+  final_sealed_conditions_may_not_be_used_for_tuning: true
+guards:
+  generate_large_dataset: false
+  open_final_sealed_test: false
+  fit_final_preprocessing: false
+  train_final_model: false

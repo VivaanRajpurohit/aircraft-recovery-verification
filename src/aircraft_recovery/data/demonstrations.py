@@ -9,6 +9,7 @@ import json
 import platform
 from pathlib import Path
 import random
+import subprocess
 import sys
 from typing import Any
 
@@ -43,6 +44,8 @@ class DemonstrationConfig(BaseModel):
     validation_fraction: float = Field(gt=0.0, lt=1.0)
     test_fraction: float = Field(gt=0.0, lt=1.0)
     ood_categories: list[str] = Field(default_factory=list)
+    reserved_test_categories: list[str] = Field(default_factory=list)
+    test_reporting_categories: dict[str, list[str]] = Field(default_factory=dict)
 
 
 def _category_schedule(config: DemonstrationConfig) -> list[ScenarioCategoryConfig]:
@@ -73,6 +76,27 @@ def _array_content_hash(arrays: dict[str, np.ndarray]) -> str:
     return digest.hexdigest()
 
 
+def _git_commit_hash() -> str:
+    """Return the source revision without making Git a generation dependency."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown"
+    return result.stdout.strip()
+
+
+def _git_worktree_dirty() -> bool | None:
+    try:
+        result = subprocess.run(
+            ["git", "status", "--porcelain"], check=True, capture_output=True, text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return bool(result.stdout.strip())
+
+
 def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
     """Generate an expert dataset without admitting audit fields to tensors."""
     output = Path(config.output_directory)
@@ -81,6 +105,18 @@ def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     aircraft = load_config(config.aircraft_config, AircraftConfig)
     fallback_config = load_config(config.fallback_config, FallbackConfig)
+    resolved_scenarios = [
+        load_config(item.scenario, ScenarioConfig).model_dump(mode="json")
+        for item in config.scenarios
+    ]
+    configuration_hash = canonical_hash({
+        "generation": config.model_dump(mode="json"),
+        "aircraft": aircraft.model_dump(mode="json"),
+        "expert": fallback_config.model_dump(mode="json"),
+        "scenarios": resolved_scenarios,
+    })
+    git_commit_hash = _git_commit_hash()
+    git_worktree_dirty = _git_worktree_dirty()
     records: dict[str, list[Any]] = {name: [] for name in (
         "observations", "controls", "target_values", "modes", "validity_masks",
         "episode_ids", "scenario_categories", "step_indices", "seeds", "timestamps",
@@ -104,6 +140,7 @@ def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
             observation = simulator.reset(episode_seed)
             expert.reset()
             episode_row_indices: list[int] = []
+            episode_analysis: list[dict[str, Any]] = []
             step_index = 0
             while not simulator.is_terminal():
                 vector = observation_to_vector(observation)
@@ -149,17 +186,47 @@ def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
                     float(navigation.selected_airport is not None),
                 ])
                 records["selected_airports"].append(navigation.selected_airport or "")
-                analysis_stream.write(json.dumps({
+                episode_analysis.append({
+                    "record_schema_version": 2,
+                    "flight_id": episode_id,
                     "episode_id": episode_id,
+                    "scenario_id": scenario.scenario_id,
+                    "scenario_category": category_config.category,
+                    "seed": episode_seed,
                     "step_index": step_index,
+                    "timestep_seconds": aircraft.time_step_seconds,
+                    "timestamp_seconds": observation.timestamp_seconds,
+                    "ordered_observation_42": vector.astype(float).tolist(),
+                    "observation_feature_names": list(OBSERVATION_FEATURES),
+                    "expert_proposed_controls": records["controls"][-1],
+                    "executed_controls_after_actuator_degradation": truth_after["applied_control_commands"],
+                    "aircraft_state_before": truth_before["true_state"],
+                    "aircraft_state_after": truth_after["true_state"],
+                    "failure_parameters": truth_after["ground_truth_failures"],
+                    "recoverability_label": scenario.expected_recoverability,
                     "ground_truth_before": truth_before,
                     "ground_truth_after": truth_after,
-                }, allow_nan=False, separators=(",", ":")) + "\n")
+                    "git_commit_hash": git_commit_hash,
+                    "git_worktree_dirty": git_worktree_dirty,
+                    "configuration_hash": configuration_hash,
+                })
                 observation = next_observation
                 step_index += 1
             if episode_row_indices:
+                termination_reason = simulator.termination_reason() or "unknown"
                 records["termination_flags"][episode_row_indices[-1]] = True
-                records["termination_reasons"][episode_row_indices[-1]] = simulator.termination_reason() or "unknown"
+                records["termination_reasons"][episode_row_indices[-1]] = termination_reason
+                successful_reasons = {
+                    "stable_recovery_achieved", "diversion_target_reached",
+                    "approach_completed", "duration_complete",
+                }
+                outcome = "successful" if termination_reason in successful_reasons else "unsuccessful"
+                for analysis_record in episode_analysis:
+                    analysis_record["outcome"] = outcome
+                    analysis_record["termination_reason"] = termination_reason
+                    analysis_stream.write(json.dumps(
+                        analysis_record, allow_nan=False, separators=(",", ":")
+                    ) + "\n")
             category_episode_counts[category_config.category] += 1
             category_transition_counts[category_config.category] += step_index
 
@@ -186,7 +253,7 @@ def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
     np.savez_compressed(output / "transitions.npz", **arrays)
     dataset_identifier = _array_content_hash(arrays)
     metadata = {
-        "format_version": 1,
+        "format_version": 2,
         "dataset_name": config.dataset_name,
         "dataset_identifier": dataset_identifier,
         "observation_vector_version": "phase1-42-v1",
@@ -194,7 +261,11 @@ def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
         "training_visible_fields": [
             "observations", "controls", "target_values", "modes", "validity_masks"
         ],
-        "analysis_only_fields": ["ground_truth_before", "ground_truth_after"],
+        "analysis_only_fields": [
+            "expert_proposed_controls", "executed_controls_after_actuator_degradation",
+            "aircraft_state_before", "aircraft_state_after", "failure_parameters",
+            "recoverability_label", "outcome", "ground_truth_before", "ground_truth_after",
+        ],
         "metadata_fields": [
             "episode_ids", "seeds", "scenario_ids", "scenario_categories",
             "step_indices", "timestamps", "known_failures", "previous_modes",
@@ -205,7 +276,11 @@ def generate_demonstrations(config: DemonstrationConfig) -> dict[str, Any]:
         "transition_count": len(arrays["observations"]),
         "scenario_category_episode_counts": dict(sorted(category_episode_counts.items())),
         "scenario_category_transition_counts": dict(sorted(category_transition_counts.items())),
-        "configuration_hash": canonical_hash(config.model_dump(mode="json")),
+        "configuration_hash": configuration_hash,
+        "git_commit_hash": git_commit_hash,
+        "git_worktree_dirty": git_worktree_dirty,
+        "expert_label_source": "phase2_deterministic_fallback_proposed_action",
+        "executed_actions_are_training_labels": False,
         "software": {
             "python": sys.version,
             "platform": platform.platform(),

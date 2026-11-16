@@ -85,9 +85,23 @@ def test_demonstration_generation_and_no_leakage(trained_artifacts) -> None:
     archive = np.load(trained_artifacts["dataset"] / "transitions.npz", allow_pickle=False)
     assert archive["observations"].shape[1] == 42
     assert trained_artifacts["report"]["valid"]
-    assert trained_artifacts["metadata"]["analysis_only_fields"] == ["ground_truth_before", "ground_truth_after"]
+    assert "ground_truth_before" in trained_artifacts["metadata"]["analysis_only_fields"]
+    assert "executed_controls_after_actuator_degradation" in trained_artifacts["metadata"]["analysis_only_fields"]
     assert "true_state" not in archive.files
-    assert (trained_artifacts["dataset"] / "analysis_ground_truth.jsonl").is_file()
+    analysis_path = trained_artifacts["dataset"] / "analysis_ground_truth.jsonl"
+    assert analysis_path.is_file()
+    record = json.loads(analysis_path.read_text(encoding="utf-8").splitlines()[0])
+    assert len(record["ordered_observation_42"]) == 42
+    assert len(record["expert_proposed_controls"]) == 5
+    assert set(record["executed_controls_after_actuator_degradation"]) == {
+        "elevator", "aileron", "rudder", "throttle_left", "throttle_right"
+    }
+    for field in (
+        "aircraft_state_before", "aircraft_state_after", "failure_parameters",
+        "timestep_seconds", "flight_id", "scenario_id", "seed",
+        "recoverability_label", "outcome", "git_commit_hash", "configuration_hash",
+    ):
+        assert field in record
 
 
 def test_demonstration_generation_is_deterministic(trained_artifacts) -> None:
@@ -101,6 +115,7 @@ def test_training_smoke_and_checkpoint_metadata(trained_artifacts) -> None:
     assert trained_artifacts["checkpoint"].is_file()
     assert trained_artifacts["training"]["parameter_count"] < 1_000_000
     assert trained_artifacts["training"]["best_epoch"] in {1, 2}
+    assert (trained_artifacts["checkpoint"].parent / "preprocessing_manifest.json").is_file()
     validate_no_episode_overlap(trained_artifacts["manifest"])
 
 

@@ -1,0 +1,11 @@
+contract_id: final_evaluation_design_v2
+status: proposed_v2_pending_review
+supersedes: final_evaluation_design_v1
+base_evaluation_contract: configs/research/final_evaluation_design_v1.yaml
+changed_field: heldout_factor_schedule
+heldout_factor_schedule: configs/research/final_heldout_factor_matrix_v2.yaml
+primary_outcome_unchanged: strict_recovery_success
+primary_comparison_unchanged: final_neural_monitored_vs_final_neural_unmonitored
+sample_counts_unchanged: true
+statistical_plan_unchanged: true
+final_sealed_test_execution_authorized: false

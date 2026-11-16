@@ -11,7 +11,7 @@ import numpy as np
 
 from aircraft_recovery.common.observations import OBSERVATION_FEATURES
 from aircraft_recovery.data.dataset import FORBIDDEN_TRAINING_TERMS
-from aircraft_recovery.data.splitting import validate_no_episode_overlap
+from aircraft_recovery.data.splitting import validate_no_episode_overlap, validate_no_seed_overlap
 
 
 def validate_dataset(dataset_directory: str | Path) -> dict[str, Any]:
@@ -49,6 +49,7 @@ def validate_dataset(dataset_directory: str | Path) -> dict[str, Any]:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         try:
             validate_no_episode_overlap(manifest)
+            validate_no_seed_overlap(manifest)
         except ValueError as error:
             errors.append(str(error))
         split_sizes = {name: len(manifest[name]) for name in ("train", "validation", "test", "ood")}
@@ -71,6 +72,7 @@ def validate_dataset(dataset_directory: str | Path) -> dict[str, Any]:
             "hidden_ground_truth_excluded": not leaked,
             "validity_masks_match": "validity_masks_do_not_match_observations" not in errors,
             "episode_splits_disjoint": not any("Episode leakage" in error for error in errors),
+            "split_seeds_disjoint": not any("Seed leakage" in error for error in errors),
             "unit_feature_contract_unchanged": "feature_names_or_units_changed" not in errors,
         },
     }
@@ -78,4 +80,3 @@ def validate_dataset(dataset_directory: str | Path) -> dict[str, Any]:
     if errors:
         raise ValueError(f"Dataset validation failed: {errors}")
     return report
-

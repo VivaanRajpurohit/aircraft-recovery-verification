@@ -1,0 +1,825 @@
+{
+  "dataset_integrity": {
+    "calibration": {
+      "manifest_hash_matches": true,
+      "record_count_matches": true,
+      "sample_ids_hash_matches": true,
+      "scenario_ids_hash_matches": true,
+      "transitions_hash_matches": true
+    },
+    "validation": {
+      "manifest_hash_matches": true,
+      "record_count_matches": true,
+      "sample_ids_hash_matches": true,
+      "scenario_ids_hash_matches": true,
+      "transitions_hash_matches": true
+    }
+  },
+  "model_sha256": "16681a9eee67bee47f41afada2f52bb41e6e39a92a1c7882115393a8588ca280",
+  "one_step": {
+    "containment_failures": [
+      {
+        "sample_id": "validation-sample-000000",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000001",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000002",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000003",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000004",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000005",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000006",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000007",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000008",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000009",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000010",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000011",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000012",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000013",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000014",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000015",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000016",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000017",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000018",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000019",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000020",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000021",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000022",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000023",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000024",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000025",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000026",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000027",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000028",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000029",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000030",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000031",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000032",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000033",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000034",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000035",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000036",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000037",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000038",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000039",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000040",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000041",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000042",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000043",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000044",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000045",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000046",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000047",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000048",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000049",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000050",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000051",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000052",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000053",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000054",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000055",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000056",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000057",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000058",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000059",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000060",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000061",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000062",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000063",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000064",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000065",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000066",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000067",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000068",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000069",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000070",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000071",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000072",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000073",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000074",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000075",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000076",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000077",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000078",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000079",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000080",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000081",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000082",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000083",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000084",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000085",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000086",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000087",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000088",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000089",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000090",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000091",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000092",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000093",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000094",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000095",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000096",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000097",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000098",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      },
+      {
+        "sample_id": "validation-sample-000099",
+        "states": [
+          "terrain_clearance_ft"
+        ]
+      }
+    ],
+    "evaluated": 100,
+    "metrics": {
+      "airspeed_kts": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 2.8421709430404007e-13,
+        "maximum_signed_error": 2.8421709430404007e-13,
+        "mean_absolute_error": 2.0520474208751693e-13,
+        "mean_signed_error": 2.0520474208751693e-13,
+        "median_absolute_error": 1.9895196601282805e-13,
+        "minimum_signed_error": 1.2789769243681803e-13,
+        "p95_absolute_error": 2.5579538487363607e-13,
+        "residual_bound": [
+          -9.999843680598135e-09,
+          1.0000284217094306e-08
+        ]
+      },
+      "bank_deg": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 1.4210854715202004e-14,
+        "maximum_signed_error": 3.552713678800501e-15,
+        "mean_absolute_error": 2.42861286636753e-15,
+        "mean_signed_error": -2.037814361699475e-15,
+        "median_absolute_error": 1.7763568394002505e-15,
+        "minimum_signed_error": -1.4210854715202004e-14,
+        "p95_absolute_error": 7.105427357601002e-15,
+        "residual_bound": [
+          -1.000000710542736e-08,
+          1.000000355271368e-08
+        ]
+      },
+      "pitch_deg": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 5.329070518200751e-15,
+        "maximum_signed_error": 1.7763568394002505e-15,
+        "mean_absolute_error": 1.7062046220317483e-15,
+        "mean_signed_error": -1.2887607647726895e-15,
+        "median_absolute_error": 1.5543122344752192e-15,
+        "minimum_signed_error": -5.329070518200751e-15,
+        "p95_absolute_error": 5.329070518200751e-15,
+        "residual_bound": [
+          -1.000000710542736e-08,
+          1.0000001776356841e-08
+        ]
+      },
+      "terrain_clearance_ft": {
+        "contained": 0,
+        "containment_percent": 0.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 5.190657026490953,
+        "maximum_signed_error": 2.9565010821543183,
+        "mean_absolute_error": 1.8058006692306328,
+        "mean_signed_error": -0.32672384199200394,
+        "median_absolute_error": 1.67100626151273,
+        "minimum_signed_error": -5.190657026490953,
+        "p95_absolute_error": 3.899842001701381,
+        "residual_bound": [
+          -1.0002046363078991e-08,
+          1.0007275957614185e-08
+        ]
+      },
+      "vertical_speed_fpm": {
+        "contained": 100,
+        "containment_percent": 100.0,
+        "evaluated": 100,
+        "maximum_absolute_error": 7.275957614183426e-12,
+        "maximum_signed_error": 7.275957614183426e-12,
+        "mean_absolute_error": 2.218971673073611e-12,
+        "mean_signed_error": 1.5196732761069142e-13,
+        "median_absolute_error": 2.2737367544323206e-12,
+        "minimum_signed_error": -4.092726157978177e-12,
+        "p95_absolute_error": 4.115463525522499e-12,
+        "residual_bound": [
+          -1.000545696821064e-08,
+          1.0006366462912412e-08
+        ]
+      }
+    },
+    "outside_model_validity": [],
+    "total": 100
+  },
+  "report_sha256": "ce4f307201d7c0ff52b3514444714367c1cb2c03401d8653038c59083c4f9ee5",
+  "rollout": {
+    "containment_percent_by_step": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "first_containment_failures": [
+      {
+        "reason": "containment_failure",
+        "step": 1,
+        "trace_id": "validation-trace-0000"
+      },
+      {
+        "reason": "containment_failure",
+        "step": 1,
+        "trace_id": "validation-trace-0001"
+      },
+      {
+        "reason": "containment_failure",
+        "step": 1,
+        "trace_id": "validation-trace-0002"
+      },
+      {
+        "reason": "containment_failure",
+        "step": 1,
+        "trace_id": "validation-trace-0003"
+      }
+    ],
+    "horizons_tested": [
+      5,
+      10,
+      20
+    ],
+    "interval_width_by_state": {
+      "airspeed_kts": {
+        "at_horizons": {
+          "10": 2.0017219881651727e-07,
+          "20": 3.9441640353743423e-07,
+          "5": 1.0158204588606168e-07
+        },
+        "initial": 2.1996299892634852e-08,
+        "maximum": 3.94416815652221e-07
+      },
+      "bank_deg": {
+        "at_horizons": {
+          "10": 2.0200025163674695e-07,
+          "20": 4.0200049777894264e-07,
+          "5": 1.0200012767747069e-07
+        },
+        "initial": 2.200003379471127e-08,
+        "maximum": 4.020007580152196e-07
+      },
+      "pitch_deg": {
+        "at_horizons": {
+          "10": 2.0200014350102435e-07,
+          "20": 4.02000283172832e-07,
+          "5": 1.0200007305449788e-07
+        },
+        "initial": 2.2000021360213395e-08,
+        "maximum": 4.020003565585739e-07
+      },
+      "terrain_clearance_ft": {
+        "at_horizons": {
+          "10": 9.607398112621013e-07,
+          "20": 3.25134718082154e-06,
+          "5": 3.1303213177125144e-07
+        },
+        "initial": 3.95757524529472e-08,
+        "maximum": 3.725286660483107e-06
+      },
+      "vertical_speed_fpm": {
+        "at_horizons": {
+          "10": 5.1083421539033225e-05,
+          "20": 0.00010059984919053022,
+          "5": 2.597662378889254e-05
+        },
+        "initial": 6.585006758541567e-06,
+        "maximum": 0.00011756692720155115
+      }
+    },
+    "trace_count": 4
+  },
+  "schema_version": 1,
+  "scientific_classification": {
+    "closed_loop_controller_validation": false,
+    "formal_model": "intervalized formal representation of the existing low-order simulator dynamics",
+    "initial_interval": {
+      "kind": "narrow numerical box",
+      "radius": 1e-09
+    },
+    "one_step_expected_values": "stored numerical simulator next_state records",
+    "rollout_kind": "interval propagation under fixed recorded executed actions and realized disturbances"
+  },
+  "split_isolation": {
+    "sample_ids_disjoint": true,
+    "scenario_ids_disjoint": true,
+    "seeds_disjoint": true
+  },
+  "validation_manifest_sha256": "df2f8cb1d8a8c4ee5f4afc3c2af798d88ddb6c60e855e6e4aa7874dad91b8718"
+}

@@ -1,0 +1,22 @@
+configuration_id: final_nonsealed_reporting_v2_1b
+source: results/final_nonsealed_evaluation_v2_1b
+split_wording:
+  challenge: Challenge
+  ood_stress: OOD-style simulator stress
+tables:
+  - representative_overall
+  - monitored_vs_unmonitored_paired
+  - tier_0_through_5
+  - isolated_vs_concurrent
+  - failure_family
+  - intervention_taxonomy
+  - timing
+figures:
+  - recovery_rate_by_tier
+  - safety_violation_rate_by_tier
+  - intervention_taxonomy
+uncertainty:
+  binary: wilson_95_percent
+  continuous: flight_bootstrap_10000_seed_19001
+selection_use_prohibited: true
+sealed_results_permitted: false

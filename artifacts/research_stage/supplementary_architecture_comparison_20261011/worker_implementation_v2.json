@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-11",
+  "path": "scripts/run_supplementary_architecture_comparison_20261011.py",
+  "sha256": "b1a220e0325ec4005986a6de9ae850558442e127e68db1891f8ac4604d2d6cc3",
+  "supersedes_implementation_only": "worker_implementation.json",
+  "change": "Hash scenario IDs for Windows storage directory names; original IDs and scientific evaluator retained",
+  "regression_tests": "5 passed",
+  "training_checkpoints_preserved": true,
+  "completed_supplementary_pairs_before_fix": 0,
+  "first_uncommitted_condition_recomputed": true,
+  "original_v2_1b_technical_reruns": 0,
+  "plan_and_scientific_controls_changed": false
+}

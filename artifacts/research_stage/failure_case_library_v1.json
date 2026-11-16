@@ -1,0 +1,7 @@
+{
+  "library_id": "failure_case_library_v1",
+  "append_only": true,
+  "cases": [],
+  "sealed_test_cases_may_not_be_added_before_authorized_evaluation": true,
+  "note": "Empty preregistered index. Adding a case requires artifact hashes and preserves its evidence eligibility status."
+}

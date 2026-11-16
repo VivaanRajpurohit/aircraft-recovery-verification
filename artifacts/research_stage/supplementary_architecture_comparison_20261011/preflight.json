@@ -1,0 +1,68 @@
+{
+  "report_version": "v2.1a-architecture-screen-preflight-v1",
+  "status": "PASS",
+  "expected_hashes": {
+    "approved_dataset_logical_sha256": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+    "normalization_logical_sha256": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+    "normalization_file_sha256": "3fa7538fabe52658ce10ed1606ae8ad0696c85ec5e517e691ba42e696a38f59f",
+    "monitor_file_sha256": "427d37c1b0c15d8659cab811876bd05b148fb627bba949f86709369f46846281",
+    "fallback_file_sha256": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+    "seed_registry_file_sha256": "98fa364f3168412ccec9017d24a2ed8217f35f40294d30d997d0e30135165319",
+    "amendment_logical_sha256": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+    "approved_transitions_file_sha256": "187374b333f99a2df1891dbb06dad5de7a1eadeb4bc9f1ed5282b4094f64d2e1"
+  },
+  "observed_hashes": {
+    "approved_dataset_logical_sha256": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+    "normalization_logical_sha256": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+    "normalization_file_sha256": "3fa7538fabe52658ce10ed1606ae8ad0696c85ec5e517e691ba42e696a38f59f",
+    "monitor_file_sha256": "427d37c1b0c15d8659cab811876bd05b148fb627bba949f86709369f46846281",
+    "fallback_file_sha256": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+    "seed_registry_file_sha256": "98fa364f3168412ccec9017d24a2ed8217f35f40294d30d997d0e30135165319",
+    "amendment_logical_sha256": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+    "approved_transitions_file_sha256": "187374b333f99a2df1891dbb06dad5de7a1eadeb4bc9f1ed5282b4094f64d2e1"
+  },
+  "configuration_file_sha256": "42fe7223faa3548c2e4ba1208b5c646345afedb10764425eb8568aa02ccc28bd",
+  "amendment_file_sha256": "980a158343a683875638b7ca70c621f63d50cc505753b6f8e6e3b748b6e4ae84",
+  "architectures": [
+    {
+      "architecture_id": "small_reference",
+      "hidden_dimensions": [
+        128,
+        64
+      ],
+      "activation": "relu",
+      "parameter_count": 14085
+    },
+    {
+      "architecture_id": "current_reference",
+      "hidden_dimensions": [
+        256,
+        128
+      ],
+      "activation": "relu",
+      "parameter_count": 44549
+    },
+    {
+      "architecture_id": "moderate",
+      "hidden_dimensions": [
+        256,
+        256,
+        128
+      ],
+      "activation": "silu",
+      "parameter_count": 110341
+    }
+  ],
+  "target_order": [
+    "elevator",
+    "aileron",
+    "rudder",
+    "throttle_left",
+    "throttle_right"
+  ],
+  "optimization_objective": "mean_squared_error",
+  "checkpoint_selection": "minimum_development_mse",
+  "challenge_opened": false,
+  "ood_opened": false,
+  "sealed_opened": false
+}

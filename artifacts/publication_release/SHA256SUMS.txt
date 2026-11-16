@@ -1,0 +1,3 @@
+daf5eaa9c7d85679b2a007ff8e292451a2d07e5541026301ca67fe03eeec161f  candidate-data.zip
+864c51c49bd97363fe41f15c5daee460e182a2d229a462337bf800f01fb4c16e  approved-data.zip
+8127cd8db4ffcb49a2889e0cec254956179a722bf4874ea27cbff1b397f8099b  evaluation-checkpoints.zip

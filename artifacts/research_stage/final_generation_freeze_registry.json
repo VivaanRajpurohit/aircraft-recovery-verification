@@ -1,0 +1,23 @@
+{
+  "registry_id": "final_generation_freeze_registry",
+  "historical_v1": {
+    "freeze_hash": "fcfde639acb99d85b17477dee7da5743da305b46a32cb0b4293fd9c9423a1cd4",
+    "status": "superseded_before_generation_due_to_semantic_conflict"
+  },
+  "withdrawn_v2_proposal": {
+    "freeze_hash": "92d5a0137c7e185ce49060d0d1ada6ab631410a2914ba465d377aa43b83004bc",
+    "status": "not_activated_due_to_holdout_semantics_collision"
+  },
+  "proposed_v2_1": {
+    "freeze_hash": "c0b831ede8a5d75027dcce70ec1c116fc5ec58d479cf500939f2075e3d16d0dc",
+    "status": "active_approved_for_candidate_generation"
+  },
+  "active_generation_freeze": {
+    "freeze_id": "final_generation_freeze_v2_1",
+    "freeze_hash": "c0b831ede8a5d75027dcce70ec1c116fc5ec58d479cf500939f2075e3d16d0dc",
+    "activated_utc": "2026-08-15T17:51:25.6946627Z",
+    "source_git_revision": "d3df91ac4d92be40e029d9ab9df916c4222018f4"
+  },
+  "generation_authorized": true,
+  "registry_hash_excluding_this_field": "6f5e264fd56f5452bf0df99757aa192455a13a942babf3a0240730dd7050ca6a"
+}

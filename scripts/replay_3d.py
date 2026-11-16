@@ -1,13 +1,16 @@
 """Launch the standalone interactive 3D experiment replay viewer."""
 from __future__ import annotations
 import argparse,json
+from pathlib import Path
 from aircraft_recovery.visualization.replay_3d import Replay3DViewer,load_replay_3d_settings,validate_model
 
 def main()->int:
     p=argparse.ArgumentParser(description=__doc__); p.add_argument("run_directory"); p.add_argument("--config",default="configs/visualization/replay_3d.yaml"); p.add_argument("--aircraft-model"); p.add_argument("--aircraft-scale",type=float); p.add_argument("--aircraft-yaw-offset",type=float); p.add_argument("--aircraft-pitch-offset",type=float); p.add_argument("--aircraft-roll-offset",type=float); p.add_argument("--camera",choices=("chase","fixed","top"),default="chase"); p.add_argument("--speed",type=float,default=1.0); p.add_argument("--show-path",action="store_true"); p.add_argument("--show-failures",action="store_true"); p.add_argument("--show-controller-known-failures",action="store_true"); p.add_argument("--show-ground-truth-failures",action="store_true"); p.add_argument("--start-paused",action="store_true",help="Remain paused at t=0 instead of auto-starting after two seconds."); p.add_argument("--debug-coordinates",action="store_true",help="Print the first and last scaled replay coordinates."); p.add_argument("--validate-only",action="store_true",help="Headlessly validate model axes, dimensions, and replay input."); a=p.parse_args()
     if a.speed<=0: p.error("--speed must be positive")
     if a.aircraft_scale is not None and a.aircraft_scale<=0: p.error("--aircraft-scale must be positive")
-    settings=load_replay_3d_settings(a.config); cfg=settings.aircraft
+    config_path=a.config
+    if a.aircraft_model is not None and Path(a.aircraft_model).name.lower()=="generated_plane.glb" and a.config=="configs/visualization/replay_3d.yaml": config_path="configs/visualization/generated_plane.yaml"
+    settings=load_replay_3d_settings(config_path); cfg=settings.aircraft
     if a.aircraft_model is not None: cfg.model_path=a.aircraft_model
     if a.aircraft_scale is not None: cfg.scale=a.aircraft_scale
     if a.aircraft_yaw_offset is not None: cfg.yaw_offset_deg=a.aircraft_yaw_offset

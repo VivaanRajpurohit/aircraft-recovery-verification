@@ -1,0 +1,75 @@
+contract_id: final_tiers_v1
+ordering_note: tiers increase in impairment count/severity and boundary proximity, but concurrent failure types are not a single physical scalar
+common:
+  failure_activation_seconds: [2.0, 8.0]
+  initial_airspeed_kts: [95.0, 180.0]
+  initial_bank_deg: [-40.0, 40.0]
+  initial_pitch_deg: [-15.0, 15.0]
+  altitude_ft: [1200.0, 10000.0]
+  terrain_clearance_ft: [500.0, 3000.0]
+tiers:
+  0:
+    failure_count: [0, 0]
+    surface_failure_severity: [0.0, 0.0]
+    actuator_delay_seconds: [0.0, 0.0]
+    turbulence_intensity: [0.0, 0.10]
+    initial_airspeed_kts: [125.0, 155.0]
+    initial_bank_deg: [-20.0, 20.0]
+    initial_pitch_deg: [-7.0, 7.0]
+  1:
+    failure_count: [1, 1]
+    allowed_families: [reduced_aileron_effectiveness, partial_thrust_loss, complete_engine_loss]
+    surface_failure_severity: [0.20, 0.35]
+    partial_thrust_loss_severity: [0.20, 0.35]
+    actuator_delay_seconds: [0.0, 0.0]
+    turbulence_intensity: [0.0, 0.10]
+    failure_activation_seconds: [3.0, 8.0]
+    initial_airspeed_kts: [120.0, 160.0]
+    initial_bank_deg: [-25.0, 25.0]
+    initial_pitch_deg: [-8.0, 8.0]
+  2:
+    failure_count: [1, 1]
+    allowed_families: [reduced_aileron_effectiveness, complete_engine_loss, deterministic_sensor_bias, actuator_delay]
+    surface_failure_severity: [0.45, 0.60]
+    actuator_delay_seconds: [0.30, 0.50]
+    sensor_bias_maximums: {airspeed_kts: [5.0, 15.0], altitude_ft: [100.0, 500.0], heading_deg: [5.0, 15.0]}
+    turbulence_intensity: [0.0, 0.15]
+    failure_activation_seconds: [2.0, 7.0]
+    initial_airspeed_kts: [110.0, 165.0]
+    initial_bank_deg: [-30.0, 30.0]
+    initial_pitch_deg: [-10.0, 10.0]
+  3:
+    failure_count: [2, 2]
+    allowed_combinations: [engine_plus_aileron, delay_plus_partial_thrust, aileron_plus_turbulence, sensor_bias_plus_actuator]
+    component_severity: [0.30, 0.60]
+    actuator_delay_seconds: [0.30, 0.60]
+    sensor_bias_maximums: {airspeed_kts: [8.0, 18.0], altitude_ft: [200.0, 700.0], heading_deg: [8.0, 20.0]}
+    turbulence_intensity: [0.10, 0.20]
+    failure_activation_seconds: [2.0, 7.0]
+    initial_airspeed_kts: [105.0, 170.0]
+    initial_bank_deg: [-32.0, 32.0]
+    initial_pitch_deg: [-12.0, 12.0]
+  4:
+    failure_count: [2, 3]
+    allowed_combinations: [engine_plus_aileron, delay_turbulence_partial_thrust, right_engine_rudder_crosswind, sensor_bias_plus_delay]
+    component_severity: [0.70, 0.80]
+    actuator_delay_seconds: [0.60, 0.80]
+    sensor_bias_maximums: {airspeed_kts: [15.0, 25.0], altitude_ft: [500.0, 900.0], heading_deg: [15.0, 25.0]}
+    turbulence_intensity: [0.20, 0.30]
+    failure_activation_seconds: [2.0, 6.0]
+    initial_airspeed_kts: [100.0, 175.0]
+    initial_bank_deg: [-35.0, 35.0]
+    initial_pitch_deg: [-13.0, 13.0]
+  5:
+    failure_count: [1, 3]
+    allowed_combinations: [boundary_engine_aileron, boundary_sensor_delay, boundary_delay_turbulence, boundary_aileron]
+    component_severity: [0.80, 0.85]
+    actuator_delay_seconds: [0.70, 0.80]
+    sensor_bias_maximums: {airspeed_kts: [18.0, 28.0], altitude_ft: [700.0, 1000.0], heading_deg: [20.0, 30.0]}
+    turbulence_intensity: [0.25, 0.30]
+    failure_activation_seconds: [2.0, 5.0]
+    initial_airspeed_kts: [95.0, 125.0]
+    initial_bank_deg: [-40.0, 40.0]
+    initial_pitch_deg: [-15.0, 15.0]
+    altitude_ft: [1200.0, 4000.0]
+    terrain_clearance_ft: [500.0, 1500.0]

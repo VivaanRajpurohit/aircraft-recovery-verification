@@ -10,6 +10,26 @@ import warnings
 import yaml
 from pydantic import BaseModel, ConfigDict, Field
 
+class AircraftAnimationSettings(BaseModel):
+    model_config=ConfigDict(extra="forbid")
+    enabled:bool=False
+    left_aileron_name:str="left_aileron"; right_aileron_name:str="right_aileron"
+    elevator_name:str="elevator"; rudder_name:str="rudder"
+    left_flap_name:str="left_flap"; right_flap_name:str="right_flap"
+    left_propeller_name:str="left_propeller"; right_propeller_name:str="right_propeller"
+    aileron_limit_deg:float=20.0; elevator_limit_deg:float=25.0; rudder_limit_deg:float=25.0; flap_limit_deg:float=30.0
+    left_aileron_sign:float=-1.0; right_aileron_sign:float=1.0
+    elevator_sign:float=-1.0; rudder_sign:float=1.0; flap_sign:float=-1.0
+    left_propeller_sign:float=1.0; right_propeller_sign:float=-1.0
+    propeller_idle_deg_per_second:float=180.0; propeller_max_deg_per_second:float=2160.0
+    landing_gear_state:Literal["fixed_retracted"]="fixed_retracted"
+    window_material_name:str="window_blue_gray"
+    def node_names(self)->dict[str,str]:
+        return {"left_aileron":self.left_aileron_name,"right_aileron":self.right_aileron_name,
+                "elevator":self.elevator_name,"rudder":self.rudder_name,"left_flap":self.left_flap_name,
+                "right_flap":self.right_flap_name,"left_propeller":self.left_propeller_name,
+                "right_propeller":self.right_propeller_name}
+
 class AircraftModelSettings(BaseModel):
     model_config=ConfigDict(extra="forbid")
     model_path:str="assets/aircraft/cessna/cessna.fbx"
@@ -19,6 +39,9 @@ class AircraftModelSettings(BaseModel):
     roll_offset_deg:float=0.0
     position_offset_m:tuple[float,float,float]=(0.0,0.0,0.0)
     neutral_color_rgba:tuple[float,float,float,float]=(0.72,0.74,0.78,1.0)
+    native_forward_axis:str="+z"
+    native_up_axis:str="+y"
+    animation:AircraftAnimationSettings=AircraftAnimationSettings()
 
 class CameraSettings(BaseModel):
     model_config=ConfigDict(extra="forbid")
@@ -89,6 +112,7 @@ def load_replay_frames(run_directory:str|Path)->tuple[list[dict[str,float]],dict
             "pitch_deg":float(truth.get("pitch_deg",observed["pitch_deg"])),
             "roll_deg":float(truth.get("roll_deg",observed["roll_deg"])),
             "airspeed_kts":float(truth.get("airspeed_kts",observed["airspeed_kts"])),
+            "executed_controls":{name:float(row.get("ground_truth_after",{}).get("applied_control_commands",{}).get(name,0.0)) for name in ("elevator","aileron","rudder","throttle_left","throttle_right")},
         })
     return frames,json.loads((run/"summary.json").read_text(encoding="utf-8")),json.loads((run/"metadata.json").read_text(encoding="utf-8"))
 
@@ -118,6 +142,8 @@ class Replay3DViewer:
         if debug_coordinates: print(f"Replay world coordinates: first={self.points[0]} last={self.points[-1]}")
         self.aircraft_parent=self.base.render.attachNewNode("aircraft_replay_transform")
         self.model_node,self.model_loaded,self.model_message=self._load_aircraft_child()
+        from aircraft_recovery.visualization.aircraft_animation import AircraftNodeAnimator
+        self.aircraft_animator=AircraftNodeAnimator(self.model_node,settings.aircraft.animation)
         self._log_event("model_loaded" if self.model_loaded else "model_fallback",0.0,message=self.model_message)
         self._setup_world(); self._setup_lighting(); self._setup_failure_markers(); self._setup_ui()
         if self.base.camLens is not None:
@@ -141,13 +167,13 @@ class Replay3DViewer:
             model=self.base.loader.loadModel(Filename.fromOsSpecific(str(path)),noCache=True)
             if model.isEmpty(): raise RuntimeError("Panda3D returned an empty model")
             model.reparentTo(self.aircraft_parent); model.setScale(cfg.scale); model.setHpr(cfg.yaw_offset_deg,cfg.pitch_offset_deg,cfg.roll_offset_deg); model.setPos(*cfg.position_offset_m)
-            if model.findAllTextures().getNumTextures()==0:
+            if model.findAllTextures().getNumTextures()==0 and not cfg.animation.enabled:
                 material=Material("neutral-untextured-aircraft"); material.setAmbient((.36,.38,.41,1)); material.setDiffuse(cfg.neutral_color_rgba); material.setSpecular((.32,.34,.38,1)); material.setShininess(22); model.setMaterial(material,1); model.setColor(*cfg.neutral_color_rgba); model.setTransparency(False); model.setTwoSided(False)
-                message=f"Loaded FBX without textures; neutral material applied: {path}"
-            else: message=f"Loaded FBX aircraft model: {path}"
+                message=f"Loaded aircraft model without textures; neutral material applied: {path}"
+            else: message=f"Loaded aircraft model with textures: {path}"
             return model,True,message
         except Exception as error:
-            message=f"Could not load FBX '{path}' ({type(error).__name__}: {error}); using primitive fallback aircraft."
+            message=f"Could not load aircraft model '{path}' ({type(error).__name__}: {error}); using primitive fallback aircraft."
             warnings.warn(message,RuntimeWarning,stacklevel=2)
             return self._create_primitive_aircraft(),False,message
 
@@ -233,7 +259,7 @@ class Replay3DViewer:
     def _toggle_pause(self): self.auto_start_at=None; self.paused=not self.paused
     def _restart(self):
         from panda3d.core import ClockObject
-        self.elapsed=0.0; self.frame_index=0; self.camera_initialized=False; self.event_state.reset(); self.notification.setText(""); self.notification_frame.hide(); self.paused=True; self.auto_start_at=None if self.start_paused else ClockObject.getGlobalClock().getRealTime()+2.0; self._draw_path(0); self._log_event("restart",0.0)
+        self.elapsed=0.0; self.frame_index=0; self.camera_initialized=False; self.event_state.reset(); self.aircraft_animator.reset(); self.notification.setText(""); self.notification_frame.hide(); self.paused=True; self.auto_start_at=None if self.start_paused else ClockObject.getGlobalClock().getRealTime()+2.0; self._draw_path(0); self._log_event("restart",0.0)
     def _toggle_failures(self): self.show_failures=not self.show_failures
     def _toggle_ground_truth(self): self.show_ground_truth=not self.show_ground_truth
     def _toggle_monitor(self): self.show_monitor_details=not self.show_monitor_details
@@ -336,7 +362,7 @@ class Replay3DViewer:
     def _interpolated(self,t):
         while self.frame_index+1<len(self.frames) and self.frames[self.frame_index+1]["time"]<t: self.frame_index+=1
         a=self.frames[self.frame_index]; b=self.frames[min(self.frame_index+1,len(self.frames)-1)]; span=max(b["time"]-a["time"],1e-9); u=max(0,min(1,(t-a["time"])/span)); pa=self.points[self.frame_index]; pb=self.points[min(self.frame_index+1,len(self.points)-1)]
-        frame={k:a[k]+(b[k]-a[k])*u for k in ("pitch_deg","roll_deg","airspeed_kts","altitude_ft")}; frame["heading_deg"]=_short_heading_lerp(a["heading_deg"],b["heading_deg"],u); frame["time"]=t; return frame,tuple(pa[i]+(pb[i]-pa[i])*u for i in range(3))
+        frame={k:a[k]+(b[k]-a[k])*u for k in ("pitch_deg","roll_deg","airspeed_kts","altitude_ft")}; frame["heading_deg"]=_short_heading_lerp(a["heading_deg"],b["heading_deg"],u); frame["time"]=t; frame["executed_controls"]={name:a["executed_controls"][name]+(b["executed_controls"][name]-a["executed_controls"][name])*u for name in a["executed_controls"]}; return frame,tuple(pa[i]+(pb[i]-pa[i])*u for i in range(3))
 
     def _update(self,task):
         from panda3d.core import ClockObject,Vec3
@@ -344,6 +370,7 @@ class Replay3DViewer:
         if self.auto_start_at is not None and clock.getRealTime()>=self.auto_start_at: self.paused=False; self.auto_start_at=None
         if not self.paused: self.elapsed+=dt*self.speed
         end=self.frames[-1]["time"]; self.elapsed=min(self.elapsed,end); frame,pos=self._interpolated(self.elapsed); self.aircraft_parent.setPos(*pos); self.aircraft_parent.setHpr(*replay_parent_hpr(frame["heading_deg"],frame["pitch_deg"],frame["roll_deg"]))
+        self.aircraft_animator.apply(frame["executed_controls"],dt if not self.paused else 0.0)
         self._update_mouse_look()
         forward=self.aircraft_parent.getQuat(self.base.render).xform(Vec3(0,1,0)); target=Vec3(*pos)+forward*self.settings.camera.look_ahead_m
         right=self.aircraft_parent.getQuat(self.base.render).xform(Vec3(1,0,0))
@@ -381,7 +408,7 @@ def validate_model(settings:Replay3DSettings)->dict[str,Any]:
         model=base.loader.loadModel(Filename.fromOsSpecific(str(path)),noCache=True)
         if model.isEmpty(): raise RuntimeError("empty model")
         bounds=model.getTightBounds(); raw=tuple(float(bounds[1][i]-bounds[0][i]) for i in range(3)); dims={"wingspan_m":raw[0]*settings.aircraft.scale,"height_m":raw[1]*settings.aircraft.scale,"length_m":raw[2]*settings.aircraft.scale}
-        transform=NodePath(PandaNode("offset")); transform.setHpr(settings.aircraft.yaw_offset_deg,settings.aircraft.pitch_offset_deg,settings.aircraft.roll_offset_deg); q=transform.getQuat(); forward=q.xform(Vec3(0,0,1)); up=q.xform(Vec3(0,1,0))
+        axes={"+x":Vec3(1,0,0),"-x":Vec3(-1,0,0),"+y":Vec3(0,1,0),"-y":Vec3(0,-1,0),"+z":Vec3(0,0,1),"-z":Vec3(0,0,-1)}; transform=NodePath(PandaNode("offset")); transform.setHpr(settings.aircraft.yaw_offset_deg,settings.aircraft.pitch_offset_deg,settings.aircraft.roll_offset_deg); q=transform.getQuat(); forward=q.xform(axes[settings.aircraft.native_forward_axis.lower()]); up=q.xform(axes[settings.aircraft.native_up_axis.lower()])
         return {"loaded":True,"model_path":str(path),"scale":settings.aircraft.scale,"offset_hpr_deg":[settings.aircraft.yaw_offset_deg,settings.aircraft.pitch_offset_deg,settings.aircraft.roll_offset_deg],"position_offset_m":list(settings.aircraft.position_offset_m),"dimensions_m":dims,"native_forward_after_offset":list(forward),"native_up_after_offset":list(up),"nose_points_forward":forward.y>0.99,"model_up_is_world_up":up.z>0.99,"textures_found":model.findAllTextures().getNumTextures()}
     except Exception as error: return {"loaded":False,"model_path":str(path),"fallback":"primitive","warning":f"{type(error).__name__}: {error}"}
     finally: base.destroy()

@@ -1,0 +1,11 @@
+time_step_seconds: 0.1
+target_airspeed_kts: 135.0
+stall_recovery_margin_kts: 15.0
+maximum_recovery_pitch_deg: 20.0
+minimum_mode_duration_seconds: 2.0
+pitch: {kp: 0.06, ki: 0.006, kd: 0.015, integral_limit: 12.0}
+roll: {kp: 0.04, ki: 0.004, kd: 0.012, integral_limit: 15.0}
+heading: {kp: 0.018, ki: 0.0005, kd: 0.003, integral_limit: 30.0}
+airspeed: {kp: 0.025, ki: 0.002, kd: 0.005, integral_limit: 20.0}
+minimum_runway_ft: 3500.0
+maximum_crosswind_kts: 30.0

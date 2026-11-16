@@ -1,0 +1,206 @@
+contract_id: final_heldout_factor_matrix_v2
+status: proposed_v2_pending_review_no_generation_authority
+supersedes: final_heldout_factor_matrix_v1
+principle: held_out_numeric_values_are_defined_per_tier_and_remain_inside_each_tier_contract
+boundary_convention: closed_intervals
+split_semantics:
+  train: [seed_partition, value_support]
+  development: [seed_holdout, value_holdout_for_selection]
+  challenge: [seed_holdout, value_holdout, timing_holdout]
+  ood_stress: [seed_holdout, value_holdout, timing_holdout, supported_combination_holdout]
+  final_sealed_test: [seed_holdout, value_holdout, timing_holdout, selected_combination_holdout]
+initial_condition_grid:
+  rule: value_equals_tier_minimum_plus_fraction_times_tier_range_for_each_of_airspeed_bank_pitch_altitude_and_clearance
+  train: [0.0, 0.3333333333, 0.6666666667, 1.0]
+  development: [0.20, 0.80]
+  challenge: [0.10, 0.90]
+  ood_stress: [0.05, 0.95]
+  final_sealed_test: [0.15, 0.50, 0.85]
+  range_source: configs/research/final_tiers_v1.yaml
+tiers:
+  0:
+    applicability: nominal_no_failure_severity_or_activation
+    severity: {train: [], development: [], challenge: [], ood_stress: [], final_sealed_test: []}
+    activation_seconds: {train: [], development: [], challenge: [], ood_stress: [], final_sealed_test: []}
+    turbulence_intensity:
+      train: [0.00, 0.05, 0.10]
+      development: [0.025, 0.075]
+      challenge: [0.04, 0.08]
+      ood_stress: [0.01, 0.09]
+      final_sealed_test: [0.03, 0.07]
+  1:
+    component_severity:
+      applies_to: [reduced_aileron_effectiveness, partial_thrust_loss]
+      train: [0.20, 0.24, 0.28, 0.32]
+      development: [0.22, 0.30]
+      challenge: [0.26, 0.34]
+      ood_stress: [0.21, 0.31, 0.35]
+      final_sealed_test: [0.23, 0.29, 0.33]
+    complete_engine_loss_severity: {all_splits: 1.0, note: engine availability becomes zero; mildness comes from the surrounding state not partial failure}
+    aileron_effectiveness_rule: one_minus_component_severity
+    remaining_thrust_fraction_rule: one_minus_component_severity_for_partial_thrust_only
+    activation_seconds:
+      train: [3.0, 4.0, 6.0, 8.0]
+      development: [3.5, 6.5]
+      challenge: [4.5, 7.5]
+      ood_stress: [3.25, 5.5, 7.75]
+      final_sealed_test: [3.75, 5.25, 7.25]
+    turbulence_intensity:
+      train: [0.00, 0.05, 0.10]
+      development: [0.025, 0.075]
+      challenge: [0.04, 0.08]
+      ood_stress: [0.01, 0.09]
+      final_sealed_test: [0.03, 0.07]
+  2:
+    component_severity:
+      applies_to: [reduced_aileron_effectiveness]
+      train: [0.45, 0.50, 0.55, 0.60]
+      development: [0.47, 0.57]
+      challenge: [0.49, 0.59]
+      ood_stress: [0.46, 0.53, 0.58]
+      final_sealed_test: [0.48, 0.52, 0.56]
+    complete_engine_loss_severity: {all_splits: 1.0, note: not governed by surface component severity}
+    aileron_effectiveness_rule: one_minus_component_severity
+    activation_seconds:
+      train: [2.0, 3.5, 5.5, 7.0]
+      development: [2.5, 6.0]
+      challenge: [2.75, 6.25]
+      ood_stress: [2.25, 4.75, 6.75]
+      final_sealed_test: [2.50, 4.25, 6.50]
+    actuator_delay_seconds:
+      train: [0.30, 0.40, 0.50]
+      development: [0.35, 0.45]
+      challenge: [0.375, 0.475]
+      ood_stress: [0.325, 0.425, 0.49]
+      final_sealed_test: [0.34, 0.44, 0.48]
+    sensor_bias_maximums:
+      airspeed_kts: {train: [5, 10, 15], development: [7], challenge: [9, 14], ood_stress: [6, 12], final_sealed_test: [8, 11, 13]}
+      altitude_ft: {train: [100, 300, 500], development: [200], challenge: [350, 450], ood_stress: [150, 400], final_sealed_test: [250, 375, 475]}
+      heading_deg: {train: [5, 10, 15], development: [7], challenge: [9, 14], ood_stress: [6, 12], final_sealed_test: [8, 11, 13]}
+  3:
+    component_severity:
+      applies_to: [reduced_aileron_effectiveness, partial_thrust_loss, deterministic_sensor_bias]
+      train: [0.30, 0.40, 0.50, 0.60]
+      development: [0.35, 0.55]
+      challenge: [0.45, 0.58]
+      ood_stress: [0.32, 0.48, 0.59]
+      final_sealed_test: [0.34, 0.46, 0.56]
+    complete_engine_loss_severity: {all_splits: 1.0, note: engine availability becomes zero}
+    aileron_effectiveness_rule: one_minus_component_severity
+    remaining_thrust_fraction_rule: one_minus_component_severity_for_partial_thrust_only
+    activation_seconds:
+      train: [2.0, 3.5, 5.5, 7.0]
+      development: [2.5, 6.0]
+      challenge: [2.75, 6.25]
+      ood_stress: [2.25, 4.75, 6.75]
+      final_sealed_test: [2.50, 4.25, 6.50]
+    actuator_delay_seconds:
+      train: [0.30, 0.45, 0.60]
+      development: [0.35, 0.55]
+      challenge: [0.40, 0.58]
+      ood_stress: [0.325, 0.50, 0.59]
+      final_sealed_test: [0.375, 0.475, 0.575]
+    turbulence_intensity:
+      train: [0.10, 0.15, 0.20]
+      development: [0.125, 0.175]
+      challenge: [0.14, 0.19]
+      ood_stress: [0.11, 0.18]
+      final_sealed_test: [0.13, 0.16]
+    sensor_bias_maximums:
+      airspeed_kts: {train: [8, 13, 18], development: [10], challenge: [12, 17], ood_stress: [9, 15], final_sealed_test: [11, 14, 16]}
+      altitude_ft: {train: [200, 450, 700], development: [300], challenge: [400, 650], ood_stress: [250, 550], final_sealed_test: [350, 500, 600]}
+      heading_deg: {train: [8, 14, 20], development: [10], challenge: [12, 18], ood_stress: [9, 16], final_sealed_test: [11, 15, 17]}
+  4:
+    component_severity:
+      applies_to: [reduced_aileron_effectiveness, reduced_rudder_effectiveness, partial_thrust_loss, deterministic_sensor_bias]
+      train: [0.70, 0.74, 0.78, 0.80]
+      development: [0.72, 0.76]
+      challenge: [0.73, 0.79]
+      ood_stress: [0.71, 0.77]
+      final_sealed_test: [0.725, 0.755, 0.785]
+    complete_engine_loss_severity: {all_splits: 1.0, note: engine availability becomes zero}
+    surface_effectiveness_rule: one_minus_component_severity
+    remaining_thrust_fraction_rule: one_minus_component_severity_for_partial_thrust_only
+    activation_seconds:
+      train: [2.0, 3.0, 4.5, 6.0]
+      development: [2.5, 5.5]
+      challenge: [3.5, 5.0]
+      ood_stress: [2.25, 4.25, 5.75]
+      final_sealed_test: [2.75, 3.75, 5.25]
+    actuator_delay_seconds:
+      train: [0.60, 0.70, 0.80]
+      development: [0.65, 0.75]
+      challenge: [0.625, 0.775]
+      ood_stress: [0.61, 0.72, 0.79]
+      final_sealed_test: [0.64, 0.69, 0.76]
+    turbulence_intensity:
+      train: [0.20, 0.25, 0.30]
+      development: [0.225, 0.275]
+      challenge: [0.24, 0.29]
+      ood_stress: [0.21, 0.28]
+      final_sealed_test: [0.23, 0.26]
+    crosswind_maximum_kts:
+      train: [25, 30, 35]
+      development: [27, 33]
+      challenge: [29, 34]
+      ood_stress: [26, 32]
+      final_sealed_test: [28, 31]
+    sensor_bias_maximums:
+      airspeed_kts: {train: [15, 20, 25], development: [17], challenge: [19, 24], ood_stress: [16, 22], final_sealed_test: [18, 21, 23]}
+      altitude_ft: {train: [500, 700, 900], development: [600], challenge: [650, 850], ood_stress: [550, 800], final_sealed_test: [625, 750, 875]}
+      heading_deg: {train: [15, 20, 25], development: [17], challenge: [19, 24], ood_stress: [16, 22], final_sealed_test: [18, 21, 23]}
+  5:
+    component_severity:
+      applies_to: [reduced_aileron_effectiveness, deterministic_sensor_bias]
+      train: [0.80, 0.825, 0.85]
+      development: [0.81, 0.84]
+      challenge: [0.815, 0.845]
+      ood_stress: [0.805, 0.835]
+      final_sealed_test: [0.8125, 0.83, 0.8475]
+    complete_engine_loss_severity: {all_splits: 1.0, note: engine availability becomes zero}
+    aileron_effectiveness_rule: one_minus_component_severity
+    activation_seconds:
+      train: [2.0, 3.0, 4.0, 5.0]
+      development: [2.5, 4.5]
+      challenge: [2.25, 3.5, 4.75]
+      ood_stress: [2.125, 3.25, 4.625]
+      final_sealed_test: [2.375, 3.75, 4.875]
+    actuator_delay_seconds:
+      train: [0.70, 0.75, 0.80]
+      development: [0.725, 0.775]
+      challenge: [0.7125, 0.7875]
+      ood_stress: [0.705, 0.765, 0.795]
+      final_sealed_test: [0.72, 0.74, 0.78]
+    turbulence_intensity:
+      train: [0.25, 0.275, 0.30]
+      development: [0.26, 0.29]
+      challenge: [0.265, 0.295]
+      ood_stress: [0.255, 0.285]
+      final_sealed_test: [0.2625, 0.28, 0.2975]
+    sensor_bias_maximums:
+      airspeed_kts: {train: [18, 23, 28], development: [20, 26], challenge: [21, 27], ood_stress: [19, 25], final_sealed_test: [20.5, 24, 27.5]}
+      altitude_ft: {train: [700, 850, 1000], development: [750, 950], challenge: [800, 975], ood_stress: [725, 900], final_sealed_test: [775, 875, 987.5]}
+      heading_deg: {train: [20, 25, 30], development: [22, 28], challenge: [23, 29], ood_stress: [21, 27], final_sealed_test: [22.5, 26, 29.5]}
+family_parameter_semantics:
+  nominal: {tier: 0, parameters: []}
+  isolated_aileron_mild: {tier: 1, parameters: [component_severity, activation_seconds], component_mapping: {component_severity: reduced_aileron_effectiveness}}
+  isolated_partial_thrust_mild: {tier: 1, parameters: [component_severity, activation_seconds], component_mapping: {component_severity: partial_thrust_loss}}
+  isolated_engine_loss_mild_state: {tier: 1, parameters: [complete_engine_loss_severity, activation_seconds], component_mapping: {complete_engine_loss_severity: selected_left_or_right_engine}}
+  isolated_aileron_moderate: {tier: 2, parameters: [component_severity, activation_seconds], component_mapping: {component_severity: reduced_aileron_effectiveness}}
+  isolated_engine_loss_moderate_state: {tier: 2, parameters: [complete_engine_loss_severity, activation_seconds], component_mapping: {complete_engine_loss_severity: selected_left_or_right_engine}}
+  deterministic_sensor_bias: {tier: 2, parameters: [sensor_bias_maximums, activation_seconds], component_mapping: {sensor_bias_maximums: selected_airspeed_altitude_or_heading_sensor}}
+  isolated_actuator_delay: {tier: 2, parameters: [actuator_delay_seconds, activation_seconds], component_mapping: {actuator_delay_seconds: flight_controls}}
+  engine_plus_aileron: {tier: 3, parameters: [complete_engine_loss_severity, component_severity, activation_seconds], component_mapping: {complete_engine_loss_severity: selected_engine, component_severity: reduced_aileron_effectiveness}}
+  delay_plus_partial_thrust: {tier: 3, parameters: [actuator_delay_seconds, component_severity, activation_seconds], component_mapping: {actuator_delay_seconds: flight_controls, component_severity: partial_thrust_loss}}
+  aileron_plus_turbulence: {tier: 3, parameters: [component_severity, turbulence_intensity, activation_seconds], component_mapping: {component_severity: reduced_aileron_effectiveness, turbulence_intensity: environment}}
+  sensor_bias_plus_actuator: {tier: 3, parameters: [sensor_bias_maximums, actuator_delay_seconds, activation_seconds], component_mapping: {sensor_bias_maximums: selected_sensor, actuator_delay_seconds: flight_controls}}
+  severe_engine_plus_aileron: {tier: 4, parameters: [complete_engine_loss_severity, component_severity, activation_seconds], component_mapping: {complete_engine_loss_severity: selected_engine, component_severity: reduced_aileron_effectiveness}}
+  severe_delay_turbulence_partial_thrust: {tier: 4, parameters: [actuator_delay_seconds, turbulence_intensity, component_severity, activation_seconds], component_mapping: {actuator_delay_seconds: flight_controls, turbulence_intensity: environment, component_severity: partial_thrust_loss}}
+  right_engine_rudder_crosswind: {tier: 4, parameters: [complete_engine_loss_severity, component_severity, crosswind_maximum_kts, activation_seconds], component_mapping: {complete_engine_loss_severity: right_engine, component_severity: reduced_rudder_effectiveness, crosswind_maximum_kts: environment}}
+  severe_sensor_bias_plus_delay: {tier: 4, parameters: [sensor_bias_maximums, actuator_delay_seconds, activation_seconds], component_mapping: {sensor_bias_maximums: selected_sensor, actuator_delay_seconds: flight_controls}}
+  boundary_engine_aileron: {tier: 5, parameters: [complete_engine_loss_severity, component_severity, activation_seconds], component_mapping: {complete_engine_loss_severity: selected_engine, component_severity: reduced_aileron_effectiveness}}
+  boundary_sensor_delay: {tier: 5, parameters: [sensor_bias_maximums, actuator_delay_seconds, activation_seconds], component_mapping: {sensor_bias_maximums: selected_sensor, actuator_delay_seconds: flight_controls}}
+  boundary_delay_turbulence: {tier: 5, parameters: [actuator_delay_seconds, turbulence_intensity, activation_seconds], component_mapping: {actuator_delay_seconds: flight_controls, turbulence_intensity: environment}}
+  boundary_aileron: {tier: 5, parameters: [component_severity, activation_seconds], component_mapping: {component_severity: reduced_aileron_effectiveness}}
+sealed_spacing_rule: choose deterministic interior midpoints between nonsealed support values; minimum spacing is recorded per factor and no model outcome is consulted
+generation_authorized: false

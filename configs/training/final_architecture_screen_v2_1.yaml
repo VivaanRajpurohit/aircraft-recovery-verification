@@ -1,0 +1,48 @@
+protocol_id: final_architecture_screen_v2_1
+status: blocked_pending_label_and_checkpoint_contract_resolution
+dataset_id: final_policy_approved_v2_1
+dataset_logical_sha256: bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a
+normalization_logical_sha256: 005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7
+fit_split: train
+selection_split: development
+forbidden_splits:
+  - challenge
+  - ood_stress
+  - final_sealed_test
+architecture_screen_seed: 17001
+architectures:
+  - architecture_id: small_reference
+    hidden_dimensions: [128, 64]
+    activation: relu
+    parameter_count_multi_head: 14670
+  - architecture_id: current_reference
+    hidden_dimensions: [256, 128]
+    activation: relu
+    parameter_count_multi_head: 45710
+  - architecture_id: moderate
+    hidden_dimensions: [256, 256, 128]
+    activation: silu
+    parameter_count_multi_head: 111502
+architecture_screen:
+  optimizer: AdamW
+  learning_rate: 0.001
+  batch_size: 256
+  weight_decay: 0.0001
+  maximum_epochs: 50
+  patience: 8
+  improvement_tolerance: 1.0e-10
+  gradient_norm_clip: 1.0
+optimizer_grid:
+  learning_rates: [0.0003, 0.001]
+  batch_sizes: [256, 512]
+loss:
+  controls: weighted_mean_squared_error
+  emergency_mode: cross_entropy
+  stabilization_targets: normalized_mean_squared_error
+  weights:
+    controls: 1.0
+    emergency_mode: 0.25
+    stabilization_targets: 0.1
+checkpoint_selection_rule: unresolved_in_frozen_protocol
+final_training_seeds: [17001, 17002, 17003, 17004, 17005]
+

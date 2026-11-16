@@ -1,0 +1,571 @@
+{
+  "scope": "Frozen-record recalculation and action replay; no refitting; original latency is reaggregated, not replaced by CPU timings.",
+  "dataset_flights": {
+    "train": 576,
+    "development": 144,
+    "challenge": 144,
+    "ood_stress": 144,
+    "final_sealed_test": 144
+  },
+  "splits": {
+    "challenge": {
+      "conditions": {
+        "unmonitored": {
+          "n": 144,
+          "recovered": 144,
+          "safety_violation_flights": 3,
+          "median_onset_s": 0.050000000000001155,
+          "mean_onset_s": 0.2444444444444428,
+          "modifications": 0,
+          "steps": 37440,
+          "full_controller_p95_ms": 3.3047200005967152,
+          "monitor_p95_ms": null,
+          "tiers": {
+            "0": {
+              "median": 0.8999999999999999,
+              "min": 0.7999999999999999,
+              "max": 1.0999999999999999,
+              "n": 24
+            },
+            "1": {
+              "median": 0.04999999999999449,
+              "min": 0.0,
+              "max": 0.09999999999998899,
+              "n": 24
+            },
+            "2": {
+              "median": 0.050000000000001155,
+              "min": 0.049999999999993605,
+              "max": 1.5000000000000002,
+              "n": 24
+            },
+            "3": {
+              "median": 0.04999999999999738,
+              "min": 0.049999999999993605,
+              "max": 0.050000000000001155,
+              "n": 24
+            },
+            "4": {
+              "median": 0.04999999999999982,
+              "min": 1.7763568394002505e-15,
+              "max": 0.09999999999999787,
+              "n": 24
+            },
+            "5": {
+              "median": 0.049999999999998934,
+              "min": 1.7763568394002505e-15,
+              "max": 0.05000000000000071,
+              "n": 24
+            }
+          }
+        },
+        "monitored": {
+          "n": 144,
+          "recovered": 144,
+          "safety_violation_flights": 2,
+          "median_onset_s": 0.050000000000001155,
+          "mean_onset_s": 0.2631944444444428,
+          "modifications": 593,
+          "steps": 37440,
+          "full_controller_p95_ms": 8.283500000425184,
+          "monitor_p95_ms": 4.746020000493443,
+          "tiers": {
+            "0": {
+              "median": 0.95,
+              "min": 0.8999999999999999,
+              "max": 1.0999999999999999,
+              "n": 24
+            },
+            "1": {
+              "median": 0.04999999999999449,
+              "min": 0.0,
+              "max": 0.09999999999998899,
+              "n": 24
+            },
+            "2": {
+              "median": 0.050000000000001155,
+              "min": 0.049999999999993605,
+              "max": 1.6000000000000003,
+              "n": 24
+            },
+            "3": {
+              "median": 0.04999999999999738,
+              "min": 0.049999999999993605,
+              "max": 0.050000000000001155,
+              "n": 24
+            },
+            "4": {
+              "median": 0.04999999999999982,
+              "min": 1.7763568394002505e-15,
+              "max": 0.09999999999999787,
+              "n": 24
+            },
+            "5": {
+              "median": 0.049999999999998934,
+              "min": 1.7763568394002505e-15,
+              "max": 0.05000000000000071,
+              "n": 24
+            }
+          }
+        }
+      },
+      "action_steps_replayed": 74880,
+      "rule_events": {
+        "command_rate_aileron": 238,
+        "command_rate_elevator": 201,
+        "command_rate_throttle_left": 148,
+        "command_rate_throttle_right": 155,
+        "command_rate_rudder": 52,
+        "stall_margin": 75
+      },
+      "paired_recovery_difference": 0.0,
+      "paired_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "ood_stress": {
+      "conditions": {
+        "unmonitored": {
+          "n": 144,
+          "recovered": 144,
+          "safety_violation_flights": 1,
+          "median_onset_s": 0.0500000000000016,
+          "mean_onset_s": 0.3336805555555539,
+          "modifications": 0,
+          "steps": 37440,
+          "full_controller_p95_ms": 3.3989249998739957,
+          "monitor_p95_ms": null,
+          "tiers": {
+            "0": {
+              "median": 1.0999999999999999,
+              "min": 0.9999999999999999,
+              "max": 1.2,
+              "n": 24
+            },
+            "1": {
+              "median": 0.0500000000000016,
+              "min": 0.049999999999988276,
+              "max": 0.09999999999999609,
+              "n": 24
+            },
+            "2": {
+              "median": 0.04999999999999982,
+              "min": 0.04999999999999183,
+              "max": 1.7000000000000004,
+              "n": 24
+            },
+            "3": {
+              "median": 0.049999999999998934,
+              "min": 0.04999999999999183,
+              "max": 0.05000000000000071,
+              "n": 24
+            },
+            "4": {
+              "median": 0.05000000000000071,
+              "min": 0.04999999999999538,
+              "max": 4.049999999999994,
+              "n": 24
+            },
+            "5": {
+              "median": 0.07499999999999929,
+              "min": 0.0500000000000016,
+              "max": 0.6750000000000012,
+              "n": 24
+            }
+          }
+        },
+        "monitored": {
+          "n": 144,
+          "recovered": 144,
+          "safety_violation_flights": 1,
+          "median_onset_s": 0.0500000000000016,
+          "mean_onset_s": 0.33229166666666504,
+          "modifications": 619,
+          "steps": 37440,
+          "full_controller_p95_ms": 8.430630000111703,
+          "monitor_p95_ms": 4.824304999885953,
+          "tiers": {
+            "0": {
+              "median": 1.0999999999999999,
+              "min": 0.9999999999999999,
+              "max": 1.3,
+              "n": 24
+            },
+            "1": {
+              "median": 0.0500000000000016,
+              "min": 0.049999999999988276,
+              "max": 0.09999999999999609,
+              "n": 24
+            },
+            "2": {
+              "median": 0.04999999999999982,
+              "min": 0.04999999999999183,
+              "max": 1.7000000000000004,
+              "n": 24
+            },
+            "3": {
+              "median": 0.049999999999998934,
+              "min": 0.04999999999999183,
+              "max": 0.05000000000000071,
+              "n": 24
+            },
+            "4": {
+              "median": 0.05000000000000071,
+              "min": 0.04999999999999538,
+              "max": 3.7499999999999947,
+              "n": 24
+            },
+            "5": {
+              "median": 0.07499999999999929,
+              "min": 0.0500000000000016,
+              "max": 0.6750000000000012,
+              "n": 24
+            }
+          }
+        }
+      },
+      "action_steps_replayed": 74880,
+      "rule_events": {
+        "command_rate_aileron": 259,
+        "command_rate_elevator": 149,
+        "command_rate_throttle_right": 143,
+        "command_rate_throttle_left": 132,
+        "command_rate_rudder": 57,
+        "stall_margin": 35
+      },
+      "paired_recovery_difference": 0.0,
+      "paired_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "final_sealed_test": {
+      "conditions": {
+        "unmonitored": {
+          "n": 144,
+          "recovered": 144,
+          "safety_violation_flights": 0,
+          "median_onset_s": 0.04999999999999716,
+          "mean_onset_s": 0.1454861111111102,
+          "modifications": 0,
+          "steps": 37440,
+          "full_controller_p95_ms": 3.3806500001219275,
+          "monitor_p95_ms": null,
+          "tiers": {
+            "0": {
+              "median": 0.6,
+              "min": 0.0,
+              "max": 0.8999999999999999,
+              "n": 24
+            },
+            "1": {
+              "median": 0.04999999999999716,
+              "min": 0.04999999999999005,
+              "max": 0.05000000000000204,
+              "n": 24
+            },
+            "2": {
+              "median": 0.025000000000000355,
+              "min": 0.0,
+              "max": 1.3,
+              "n": 24
+            },
+            "3": {
+              "median": 0.025000000000000355,
+              "min": 0.02499999999999325,
+              "max": 0.07500000000000107,
+              "n": 24
+            },
+            "4": {
+              "median": 0.04999999999999716,
+              "min": 0.025000000000001243,
+              "max": 0.05000000000000204,
+              "n": 24
+            },
+            "5": {
+              "median": 0.0250000000000008,
+              "min": 0.02499999999999858,
+              "max": 0.05000000000000204,
+              "n": 24
+            }
+          }
+        },
+        "monitored": {
+          "n": 144,
+          "recovered": 144,
+          "safety_violation_flights": 0,
+          "median_onset_s": 0.04999999999999716,
+          "mean_onset_s": 0.15381944444444356,
+          "modifications": 361,
+          "steps": 37440,
+          "full_controller_p95_ms": 8.023615000320204,
+          "monitor_p95_ms": 4.496210000161226,
+          "tiers": {
+            "0": {
+              "median": 0.7,
+              "min": 0.0,
+              "max": 0.8999999999999999,
+              "n": 24
+            },
+            "1": {
+              "median": 0.04999999999999716,
+              "min": 0.04999999999999005,
+              "max": 0.05000000000000204,
+              "n": 24
+            },
+            "2": {
+              "median": 0.025000000000000355,
+              "min": 0.0,
+              "max": 1.4000000000000001,
+              "n": 24
+            },
+            "3": {
+              "median": 0.025000000000000355,
+              "min": 0.02499999999999325,
+              "max": 0.07500000000000107,
+              "n": 24
+            },
+            "4": {
+              "median": 0.04999999999999716,
+              "min": 0.025000000000001243,
+              "max": 0.05000000000000204,
+              "n": 24
+            },
+            "5": {
+              "median": 0.0250000000000008,
+              "min": 0.02499999999999858,
+              "max": 0.05000000000000204,
+              "n": 24
+            }
+          }
+        }
+      },
+      "action_steps_replayed": 74880,
+      "rule_events": {
+        "command_rate_aileron": 149,
+        "command_rate_elevator": 131,
+        "command_rate_throttle_left": 133,
+        "command_rate_throttle_right": 122,
+        "command_rate_rudder": 52,
+        "stall_margin": 64
+      },
+      "paired_recovery_difference": 0.0,
+      "paired_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "checkpoints": [
+    {
+      "path": "checkpoints/final_policy_v1/current_reference/seed_17001/best.pt",
+      "sha256": "2e746d3a5b041dc12727a5714b081f872d7a4d03814c2633b0265eb12f25a742",
+      "parameters": 44549
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/best.pt",
+      "sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17002/best.pt",
+      "sha256": "30175b6046f7fbf67b28e5fdcff04c10e6344a1030524f7d78c37dda2f4b3b27",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17003/best.pt",
+      "sha256": "662a04811bacae16d4f416563b2c84f42c908ab27d5d166a3c753a52b69260ad",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17004/best.pt",
+      "sha256": "06016ba49fdbf443e6d8967b7f2b93a159b6f4ff956afd62c728e49b21a9670d",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17005/best.pt",
+      "sha256": "8d49bf9b975486dab43644cf664e4be45d55fc4b30c179da3e356a396e33eb8f",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/optimizer_grid/adamw_lr_0p0003_bs_256/seed_17001/best.pt",
+      "sha256": "e3d94320b415d834bfb8fb87cd1b2b74a3e8be1c65341ef9222300ddbdbebcfe",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/optimizer_grid/adamw_lr_0p0003_bs_512/seed_17001/best.pt",
+      "sha256": "fb917ef72a4fd425001911f89682e29c96fc23a26f50d42636d61ba3383d3336",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/optimizer_grid/adamw_lr_0p001_bs_256/seed_17001/best.pt",
+      "sha256": "8ed5d5cf213989a6f156e39b67f65f4259a01f1683b0b113affd1657bf0cfeb0",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/optimizer_grid/adamw_lr_0p001_bs_512/seed_17001/best.pt",
+      "sha256": "a020cd88606e28d3a2eaee00a9e3108892d388b8ad441c776fb6cab2e29cfc66",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/moderate/seed_17001/best.pt",
+      "sha256": "7b621549e850c14c62c3c7d5436afcbcc3d8217ea172dbda43249053cc5e52e8",
+      "parameters": 110341
+    },
+    {
+      "path": "checkpoints/final_policy_v1/small_reference/seed_17001/best.pt",
+      "sha256": "4c6f75a17eb127e5a76a7a0c85d1ef9f154d6aa9f8e4ee2f863bdc18ca556441",
+      "parameters": 14085
+    },
+    {
+      "path": "results/supplementary_architecture_comparison_20261011/training/current_reference/best.pt",
+      "sha256": "7e18c282f3351a75ce851e69fabac1dbe1f2e96d9d951558ead225d568aed767",
+      "parameters": 44549
+    },
+    {
+      "path": "results/supplementary_architecture_comparison_20261011/training/small_reference/best.pt",
+      "sha256": "8f08229aa2d07f52848ae65e33539af56ce197689ecf3f67b6bd1771c1bbaa42",
+      "parameters": 14085
+    }
+  ],
+  "fresh_cpu_inference": [
+    {
+      "split": "challenge",
+      "tier": 0,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "challenge",
+      "tier": 1,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "challenge",
+      "tier": 2,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "challenge",
+      "tier": 3,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.4901161193847656e-07
+    },
+    {
+      "split": "challenge",
+      "tier": 4,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 2.384185791015625e-07
+    },
+    {
+      "split": "challenge",
+      "tier": 5,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.7881393432617188e-07
+    },
+    {
+      "split": "ood_stress",
+      "tier": 0,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.7881393432617188e-07
+    },
+    {
+      "split": "ood_stress",
+      "tier": 1,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 2.086162567138672e-07
+    },
+    {
+      "split": "ood_stress",
+      "tier": 2,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "ood_stress",
+      "tier": 3,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "ood_stress",
+      "tier": 4,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.9371509552001953e-07
+    },
+    {
+      "split": "ood_stress",
+      "tier": 5,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 4.76837158203125e-07
+    },
+    {
+      "split": "final_sealed_test",
+      "tier": 0,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "final_sealed_test",
+      "tier": 1,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 2.384185791015625e-07
+    },
+    {
+      "split": "final_sealed_test",
+      "tier": 2,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.7881393432617188e-07
+    },
+    {
+      "split": "final_sealed_test",
+      "tier": 3,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.4901161193847656e-07
+    },
+    {
+      "split": "final_sealed_test",
+      "tier": 4,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.1920928955078125e-07
+    },
+    {
+      "split": "final_sealed_test",
+      "tier": 5,
+      "steps": 260,
+      "maximum_absolute_action_error_cpu_vs_frozen": 1.7881393432617188e-07
+    }
+  ],
+  "formal_validation": {
+    "one_step_records": 100,
+    "one_step_failures": [],
+    "report": "formal_recalculated.json"
+  },
+  "dataset_integrity": {
+    "candidate": {
+      "transition_counts": {
+        "train": 149760,
+        "development": 37440,
+        "challenge": 37440,
+        "ood_stress": 37440,
+        "final_sealed_test": 37440
+      },
+      "transitions_sha256": "5ceed471458518d1790eb81266a20fa7f29a4abd072def2411ad5ce0ac0c1fd3",
+      "flights_sha256": "895d043f509c5d06837a9222a40a064a350760fdcf8b47ce25cdb4ac0b0d5c9d"
+    },
+    "approved": {
+      "transition_counts": {
+        "train": 149760,
+        "development": 37440,
+        "challenge": 37440,
+        "ood_stress": 37440
+      },
+      "transitions_sha256": "187374b333f99a2df1891dbb06dad5de7a1eadeb4bc9f1ed5282b4094f64d2e1",
+      "flights_sha256": "949ac8d620285cec4e5b312eb4e8e9c3a06acab037b4d704d315fa62e9016a78"
+    }
+  },
+  "status": "PASS"
+}

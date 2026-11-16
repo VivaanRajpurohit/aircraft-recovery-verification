@@ -1,0 +1,5 @@
+# Final Fallback Contract
+
+Frozen configuration: `configs/research/final_fallback_v1.yaml`. The fallback is `DeterministicFallbackController`: bounded PID/rule recovery, emergency-mode state machine (2.0 s minimum internal mode dwell), and diversion planner at a 0.1 s control period. It observes structured aircraft/envelope/health/environment/navigation state, controller-known failures, and the full airport list; it retains PID and mode/planner state. Those privileges relative to the neural policy are disclosed in `expert_controller_definition.md`.
+
+Outputs are elevator/aileron/rudder in [−1,1] and left/right throttle in [0,1]. It has no explicit output slew-rate limiter. Fallback is active exactly on steps where the monitor selects it and inactive on the next step the monitor selects another action; its internal state is reset only at the flight boundary. Every activation edge, active duration, proposed neural action, fallback action, and executed action is reported separately. Results must never attribute fallback actions to the neural policy alone.

@@ -1,0 +1,109 @@
+{
+  "amendment_id": "final_training_protocol_amendment_v2_1a",
+  "amendment_date": "2026-09-20",
+  "status": "active_immutable_pre_training_amendment",
+  "prospective": true,
+  "results_existing_before_amendment": {
+    "architecture_optimization": false,
+    "development_evaluation": false,
+    "challenge_evaluation": false,
+    "ood_stress_evaluation": false,
+    "sealed_evaluation": false
+  },
+  "input_contract": {
+    "dimension": 42,
+    "observation_vector_version": "phase1-42-v1",
+    "normalization_source": "frozen_train_only_normalization"
+  },
+  "output_contract": {
+    "dimension": 5,
+    "target_order": [
+      "elevator",
+      "aileron",
+      "rudder",
+      "throttle_left",
+      "throttle_right"
+    ],
+    "bounds": [[-1.0, 1.0], [-1.0, 1.0], [-1.0, 1.0], [0.0, 1.0], [0.0, 1.0]],
+    "removed_auxiliary_outputs": {
+      "mode_logits": 5,
+      "stabilization_targets": 4,
+      "reason": "approved immutable v2.1 export contains no auxiliary labels"
+    },
+    "auxiliary_label_policy": "do_not_synthesize_infer_backfill_or_regenerate"
+  },
+  "architecture_candidates": [
+    {
+      "architecture_id": "small_reference",
+      "hidden_dimensions": [128, 64],
+      "activation": "relu",
+      "parameter_count": 14085
+    },
+    {
+      "architecture_id": "current_reference",
+      "hidden_dimensions": [256, 128],
+      "activation": "relu",
+      "parameter_count": 44549
+    },
+    {
+      "architecture_id": "moderate",
+      "hidden_dimensions": [256, 256, 128],
+      "activation": "silu",
+      "parameter_count": 110341
+    }
+  ],
+  "optimization": {
+    "objective": "mean_squared_error_over_five_ordered_normalized_controls",
+    "checkpoint_selection": "minimum_development_mse",
+    "early_stopping_criterion": "development_mse",
+    "early_stopping_patience": 8,
+    "improvement_tolerance": 1e-10,
+    "diagnostics_not_selection_criteria": ["development_mae", "development_rmse", "per_output_mae", "per_output_rmse"],
+    "architecture_screen": {
+      "seed": 17001,
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "batch_size": 256,
+      "weight_decay": 0.0001,
+      "maximum_epochs": 50,
+      "gradient_norm_clip": 1.0
+    },
+    "optimizer_grid": {
+      "learning_rates": [0.0003, 0.001],
+      "batch_sizes": [256, 512]
+    }
+  },
+  "split_roles": {
+    "train": "optimization_only",
+    "development": "architecture_hyperparameter_early_stopping_checkpoint_selection",
+    "challenge": "post_selection_evaluation_only",
+    "ood_stress": "post_selection_stress_evaluation_only",
+    "final_sealed_test": "final_confirmatory_evaluation_only"
+  },
+  "selection_rule": {
+    "primary": "minimum_development_mse",
+    "exact_tie_breaker": "lower_parameter_count",
+    "challenge_ood_sealed_may_reselect": false,
+    "superseded_rule": "challenge_or_closed_loop_veto_for_architecture_reselection"
+  },
+  "preserved_identities": {
+    "candidate_dataset_id": "final_policy_candidate_v2_1",
+    "candidate_dataset_logical_sha256": "4db2d75ab341e4573019d09176507b03851d7d26dd2eb360d42ecfc2adc28706",
+    "approved_dataset_id": "final_policy_approved_v2_1",
+    "approved_dataset_logical_sha256": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+    "normalization_logical_sha256": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+    "generation_freeze_logical_sha256": "c0b831ede8a5d75027dcce70ec1c116fc5ec58d479cf500939f2075e3d16d0dc",
+    "monitor_file_sha256": "427d37c1b0c15d8659cab811876bd05b148fb627bba949f86709369f46846281",
+    "fallback_file_sha256": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+    "split_flight_counts": {
+      "train": 576,
+      "development": 144,
+      "challenge": 144,
+      "ood_stress": 144,
+      "final_sealed_test": 144
+    },
+    "final_training_seeds": [17001, 17002, 17003, 17004, 17005]
+  },
+  "historical_files_rewritten": false,
+  "amendment_logical_hash": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f"
+}

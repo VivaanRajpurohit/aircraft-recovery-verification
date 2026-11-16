@@ -1,0 +1,43 @@
+{
+  "provenance_version": "final-nonsealed-evaluation-v2.1b-v1",
+  "provenance_logical_sha256": "038c9890cacafe5a4ddb87a3fdc6f1ab8ab0b8305695186c32ee0074fd62b05a",
+  "status": "COMPLETE",
+  "created_date": "2026-09-20",
+  "single_path": "MODEL-SELECTION FREEZE -> CHALLENGE -> OOD-STRESS -> PRE-SEALED FREEZE",
+  "representative_seed": 17001,
+  "representative_checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+  "model_selection_freeze_logical_sha256": "50cd2c0b355d5776ac3fb11064734a49dc5a76f0c6fd802b8d81e71d4bac5efc",
+  "challenge": {
+    "status": "COMPLETE",
+    "scenario_count": 144,
+    "paired_flight_record_count": 288,
+    "trace_record_count": 74880,
+    "file_sha256": {
+      "action_traces.jsonl": "efcee2683030cc82748037d7adc1855367776c27e5f09c65d664998b2ea06ab4",
+      "flight_records.jsonl": "78ee23f0086497c84e64608ab6a025d8becc87a914ebde56bafdb65aae37be57",
+      "preflight.json": "065eeab7bd0458bc1b0f190f89e3c215c136be9e98b14a79d1f04949fda209c9",
+      "summary.json": "83fdf8d496d2964f544358600311b27138230b174f5ba4c1f55de75b1ec67aee"
+    }
+  },
+  "ood_stress": {
+    "wording": "OOD-style simulator stress",
+    "status": "COMPLETE",
+    "scenario_count": 144,
+    "paired_flight_record_count": 288,
+    "trace_record_count": 74880,
+    "file_sha256": {
+      "action_traces.jsonl": "4395da2a1e7bb987103962411708fd43d8aff964e27b515d88f7a56fd115df4e",
+      "flight_records.jsonl": "cf3997310ca09b4f986b9a04733522b1fa62b6d71f705b914c52b5ccf29c252b",
+      "preflight.json": "1f63d7c1f12cc8820e57c3e8e7ab89dc07b73e7676f13ab33ae168340361c5f0",
+      "summary.json": "89128307a5e299c8ff7b9a7b024a2e6c98c2b25350c054983bbfc82874fd5e83"
+    }
+  },
+  "access_state": {
+    "challenge_opened": true,
+    "ood_stress_opened": true,
+    "final_sealed_test_opened": false,
+    "all_five_seed_heldout_evaluation_performed": false
+  },
+  "model_changed_from_nonsealed_results": false,
+  "partial_outcomes_used_for_decisions": false
+}

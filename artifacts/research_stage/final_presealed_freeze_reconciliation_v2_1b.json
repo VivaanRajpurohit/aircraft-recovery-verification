@@ -1,0 +1,84 @@
+{
+  "reconciliation_version": "final-presealed-freeze-reconciliation-v2.1b-v2",
+  "reconciliation_logical_sha256": "1958402f440ce9d78f4caa63132e33e236759574df7183949a41c97bfc7d9083",
+  "date": "2026-09-20",
+  "status": "COMPLETE_POST_SEALED_PROVENANCE_RECONCILIATION",
+  "scope": "Correction of manually transcribed SHA-256 values in the immutable pre-sealed freeze's informational secondary five-seed checkpoint map.",
+  "immutable_presealed_freeze": {
+    "path": "artifacts/research_stage/final_presealed_freeze_v2_1b.json",
+    "logical_sha256": "1f48d27cede12d0ba5053fd9fc1e0b59f3fd155d849745ccd6b48e0f781c114c",
+    "file_sha256": "a9b65c919d88ddf1fc039e9930cf5df5de4d50c0ba6b14b63147a2dbdf7224d8",
+    "modified_by_reconciliation": false
+  },
+  "authoritative_five_seed_provenance": {
+    "path": "artifacts/research_stage/final_five_seed_training_v2_1a.json",
+    "logical_sha256": "b3c06be0a6f519f5860dae4acd18d758a22c2ba3178d5a5d52152a4d1a58c9de",
+    "file_sha256": "3f47d7ba0183db19b26b5154be92526905cddf88e3b466c18e564571f57afa52"
+  },
+  "checkpoint_map_audit": [
+    {
+      "seed": 17001,
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/best.pt",
+      "frozen_recorded_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+      "actual_file_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+      "matches_frozen_record": true,
+      "used_in_evaluation": true,
+      "evaluation_splits": ["challenge", "ood_style_simulator_stress", "final_sealed_test"]
+    },
+    {
+      "seed": 17002,
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17002/best.pt",
+      "frozen_recorded_sha256": "30175b514859783f8063400c16602ad158c514dc253c8ce42899a04b43be2d68",
+      "actual_file_sha256": "30175b6046f7fbf67b28e5fdcff04c10e6344a1030524f7d78c37dda2f4b3b27",
+      "matches_frozen_record": false,
+      "used_in_evaluation": false,
+      "evaluation_splits": []
+    },
+    {
+      "seed": 17003,
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17003/best.pt",
+      "frozen_recorded_sha256": "662a04d225b016a0af277aa5ddc92c8aee867e1001156da1023dc4b46842fd48",
+      "actual_file_sha256": "662a04811bacae16d4f416563b2c84f42c908ab27d5d166a3c753a52b69260ad",
+      "matches_frozen_record": false,
+      "used_in_evaluation": false,
+      "evaluation_splits": []
+    },
+    {
+      "seed": 17004,
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17004/best.pt",
+      "frozen_recorded_sha256": "06016b03c6414af5fe9a0805ca2ee7448b55da3a280eff3a36f9d6e26a82fd6f",
+      "actual_file_sha256": "06016ba49fdbf443e6d8967b7f2b93a159b6f4ff956afd62c728e49b21a9670d",
+      "matches_frozen_record": false,
+      "used_in_evaluation": false,
+      "evaluation_splits": []
+    },
+    {
+      "seed": 17005,
+      "checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17005/best.pt",
+      "frozen_recorded_sha256": "8d49bf89682c1d173ed4d0069aaf11c855ed6b9994f38c56c5a0064f3c1a4f89",
+      "actual_file_sha256": "8d49bf9b975486dab43644cf664e4be45d55fc4b30c179da3e356a396e33eb8f",
+      "matches_frozen_record": false,
+      "used_in_evaluation": false,
+      "evaluation_splits": []
+    }
+  ],
+  "audit_summary": {
+    "matching_entries": [17001],
+    "mismatching_entries": [17002, 17003, 17004, 17005],
+    "all_actual_files_match_authoritative_five_seed_provenance": true,
+    "representative_seed": 17001,
+    "representative_checkpoint_hash_correct": true,
+    "only_representative_seed_used_after_training": true
+  },
+  "evaluation_evidence": {
+    "challenge_summary": "results/final_nonsealed_evaluation_v2_1b/challenge/summary.json",
+    "ood_style_simulator_stress_summary": "results/final_nonsealed_evaluation_v2_1b/ood_stress/summary.json",
+    "sealed_summary": "results/final_sealed_evaluation_v2_1b/final_sealed_test/summary.json",
+    "all_report_representative_seed": 17001,
+    "all_report_representative_checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7"
+  },
+  "cause": "Manual suffix transcription error in an informational secondary-checkpoint map.",
+  "scientific_impact": "None. No evaluated model, dataset, normalization artifact, metric, controller, statistical procedure, scientific decision, or result changed.",
+  "evaluation_impact": "None. The only evaluated checkpoint was seed 17001, whose frozen and actual SHA-256 values match.",
+  "files_modified_by_reconciliation": []
+}

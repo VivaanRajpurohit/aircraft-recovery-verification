@@ -33,3 +33,5 @@ docs/final_validation_report.md
 *.prof
 *.trace
 *.tmp
+
+.research_downloads/

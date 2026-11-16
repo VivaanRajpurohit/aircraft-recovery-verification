@@ -1,0 +1,14 @@
+contract_id: final_evaluation_design_v2_1
+status: proposed_v2_1_pending_review
+supersedes_proposal: final_evaluation_design_v2
+base_evaluation_contract: configs/research/final_evaluation_design_v2.yaml
+heldout_factor_schedule: configs/research/final_heldout_factor_matrix_v2_1.yaml
+sealed_contract:
+  unseen_seeds: required
+  strict_numeric_dimensions: [component_severity, failure_activation_time, derived_actuator_effectiveness, derived_partial_thrust_fraction, crosswind_maximum_kts]
+  exact_scenario_signature_holdout: required
+  other_dimensions: use_explicit_factor_semantics_without_global_novelty_claim
+primary_outcome_unchanged: strict_recovery_success
+sample_counts_unchanged: true
+statistical_plan_unchanged: true
+final_sealed_test_execution_authorized: false

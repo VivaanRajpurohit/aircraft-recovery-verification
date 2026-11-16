@@ -1,0 +1,211 @@
+{
+  "analysis_type": "prospective_approximate_precision_not_formal_power_guarantee",
+  "confidence_level": 0.95,
+  "target_power_for_mde_approximation": 0.8,
+  "proportion_precision": [
+    {
+      "n": 12,
+      "assumed_rate": 0.5,
+      "integer_successes": 6,
+      "wilson_95_ci": [
+        0.2537815976337061,
+        0.7462184023662939
+      ],
+      "approximate_half_width": 0.2462184023662939
+    },
+    {
+      "n": 12,
+      "assumed_rate": 0.8,
+      "integer_successes": 10,
+      "wilson_95_ci": [
+        0.5519691377470266,
+        0.9530348578161463
+      ],
+      "approximate_half_width": 0.20053286003455983
+    },
+    {
+      "n": 12,
+      "assumed_rate": 0.9,
+      "integer_successes": 11,
+      "wilson_95_ci": [
+        0.646120088858883,
+        0.9851349055950829
+      ],
+      "approximate_half_width": 0.16950740836809997
+    },
+    {
+      "n": 24,
+      "assumed_rate": 0.5,
+      "integer_successes": 12,
+      "wilson_95_ci": [
+        0.3142742581957335,
+        0.6857257418042665
+      ],
+      "approximate_half_width": 0.1857257418042665
+    },
+    {
+      "n": 24,
+      "assumed_rate": 0.8,
+      "integer_successes": 19,
+      "wilson_95_ci": [
+        0.5952954674681133,
+        0.9075517464714814
+      ],
+      "approximate_half_width": 0.15612813950168403
+    },
+    {
+      "n": 24,
+      "assumed_rate": 0.9,
+      "integer_successes": 22,
+      "wilson_95_ci": [
+        0.741511978067893,
+        0.9768411847029567
+      ],
+      "approximate_half_width": 0.11766460331753181
+    },
+    {
+      "n": 72,
+      "assumed_rate": 0.5,
+      "integer_successes": 36,
+      "wilson_95_ci": [
+        0.3874709230948976,
+        0.6125290769051024
+      ],
+      "approximate_half_width": 0.11252907690510239
+    },
+    {
+      "n": 72,
+      "assumed_rate": 0.8,
+      "integer_successes": 58,
+      "wilson_95_ci": [
+        0.6996724105411147,
+        0.8804852062054944
+      ],
+      "approximate_half_width": 0.09040639783218984
+    },
+    {
+      "n": 72,
+      "assumed_rate": 0.9,
+      "integer_successes": 65,
+      "wilson_95_ci": [
+        0.8126495420487314,
+        0.9521036800263443
+      ],
+      "approximate_half_width": 0.06972706898880643
+    },
+    {
+      "n": 144,
+      "assumed_rate": 0.5,
+      "integer_successes": 72,
+      "wilson_95_ci": [
+        0.4194027960425476,
+        0.5805972039574524
+      ],
+      "approximate_half_width": 0.0805972039574524
+    },
+    {
+      "n": 144,
+      "assumed_rate": 0.8,
+      "integer_successes": 115,
+      "wilson_95_ci": [
+        0.725743069235038,
+        0.8559611474712041
+      ],
+      "approximate_half_width": 0.06510903911808308
+    },
+    {
+      "n": 144,
+      "assumed_rate": 0.9,
+      "integer_successes": 130,
+      "wilson_95_ci": [
+        0.8434233449655235,
+        0.9412009473359191
+      ],
+      "approximate_half_width": 0.04888880118519778
+    },
+    {
+      "n": 288,
+      "assumed_rate": 0.5,
+      "integer_successes": 144,
+      "wilson_95_ci": [
+        0.44263531652639665,
+        0.5573646834736034
+      ],
+      "approximate_half_width": 0.05736468347360335
+    },
+    {
+      "n": 288,
+      "assumed_rate": 0.8,
+      "integer_successes": 230,
+      "wilson_95_ci": [
+        0.7485021360642481,
+        0.8408589529840216
+      ],
+      "approximate_half_width": 0.046178408459886744
+    },
+    {
+      "n": 288,
+      "assumed_rate": 0.9,
+      "integer_successes": 259,
+      "wilson_95_ci": [
+        0.8591269902059109,
+        0.9289721404981706
+      ],
+      "approximate_half_width": 0.03492257514612984
+    }
+  ],
+  "paired_binary_mde": [
+    {
+      "n_pairs": 72,
+      "assumed_discordant_fraction": 0.3,
+      "approximate_80_percent_mde_absolute_rate_difference": 0.18084154821220666
+    },
+    {
+      "n_pairs": 72,
+      "assumed_discordant_fraction": 0.5,
+      "approximate_80_percent_mde_absolute_rate_difference": 0.23346543484274734
+    },
+    {
+      "n_pairs": 144,
+      "assumed_discordant_fraction": 0.3,
+      "approximate_80_percent_mde_absolute_rate_difference": 0.1278742850611253
+    },
+    {
+      "n_pairs": 144,
+      "assumed_discordant_fraction": 0.5,
+      "approximate_80_percent_mde_absolute_rate_difference": 0.16508499214997271
+    },
+    {
+      "n_pairs": 288,
+      "assumed_discordant_fraction": 0.3,
+      "approximate_80_percent_mde_absolute_rate_difference": 0.09042077410610333
+    },
+    {
+      "n_pairs": 288,
+      "assumed_discordant_fraction": 0.5,
+      "approximate_80_percent_mde_absolute_rate_difference": 0.11673271742137367
+    }
+  ],
+  "paired_continuous_mde": [
+    {
+      "n_pairs": 24,
+      "approximate_80_percent_mde_standardized_mean_difference": 0.5718711879417241
+    },
+    {
+      "n_pairs": 72,
+      "approximate_80_percent_mde_standardized_mean_difference": 0.3301699842999455
+    },
+    {
+      "n_pairs": 144,
+      "approximate_80_percent_mde_standardized_mean_difference": 0.23346543484274737
+    },
+    {
+      "n_pairs": 288,
+      "approximate_80_percent_mde_standardized_mean_difference": 0.16508499214997274
+    }
+  ],
+  "decision": "SAMPLE_SIZE_REVISION_REQUIRED_FOR_720; REVISED_1152_ACCEPTED",
+  "rationale": "Increase each evaluation split from 72 to 144 and each tier stratum from 12 to 24. Family-by-split cells of six remain exploratory.",
+  "sealed_test_opened": false,
+  "analysis_hash": "ad179459e9e224c9e832065ad85c937658fbba3e95ad1dfa6139a0a4e89fe229"
+}

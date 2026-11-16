@@ -1,0 +1,49 @@
+{
+  "manifest_id": "final_generation_freeze_v2_1",
+  "status": "PROPOSED_V2_1_FREEZE_PENDING_ACTIVATION_REVIEW",
+  "dataset_id": "final_policy_candidate_v2_1",
+  "schema_version": 2,
+  "historical_v1_freeze_hash": "fcfde639acb99d85b17477dee7da5743da305b46a32cb0b4293fd9c9423a1cd4",
+  "superseded_v2_proposal_hash": "92d5a0137c7e185ce49060d0d1ada6ab631410a2914ba465d377aa43b83004bc",
+  "amendment_audit_hash": "3e69b92c5cbdc5fd3d8cbf44d80c38a241975f2e2e72bc33ab1e2c9e835b1087",
+  "holdout_exposure_audit_hash": "1b55c5b90fd4220ba96c829e53e0899be3dab3e7aa82c661b7c39ace9909b070",
+  "expected_flights": 1152,
+  "expected_split_counts": {
+    "train": 576,
+    "development": 144,
+    "challenge": 144,
+    "ood_stress": 144,
+    "final_sealed_test": 144
+  },
+  "expected_tier_counts": {
+    "0": 192,
+    "1": 192,
+    "2": 192,
+    "3": 192,
+    "4": 192,
+    "5": 192
+  },
+  "files": {
+    "configs/training/final_policy_dataset_design_v1.yaml": "21c59b3b805407c222ffbb509da34f7ef5e4f346fd3c5539c4cdef6c43e2ae9f",
+    "configs/training/final_policy_dataset_design_v2.yaml": "5e51334c862edb50194179e5fdb5b855aa7e24dba25638b3ea4e409239c443fc",
+    "configs/training/final_policy_dataset_design_v2_1.yaml": "e61bf9b24ea3c2a5d4693ce237dfec7536632423f2fca5531050be72de06775d",
+    "configs/research/final_tiers_v1.yaml": "56465b61aedc53b9de2354a8df10d1661525d6cb97ffc2bb7a0fef69df0d7abf",
+    "configs/research/final_tiers_v2.yaml": "1584b21dcfd0feb4c165eb5d793a920ae59a0df1a3976d1cb783136173ced291",
+    "configs/research/final_heldout_factor_matrix_v2.yaml": "43e761732e34c9bb8e2beb5b49d8515d14990a53357e8ae6098f1ddfc6a76063",
+    "configs/research/final_heldout_factor_matrix_v2_1.yaml": "d2ddb1765b6131994a18c931a5d7c8f034d4e96cd1aca800e86e95859f00b757",
+    "configs/research/final_evaluation_design_v2_1.yaml": "9aeadda3ccff0dabe7f0e2b9d18b56c5f199d469fc73b0a8576eaaad3c7df769",
+    "configs/research/final_seed_registry_v1.json": "98fa364f3168412ccec9017d24a2ed8217f35f40294d30d997d0e30135165319",
+    "configs/research/final_metrics_v1.yaml": "6e2632629e9363a8732fb6c826f011de95fbc1ea5d62e7040dd4f35674f32254",
+    "configs/research/final_monitor_v1.yaml": "427d37c1b0c15d8659cab811876bd05b148fb627bba949f86709369f46846281",
+    "configs/research/final_fallback_v1.yaml": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+    "artifacts/research_stage/expert_controller_manifest.json": "33693531ed2ce63b17afa72bf870ada62949a2f231b7d53861532a5e6fecc82b",
+    "src/aircraft_recovery/data_quality/candidate_generation.py": "946cbbe8862230e7d1226f868122958a833ef421872ad6a5237040c8738498df",
+    "src/aircraft_recovery/research/design_amendment.py": "95572830bdbe1220627a2b734b3e24e539e5fe46ce437348198952892d21f1b3",
+    "src/aircraft_recovery/research/holdout_audit.py": "0568f55dfe06f83bbac51d7e6934516d8918d75c8d3023a5af03a53cb87ed100"
+  },
+  "generation_authorized": false,
+  "training_authorized": false,
+  "final_sealed_test_outcomes_authorized": false,
+  "dataset_records_generated": false,
+  "freeze_hash": "c0b831ede8a5d75027dcce70ec1c116fc5ec58d479cf500939f2075e3d16d0dc"
+}

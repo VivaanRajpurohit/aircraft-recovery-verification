@@ -1,0 +1,74 @@
+{
+  "id": "supplementary_architecture_comparison_20261011",
+  "date": "2026-10-11",
+  "status": "fixed_before_supplementary_fitting",
+  "evidence_status": "exploratory_after_original_final_test_outcomes_known",
+  "architectures": [
+    {
+      "architecture_id": "small_reference",
+      "hidden_dimensions": [
+        128,
+        64
+      ],
+      "activation": "relu",
+      "parameter_count": 14085
+    },
+    {
+      "architecture_id": "current_reference",
+      "hidden_dimensions": [
+        256,
+        128
+      ],
+      "activation": "relu",
+      "parameter_count": 44549
+    },
+    {
+      "architecture_id": "moderate",
+      "hidden_dimensions": [
+        256,
+        256,
+        128
+      ],
+      "activation": "silu",
+      "parameter_count": 110341
+    }
+  ],
+  "seed": 17001,
+  "training": {
+    "optimizer": "AdamW",
+    "objective": "mean_squared_error",
+    "checkpoint_selection": "minimum_development_mse",
+    "learning_rate": 0.001,
+    "batch_size": 512,
+    "weight_decay": 0.0001,
+    "maximum_epochs": 50,
+    "patience": 8,
+    "improvement_tolerance": 1e-10,
+    "gradient_norm_clip": 1.0
+  },
+  "fit_split": "train",
+  "selection_split": "development",
+  "evaluation_split": "challenge",
+  "scenario_count_per_model": 144,
+  "controller_conditions": [
+    "unmonitored",
+    "monitored"
+  ],
+  "new_training_runs": 2,
+  "new_evaluation_pairs": 288,
+  "complete_comparison_pairs": 432,
+  "complete_comparison_condition_records": 864,
+  "reuse_model": "moderate",
+  "primary_checkpoint": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/best.pt",
+  "primary_checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+  "reuse_original_challenge_records": true,
+  "dataset_logical_sha256": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+  "normalization_logical_sha256": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+  "no_primary_reselection": true,
+  "no_outcome_dependent_tuning": true,
+  "ood_access": false,
+  "sealed_access": false,
+  "source_git_revision_before_extension": "1307af47fb88112596b6800957eb2db164a2bc3c",
+  "protected_inputs_logical_sha256": "0775bac96d60cf86a1873a1c8794ef48e018c096e0d99abcb825246fba530f00",
+  "plan_logical_sha256": "457a55314ad2cce76552a59e967a2d0b153b92f7e583360cb4af8f98807df901"
+}

@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-11",
+  "path": "scripts/run_supplementary_architecture_comparison_20261011.py",
+  "sha256": "c8ec493a75f020461cfcfc6204f4b33cbbead3bd9f016d49985c1dbf22bc629a",
+  "test_suite": "348 passed",
+  "resume_tests": "4 passed; interruption after an uncommitted epoch reproduced uninterrupted weights and histories",
+  "layer": "supplementary implementation; original v2.1B protocol unchanged"
+}

@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "verification_device": "cpu",
+  "relative_tolerance": 1e-05,
+  "records_accessed": "development_only",
+  "models": [
+    {
+      "architecture_id": "small_reference",
+      "checkpoint_sha256": "8f08229aa2d07f52848ae65e33539af56ce197689ecf3f67b6bd1771c1bbaa42",
+      "input_dimension": 42,
+      "output_dimension": 5,
+      "parameter_count": 14085,
+      "reproduced_development_metrics": {
+        "mse": 0.0007281438441302052,
+        "mae": 0.01085961158258412,
+        "rmse": 0.026984140603884446,
+        "per_output": {
+          "elevator": {
+            "mae": 0.006464882080540344,
+            "rmse": 0.01394535523200977
+          },
+          "aileron": {
+            "mae": 0.017086237596482257,
+            "rmse": 0.0466739938527518
+          },
+          "rudder": {
+            "mae": 0.01275251950401537,
+            "rmse": 0.030231939854910825
+          },
+          "throttle_left": {
+            "mae": 0.009511898963017644,
+            "rmse": 0.014087210244656636
+          },
+          "throttle_right": {
+            "mae": 0.008482519768864983,
+            "rmse": 0.012464545963221708
+          }
+        },
+        "transition_count": 37440
+      }
+    },
+    {
+      "architecture_id": "current_reference",
+      "checkpoint_sha256": "7e18c282f3351a75ce851e69fabac1dbe1f2e96d9d951558ead225d568aed767",
+      "input_dimension": 42,
+      "output_dimension": 5,
+      "parameter_count": 44549,
+      "reproduced_development_metrics": {
+        "mse": 0.0006698982290359053,
+        "mae": 0.009426168215717132,
+        "rmse": 0.025882392258751996,
+        "per_output": {
+          "elevator": {
+            "mae": 0.004791716903804448,
+            "rmse": 0.012873758728351845
+          },
+          "aileron": {
+            "mae": 0.015428420381167783,
+            "rmse": 0.04516214553336921
+          },
+          "rudder": {
+            "mae": 0.010929900840644541,
+            "rmse": 0.02898207646096986
+          },
+          "throttle_left": {
+            "mae": 0.008677206872955574,
+            "rmse": 0.013314909697675691
+          },
+          "throttle_right": {
+            "mae": 0.007303596080013309,
+            "rmse": 0.011264569053440539
+          }
+        },
+        "transition_count": 37440
+      }
+    },
+    {
+      "architecture_id": "moderate",
+      "checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+      "input_dimension": 42,
+      "output_dimension": 5,
+      "parameter_count": 110341,
+      "reproduced_development_metrics": {
+        "mse": 0.0006286436145091787,
+        "mae": 0.008481379680374688,
+        "rmse": 0.025072766391229722,
+        "per_output": {
+          "elevator": {
+            "mae": 0.004213587441374123,
+            "rmse": 0.011201953974638246
+          },
+          "aileron": {
+            "mae": 0.013795990542959342,
+            "rmse": 0.04418551483892672
+          },
+          "rudder": {
+            "mae": 0.008883019468525412,
+            "rmse": 0.02817272516799107
+          },
+          "throttle_left": {
+            "mae": 0.007533910124273182,
+            "rmse": 0.011481026858160926
+          },
+          "throttle_right": {
+            "mae": 0.007980390824741383,
+            "rmse": 0.011826164086718736
+          }
+        },
+        "transition_count": 37440
+      }
+    }
+  ]
+}

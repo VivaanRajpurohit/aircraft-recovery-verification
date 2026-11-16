@@ -1,0 +1,40 @@
+{
+  "manifest_id": "final_generation_freeze_v1",
+  "status": "DESIGN_FROZEN_GENERATION_NOT_AUTHORIZED",
+  "dataset_id": "final_policy_candidate_v1",
+  "schema_version": 2,
+  "simulator_id": "SimpleAircraftSimulator",
+  "source_git_commit": "d3df91ac4d92be40e029d9ab9df916c4222018f4",
+  "expected_flights": 1152,
+  "expected_split_counts": {
+    "train": 576,
+    "development": 144,
+    "challenge": 144,
+    "ood_stress": 144,
+    "final_sealed_test": 144
+  },
+  "seed_counts": {
+    "train": 576,
+    "development": 144,
+    "challenge": 144,
+    "ood_stress": 144,
+    "final_sealed_test": 144
+  },
+  "files": {
+    "configs/training/final_policy_dataset_design_v1.yaml": "21c59b3b805407c222ffbb509da34f7ef5e4f346fd3c5539c4cdef6c43e2ae9f",
+    "configs/research/final_tiers_v1.yaml": "56465b61aedc53b9de2354a8df10d1661525d6cb97ffc2bb7a0fef69df0d7abf",
+    "configs/research/final_metrics_v1.yaml": "6e2632629e9363a8732fb6c826f011de95fbc1ea5d62e7040dd4f35674f32254",
+    "configs/research/final_monitor_v1.yaml": "427d37c1b0c15d8659cab811876bd05b148fb627bba949f86709369f46846281",
+    "configs/research/final_fallback_v1.yaml": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+    "configs/research/final_evaluation_design_v1.yaml": "7c40cb6e746f56a40727f8d0cb309b07952291ea34856f74bacb864e71278f54",
+    "configs/research/final_heldout_factor_matrix_v1.yaml": "1051b3edbeebd9eea2429eb0196e11280c3a679a9523a4892b062cde554041d4",
+    "configs/research/final_seed_registry_v1.json": "98fa364f3168412ccec9017d24a2ed8217f35f40294d30d997d0e30135165319",
+    "artifacts/research_stage/expert_controller_manifest.json": "33693531ed2ce63b17afa72bf870ada62949a2f231b7d53861532a5e6fecc82b"
+  },
+  "generation_authorized": false,
+  "training_authorized": false,
+  "final_sealed_test_authorized": false,
+  "sealed_test_opened": false,
+  "large_dataset_generated": false,
+  "freeze_hash": "fcfde639acb99d85b17477dee7da5743da305b46a32cb0b4293fd9c9423a1cd4"
+}

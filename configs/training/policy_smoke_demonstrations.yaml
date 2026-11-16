@@ -1,0 +1,38 @@
+dataset_name: closed_loop_policy_smoke_v1
+output_directory: datasets/policy_smoke_v1
+seed: 6200
+episode_count: 20
+aircraft_config: configs/aircraft/simple_twin.yaml
+fallback_config: configs/controllers/fallback.yaml
+train_fraction: 0.70
+validation_fraction: 0.15
+test_fraction: 0.15
+ood_categories: []
+reserved_test_categories: [test_in_distribution, test_unseen_concurrent, test_high_severity]
+test_reporting_categories:
+  in_distribution: [test_in_distribution]
+  unseen_seeds: [test_in_distribution, test_unseen_concurrent, test_high_severity]
+  unseen_concurrent_failure_combinations: [test_unseen_concurrent]
+  outside_training_severity_within_validity: [test_high_severity]
+scenarios:
+  - {category: nominal_a, scenario: configs/scenarios/phase2_nominal.yaml, weight: 1.0}
+  - {category: nominal_b, scenario: configs/scenarios/phase2_nominal.yaml, weight: 1.0}
+  - {category: nominal_c, scenario: configs/scenarios/phase2_nominal.yaml, weight: 1.0}
+  - {category: left_engine_a, scenario: configs/scenarios/phase2_single_engine.yaml, weight: 1.0}
+  - {category: left_engine_b, scenario: configs/scenarios/phase2_single_engine.yaml, weight: 1.0}
+  - {category: partial_aileron_a, scenario: configs/scenarios/policy_partial_aileron.yaml, weight: 1.0}
+  - {category: partial_aileron_b, scenario: configs/scenarios/policy_partial_aileron.yaml, weight: 1.0}
+  - {category: actuator_delay_a, scenario: configs/scenarios/phase2_sensor_actuator.yaml, weight: 1.0}
+  - {category: actuator_delay_b, scenario: configs/scenarios/phase2_sensor_actuator.yaml, weight: 1.0}
+  - {category: sensor_error_a, scenario: configs/scenarios/phase3_sensor_faults.yaml, weight: 1.0}
+  - {category: sensor_error_b, scenario: configs/scenarios/phase3_sensor_faults.yaml, weight: 1.0}
+  - {category: disturbance_a, scenario: configs/scenarios/phase2_actuator_turbulence_thrust.yaml, weight: 1.0}
+  - {category: disturbance_b, scenario: configs/scenarios/phase2_actuator_turbulence_thrust.yaml, weight: 1.0}
+  - {category: crosswind_a, scenario: configs/scenarios/phase2_rudder_crosswind.yaml, weight: 1.0}
+  - {category: crosswind_b, scenario: configs/scenarios/phase2_rudder_crosswind.yaml, weight: 1.0}
+  - {category: recovery_boundary, scenario: configs/scenarios/phase3_stuck_surface.yaml, weight: 1.0}
+  - {category: safety_boundary, scenario: configs/scenarios/phase2_unrecoverable.yaml, weight: 1.0}
+  - {category: test_in_distribution, scenario: configs/scenarios/phase2_nominal.yaml, weight: 1.0}
+  - {category: test_unseen_concurrent, scenario: configs/scenarios/phase2_engine_aileron.yaml, weight: 1.0}
+  - {category: test_high_severity, scenario: configs/scenarios/policy_partial_aileron_high.yaml, weight: 1.0}
+

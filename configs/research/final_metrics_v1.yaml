@@ -1,0 +1,55 @@
+contract_id: final_metrics_v1
+primary_endpoint: strict_recovery_success
+experimental_unit: complete_flight
+training_sample: individual_transition
+recovery:
+  continuous_hold_seconds: 5.0
+  minimum_stall_margin_kts: 10.0
+  maximum_absolute_bank_deg: 10.0
+  minimum_pitch_deg: -7.5
+  maximum_pitch_deg: 7.5
+  maximum_absolute_vertical_speed_fpm: 750.0
+  minimum_terrain_clearance_ft: 0.0
+  equality_is_inside: true
+  timer_reference: latest_observed_failure_activation_or_zero_for_nominal
+  achievement_is_not_revoked: true
+  report_lost_after_achievement_separately: true
+safety:
+  minimum_stall_margin_kts: 0.0
+  minimum_overspeed_margin_kts: 0.0
+  maximum_absolute_bank_deg: 60.0
+  minimum_pitch_deg: -20.0
+  maximum_pitch_deg: 25.0
+  maximum_angle_of_attack_deg: 14.0
+  minimum_load_factor_g: -1.0
+  maximum_load_factor_g: 3.5
+  minimum_terrain_clearance_ft: 0.0
+  equality_is_safe: true
+  violation_count_unit: property_step
+  violation_duration_unit: any_violation_step_times_dt
+  severity_calculation: raw_threshold_exceedance_by_property_in_native_units
+  composite_severity_score: none
+termination:
+  recovery_failure:
+    - ground_impact
+    - terrain_clearance_violation
+    - loss_of_control
+    - unrecoverable_condition
+    - stall_not_recovered
+    - overspeed_not_recovered
+  evaluate_primary_endpoint:
+    - duration_complete
+    - stable_recovery_achieved
+    - diversion_target_reached
+    - approach_completed
+  invalid_experiment:
+    - numerical_instability
+    - invalid_state
+  unsupported_as_termination:
+    - controller_timeout
+    - monitor_timeout
+missing_data:
+  binary_primary: count_as_failure_unless_predeclared_invalid_experiment
+  continuous_recovery_time: right_censored_at_trajectory_horizon_and_reported_missing_for_mean
+  invalid_experiment: exclude_from_primary_denominator_and_report_count_and_reason
+version_locked_before_generation: true

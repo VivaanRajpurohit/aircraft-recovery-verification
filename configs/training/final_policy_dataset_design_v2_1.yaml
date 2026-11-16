@@ -1,0 +1,14 @@
+design_id: final_policy_dataset_design_v2_1
+status: proposed_v2_1_pending_review_generation_not_authorized
+supersedes_proposal: final_policy_dataset_design_v2
+base_design: configs/training/final_policy_dataset_design_v2.yaml
+amendment_scope: holdout_semantics_and_three_sealed_schedule_rows_only
+total_flights: 1152
+split_counts: {train: 576, development: 144, challenge: 144, ood_stress: 144, final_sealed_test: 144}
+tier_total_each: 192
+scenario_matrix_source: configs/training/final_policy_dataset_design_v1.yaml
+tier_contract: configs/research/final_tiers_v2.yaml
+heldout_factor_matrix: configs/research/final_heldout_factor_matrix_v2_1.yaml
+evaluation_contract: configs/research/final_evaluation_design_v2_1.yaml
+seed_registry: configs/research/final_seed_registry_v1.json
+generation_authorized: false

@@ -27,6 +27,9 @@ from aircraft_recovery.training.models import ImitationPolicyNetwork, PolicyArch
 from aircraft_recovery.training.trainer import resolve_device
 
 
+CONTROL_NAMES = ("elevator", "aileron", "rudder", "throttle_left", "throttle_right")
+
+
 class EvaluationScenario(BaseModel):
     model_config = ConfigDict(extra="forbid")
     scenario: str
@@ -105,6 +108,13 @@ def evaluate_offline(
     predicted_controls = np.concatenate(predictions)
     predicted_modes = np.concatenate(modes)
     error = predicted_controls - dataset.controls
+    per_control = {
+        name: {
+            "mae": float(np.mean(np.abs(error[:, index]))),
+            "rmse": float(np.sqrt(np.mean(np.square(error[:, index])))),
+        }
+        for index, name in enumerate(CONTROL_NAMES)
+    }
     disagreement = (
         np.max(np.abs(error), axis=1) > disagreement_threshold
     ) | (predicted_modes != dataset.modes)
@@ -120,6 +130,7 @@ def evaluate_offline(
         "episodes": len(set(dataset.episode_ids.tolist())),
         "control_mae": float(np.mean(np.abs(error))),
         "control_rmse": float(np.sqrt(np.mean(np.square(error)))),
+        "per_control": per_control,
         "mode_accuracy": float(np.mean(predicted_modes == dataset.modes)),
         "per_mode": _classification_metrics(dataset.modes, predicted_modes),
         "expert_neural_disagreement_rate": float(np.mean(disagreement)),
@@ -133,18 +144,24 @@ def evaluate_offline(
 def _closed_loop_metrics(run_directory: Path) -> dict[str, Any]:
     summary = json.loads((run_directory / "summary.json").read_text(encoding="utf-8"))
     rows = [json.loads(line) for line in (run_directory / "history.jsonl").read_text(encoding="utf-8").splitlines()]
-    commands = np.asarray([[row["final_action"]["control_commands"][name] for name in (
-        "elevator", "aileron", "rudder", "throttle_left", "throttle_right"
-    )] for row in rows], dtype=np.float32)
+    commands = np.asarray([[row["final_action"]["control_commands"][name] for name in CONTROL_NAMES]
+                           for row in rows], dtype=np.float32)
     saturation = np.any(np.abs(commands[:, :3]) >= 0.99, axis=1) | np.any(
         (commands[:, 3:] <= 0.01) | (commands[:, 3:] >= 0.99), axis=1
     )
     smoothness = np.abs(np.diff(commands, axis=0)).mean() if len(commands) > 1 else 0.0
     selected = [row["final_action"]["navigation_commands"]["selected_airport"] for row in rows]
+    safety_envelope_violation = (
+        summary["minimum_stall_margin_kts"] < 0.0
+        or summary["maximum_absolute_roll_deg"] > 60.0
+        or summary["maximum_angle_of_attack_deg"] > 14.0
+        or summary["minimum_terrain_clearance_ft"] < 0.0
+    )
     return {
         "termination_reason": summary["termination_reason"],
         "recovery_success": summary["recovery_result"] == "successful",
         "stabilization_success": summary["minimum_stall_margin_kts"] >= 0.0 and summary["maximum_absolute_roll_deg"] <= 60.0,
+        "safety_envelope_violation": safety_envelope_violation,
         "diversion_selected": any(value is not None for value in selected),
         "successful_diversion": summary["termination_reason"] in {"diversion_target_reached", "approach_completed"},
         "minimum_stall_margin_kts": summary["minimum_stall_margin_kts"],

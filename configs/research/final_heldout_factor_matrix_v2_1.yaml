@@ -1,0 +1,50 @@
+contract_id: final_heldout_factor_matrix_v2_1
+status: proposed_v2_1_pending_review_no_generation_authority
+supersedes_proposal: final_heldout_factor_matrix_v2
+base_schedule: configs/research/final_heldout_factor_matrix_v2.yaml
+amendment_scope: strict_sealed_severity_activation_and_precise_holdout_semantics_only
+sealed_replacements:
+  2:
+    component_severity: [0.485, 0.52, 0.56]
+    activation_seconds: [2.625, 4.375, 6.375]
+  3:
+    component_severity: [0.345, 0.465, 0.56]
+    activation_seconds: [2.625, 4.375, 6.375]
+  4:
+    activation_seconds: [2.875, 3.75, 5.25]
+replacement_spacing_rule: choose the nearest legal midpoint between adjacent nonsealed exposure values; no outcome or controller result is consulted
+factor_semantics:
+  final_sealed_test:
+    component_severity: STRICT_VALUE_HOLDOUT
+    failure_activation_time: STRICT_VALUE_HOLDOUT
+    derived_actuator_effectiveness: STRICT_VALUE_HOLDOUT
+    derived_partial_thrust_fraction: STRICT_VALUE_HOLDOUT
+    crosswind_maximum_kts: STRICT_VALUE_HOLDOUT
+    actuator_delay: MODEL_SELECTION_HOLDOUT
+    deterministic_sensor_bias: SEED_ONLY_HOLDOUT
+    turbulence: SEED_ONLY_HOLDOUT
+    initial_airspeed: COMBINATION_HOLDOUT
+    initial_bank: COMBINATION_HOLDOUT
+    initial_pitch: COMBINATION_HOLDOUT
+    altitude: COMBINATION_HOLDOUT
+    clearance: COMBINATION_HOLDOUT
+    warmup_vertical_speed_bin: NOT_A_HOLDOUT_FACTOR
+    engine_side: SEED_ONLY_HOLDOUT
+    scenario_signature: COMBINATION_HOLDOUT
+    random_seed: SEED_ONLY_HOLDOUT
+  challenge:
+    component_severity: MODEL_SELECTION_HOLDOUT
+    failure_activation_time: MODEL_SELECTION_HOLDOUT
+    scenario_signature: COMBINATION_HOLDOUT
+    random_seed: SEED_ONLY_HOLDOUT
+    qualification: numeric factor identity includes its assigned tier and component semantic
+  ood_stress:
+    component_severity: MODEL_SELECTION_HOLDOUT
+    failure_activation_time: MODEL_SELECTION_HOLDOUT
+    scenario_signature: COMBINATION_HOLDOUT
+    random_seed: SEED_ONLY_HOLDOUT
+    qualification: supported simulator-domain shifts; numeric factor identity includes tier and component semantic
+canonical_scenario_signature:
+  fields: [tier, scenario_family, component_severity_or_fixed_failure, activation_seconds, actuator_delay_seconds, sensor_bias_kind_and_value, turbulence_intensity, crosswind_maximum_kts, initial_condition_grid_fraction, engine_side]
+  exact_duplicate_prohibited_against: [train, development, challenge, ood_stress]
+generation_authorized: false

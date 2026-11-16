@@ -1,0 +1,142 @@
+{
+  "freeze_version": "final-presealed-freeze-v2.1b-v1",
+  "freeze_logical_sha256": "1f48d27cede12d0ba5053fd9fc1e0b59f3fd155d849745ccd6b48e0f781c114c",
+  "status": "FROZEN_PRE_SEALED",
+  "freeze_date": "2026-09-20",
+  "source_git_revision_before_freeze_commit": "17424ea116280ab8569cadf64afa9f561effe895",
+  "commit_requirement": "This file and every frozen implementation file must be committed unchanged before first sealed outcome access.",
+  "single_path": "MODEL-SELECTION FREEZE -> CHALLENGE -> OOD-STRESS -> PRE-SEALED FREEZE -> FINAL SEALED TEST -> FINAL ANALYSIS -> FIGURES/TABLES -> MANUSCRIPT -> FINAL QA",
+  "model_selection": {
+    "architecture": [256, 256, 128],
+    "activation": "SiLU",
+    "inputs": 42,
+    "outputs": 5,
+    "parameters": 110341,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "batch_size": 512,
+    "weight_decay": 0.0001,
+    "representative_seed": 17001,
+    "representative_checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+    "selection_basis": "performance-independent first entry in frozen seed registry",
+    "no_further_tuning_or_reselection": true
+  },
+  "five_seed_checkpoint_sha256": {
+    "17001": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+    "17002": "30175b514859783f8063400c16602ad158c514dc253c8ce42899a04b43be2d68",
+    "17003": "662a04d225b016a0af277aa5ddc92c8aee867e1001156da1023dc4b46842fd48",
+    "17004": "06016b03c6414af5fe9a0805ca2ee7448b55da3a280eff3a36f9d6e26a82fd6f",
+    "17005": "8d49bf89682c1d173ed4d0069aaf11c855ed6b9994f38c56c5a0064f3c1a4f89"
+  },
+  "authoritative_logical_hashes": {
+    "candidate_dataset": "4db2d75ab341e4573019d09176507b03851d7d26dd2eb360d42ecfc2adc28706",
+    "approved_dataset": "bc69cbcb5bee7189c091dba51159f8938bdd661b3793007f45c7f9eb2897b43a",
+    "generation_freeze": "c0b831ede8a5d75027dcce70ec1c116fc5ec58d479cf500939f2075e3d16d0dc",
+    "train_only_normalization": "005ccca1bfc32214482e89e552761d73dbeefbce651e7a7abee60037ad978cb7",
+    "training_protocol_amendment_v2_1a": "4ecb3942f366ac862990b11b353a06a37b1f0e261004981e9ab5f1359cc92f1f",
+    "final_training_configuration": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+    "five_seed_training_provenance": "b3c06be0a6f519f5860dae4acd18d758a22c2ba3178d5a5d52152a4d1a58c9de",
+    "representative_checkpoint_amendment_v2_1b": "d9ab4ec4dbc62e208c5ef1fd583850c3f9cacd1413e2d4a2c559c791481a29ce",
+    "model_selection_freeze_v2_1b": "50cd2c0b355d5776ac3fb11064734a49dc5a76f0c6fd802b8d81e71d4bac5efc",
+    "nonsealed_evaluation_provenance": "038c9890cacafe5a4ddb87a3fdc6f1ab8ab0b8305695186c32ee0074fd62b05a"
+  },
+  "baseline_controller_comparison_set": {
+    "primary_pair": ["representative_neural_unmonitored", "representative_neural_monitored"],
+    "checkpoint_set": "seed_17001_only",
+    "monitor": "configs/research/final_monitor_v1.yaml",
+    "fallback": "configs/research/final_fallback_v1.yaml",
+    "additional_baseline_branches_authorized": false
+  },
+  "nonsealed_results": {
+    "challenge": {
+      "status": "COMPLETE",
+      "scenario_count": 144,
+      "paired_flight_record_count": 288,
+      "trace_record_count": 74880,
+      "file_sha256": {
+        "action_traces.jsonl": "efcee2683030cc82748037d7adc1855367776c27e5f09c65d664998b2ea06ab4",
+        "flight_records.jsonl": "78ee23f0086497c84e64608ab6a025d8becc87a914ebde56bafdb65aae37be57",
+        "preflight.json": "065eeab7bd0458bc1b0f190f89e3c215c136be9e98b14a79d1f04949fda209c9",
+        "summary.json": "83fdf8d496d2964f544358600311b27138230b174f5ba4c1f55de75b1ec67aee"
+      }
+    },
+    "ood_stress": {
+      "wording": "OOD-style simulator stress",
+      "status": "COMPLETE",
+      "scenario_count": 144,
+      "paired_flight_record_count": 288,
+      "trace_record_count": 74880,
+      "file_sha256": {
+        "action_traces.jsonl": "4395da2a1e7bb987103962411708fd43d8aff964e27b515d88f7a56fd115df4e",
+        "flight_records.jsonl": "cf3997310ca09b4f986b9a04733522b1fa62b6d71f705b914c52b5ccf29c252b",
+        "preflight.json": "1f63d7c1f12cc8820e57c3e8e7ab89dc07b73e7676f13ab33ae168340361c5f0",
+        "summary.json": "89128307a5e299c8ff7b9a7b024a2e6c98c2b25350c054983bbfc82874fd5e83"
+      }
+    }
+  },
+  "sealed_evaluation": {
+    "split": "final_sealed_test",
+    "scenario_count": 144,
+    "paired_flight_record_count": 288,
+    "representative_seed_only": 17001,
+    "access_count_at_freeze": 0,
+    "authorized_after_commit": true,
+    "technical_rerun_policy": "Only after a documented execution failure; never selectively by outcome."
+  },
+  "analysis_freeze": {
+    "primary_endpoint": "strict_recovery_success",
+    "primary_comparison": "monitored_minus_unmonitored_representative_checkpoint",
+    "confidence_method_binary_controller_rate": "Wilson 95% interval",
+    "paired_effect_interval": "10000-resample paired flight bootstrap, seed 19001",
+    "hypothesis_test": "none_not_preregistered",
+    "confirmatory_family": ["final_neural_monitored_vs_final_neural_unmonitored"],
+    "secondary_and_subgroup_status": "exploratory",
+    "generated_p_values": false
+  },
+  "reporting_freeze": {
+    "figure_configuration": "configs/research/final_reporting_v2_1b.yaml",
+    "table_generation_source": "src/aircraft_recovery/analysis/v2_1b_final.py",
+    "manuscript_configuration": "configs/research/final_manuscript_v2_1b.yaml",
+    "manuscript_source_sha256": "5b5feee514618b8bb16249fdcdd2ea6633e0ce5d3c10cfb24e0dd17c0d3f3824",
+    "manuscript_source_is_read_only": true
+  },
+  "verification": {
+    "complete_test_suite": "343 passed, 1 skipped",
+    "collected_tests": 344,
+    "git_diff_check": "PASS",
+    "sealed_guard_roles_rejected": ["training", "model_selection", "challenge_evaluation", "ood_evaluation"],
+    "sealed_outcomes_accessed": false,
+    "frozen_artifacts_modified": false
+  },
+  "frozen_files": {
+    "configs/evaluation/final_nonsealed_evaluation_v2_1b.yaml": "1c3a925f1980b1f3c3db602325a5c4525a4795327c2bcb73b9983f90d2491842",
+    "configs/evaluation/final_sealed_evaluation_v2_1b.yaml": "14d0adad0119e00889c1bae4da6423cdd6cd1276c0f5d54d72b1fd7df77bc891",
+    "configs/research/final_analysis_v2_1b.yaml": "14a96a0da9b82ac785e3bc54798acd789110b619a2b924fafb76808ecaca546e",
+    "configs/research/final_reporting_v2_1b.yaml": "00ac6a73dda4588f409d28fc3a2f6cbed95e2fdd7a9b7229cae7925e450071f4",
+    "configs/research/final_manuscript_v2_1b.yaml": "070e565e2b5be0f364ccc804a38eb15751af87bbd44d6c2b5b65cc172270c005",
+    "configs/research/final_metrics_v1.yaml": "6e2632629e9363a8732fb6c826f011de95fbc1ea5d62e7040dd4f35674f32254",
+    "configs/research/final_monitor_v1.yaml": "427d37c1b0c15d8659cab811876bd05b148fb627bba949f86709369f46846281",
+    "configs/research/final_fallback_v1.yaml": "67d08f11c510d5b68e3fc8148589fd8e1a5bf270dc7b9dd637c1d7f1b6562412",
+    "configs/research/final_tiers_v1.yaml": "56465b61aedc53b9de2354a8df10d1661525d6cb97ffc2bb7a0fef69df0d7abf",
+    "configs/research/final_seed_registry_v1.json": "98fa364f3168412ccec9017d24a2ed8217f35f40294d30d997d0e30135165319",
+    "src/aircraft_recovery/evaluation/v2_1b_nonsealed.py": "f24e3542a8b1ed9c66a83dc91397412629bc7ac34e7762dbca9758014c946c45",
+    "src/aircraft_recovery/evaluation/v2_1b_sealed.py": "779e59bbacdb68bc9f5d32ebbb1904d0190e76446728201de55da728f9aac39a",
+    "src/aircraft_recovery/analysis/v2_1b_final.py": "c9dded9f41fdaab633a46938ef699737d87464bf03cad6f1773d2bfb7b85d801",
+    "src/aircraft_recovery/analysis/v2_1b_reporting.py": "87961be5edbaba19ef3c26ddce96090afabfea3c5307619e70eb56e57f819e0b",
+    "scripts/run_final_sealed_evaluation_v2_1b.py": "5ffb574c319efd7f9f3ee010a161321875450afe16e6b2648b99be7878b76de2",
+    "scripts/run_final_analysis_v2_1b.py": "1044e3c1171ccb862ee56b4ff14a8aa007610c147213f664b3a7cc5153eac81f",
+    "scripts/build_final_manuscript_v2_1b.py": "299a15aca40527d213b9498e3369286785a61f9d416875b8d6cad5bcd859fb75",
+    "tests/unit/test_v2_1b_sealed_evaluation.py": "d8c807ec8d79865d81a0a10682d3db16c62295ab6c5ca14f02b8f47ae254e61f",
+    "tests/unit/test_v2_1b_final_analysis.py": "1967af5ecbde114318b6cfa8dd1aefc9bc29d7ec93ace8ef9a61ee34e5087ca1",
+    "artifacts/research_stage/final_model_selection_freeze_v2_1b.json": "30e6eb0acee9aa8574a1e7438c6f35226a58f259db5cd9e6ad03277815e8eb92",
+    "artifacts/research_stage/final_five_seed_training_v2_1a.json": "3f47d7ba0183db19b26b5154be92526905cddf88e3b466c18e564571f57afa52",
+    "artifacts/research_stage/final_training_protocol_amendment_v2_1a.json": "980a158343a683875638b7ca70c621f63d50cc505753b6f8e6e3b748b6e4ae84",
+    "artifacts/research_stage/final_representative_checkpoint_amendment_v2_1b.json": "68bffeefd7e9c5c28b2376155a76a551dee1ce79d90198b69bed8b08f1b6691e",
+    "artifacts/research_stage/final_nonsealed_evaluation_provenance_v2_1b.json": "03453b20084b9e894dc29f7e6e717e0946a9ea30eb42d3531529474a3be16edf",
+    "datasets/candidate_policy_data/final_policy_candidate_v2_1/manifests/candidate_dataset_manifest.json": "531ada2aa9c31d51fcfb7cab0d7c74ef5a6d310f0ffe774189a1e83e7c632815",
+    "datasets/approved_policy_data/final_policy_approved_v2_1/manifests/approved_manifest.json": "4861adf9c6e49b8817d19838cb404a010d62cfaf226ff3da47a91d34f6dc0e3f",
+    "datasets/approved_policy_data/final_policy_approved_v2_1/preprocessing/train_only_normalization.json": "3fa7538fabe52658ce10ed1606ae8ad0696c85ec5e517e691ba42e696a38f59f",
+    "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/best.pt": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+    "docs/research/final_manuscript_template_contract_v2_1b.md": "e9f9a6f537b90e3c5e8fcdba71eeb33cc19ce7b671b1eab7ca73ecd26a2c5b7c"
+  }
+}

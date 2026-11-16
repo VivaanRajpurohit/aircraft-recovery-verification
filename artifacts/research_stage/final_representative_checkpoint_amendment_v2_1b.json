@@ -1,0 +1,40 @@
+{
+  "amendment_id": "final_representative_checkpoint_amendment_v2_1b",
+  "amendment_version": "v2.1b",
+  "date": "2026-09-20",
+  "status": "ACTIVE_IMMUTABLE_PRE_NONSEALED_EVALUATION",
+  "amendment_logical_sha256": "d9ab4ec4dbc62e208c5ef1fd583850c3f9cacd1413e2d4a2c559c791481a29ce",
+  "amendment_markdown_sha256": "8030a8c4779f3dc2f91f12d02597401189e6f12dfdb7dbdb127179515a2d9dbc",
+  "representative_rule": {
+    "type": "first_entry_in_previously_frozen_final_seed_registry",
+    "performance_independent": true,
+    "development_performance_used": false,
+    "challenge_performance_used": false,
+    "ood_style_simulator_stress_performance_used": false,
+    "sealed_performance_used": false,
+    "best_seed_claimed": false
+  },
+  "representative_seed": 17001,
+  "representative_checkpoint_path": "checkpoints/final_policy_v1/moderate/final_training_v2_1a/seed_17001/best.pt",
+  "representative_checkpoint_sha256": "175064a9d978edff8542e41d626ecad2e0cb04b4552ed055668043389b369ef7",
+  "frozen_seed_registry": [17001, 17002, 17003, 17004, 17005],
+  "architecture": {
+    "hidden_dimensions": [256, 256, 128],
+    "activation": "silu",
+    "input_dimension": 42,
+    "output_dimension": 5,
+    "parameter_count": 110341
+  },
+  "final_training_configuration_logical_sha256": "288b96bbeed75d4ce19793e28198be25430f8dd260604fb654276c405467917a",
+  "five_seed_provenance_logical_sha256": "b3c06be0a6f519f5860dae4acd18d758a22c2ba3178d5a5d52152a4d1a58c9de",
+  "all_five_checkpoints_retained": true,
+  "all_five_checkpoint_role": "training_seed_variability_only",
+  "nonsealed_evaluation_checkpoint_set": "representative_seed_17001_only",
+  "optional_all_five_nonsealed_evaluation_authorized": false,
+  "authorized_stage_path": ["model_selection_freeze", "challenge", "ood_style_simulator_stress", "pre_sealed_freeze"],
+  "challenge_and_ood_cannot_alter_model": true,
+  "sealed_access_authorized": false,
+  "challenge_opened_at_amendment": false,
+  "ood_style_simulator_stress_opened_at_amendment": false,
+  "sealed_opened_at_amendment": false
+}

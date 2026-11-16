@@ -1,0 +1,59 @@
+aircraft:
+  model_path: assets/aircraft/generated_plane/generated_plane.glb
+  scale: 1.0
+  pitch_offset_deg: 90.0
+  yaw_offset_deg: 0.0
+  roll_offset_deg: 0.0
+  position_offset_m: [0.0, 0.0, 0.0]
+  neutral_color_rgba: [0.78, 0.82, 0.86, 1.0]
+  native_forward_axis: -z
+  native_up_axis: +y
+  animation:
+    enabled: true
+    left_aileron_name: left_aileron
+    right_aileron_name: right_aileron
+    elevator_name: elevator
+    rudder_name: rudder
+    left_flap_name: left_flap
+    right_flap_name: right_flap
+    left_propeller_name: left_propeller
+    right_propeller_name: right_propeller
+    aileron_limit_deg: 20.0
+    elevator_limit_deg: 25.0
+    rudder_limit_deg: 25.0
+    flap_limit_deg: 30.0
+    left_aileron_sign: -1.0
+    right_aileron_sign: 1.0
+    elevator_sign: -1.0
+    rudder_sign: 1.0
+    flap_sign: -1.0
+    left_propeller_sign: 1.0
+    right_propeller_sign: -1.0
+    propeller_idle_deg_per_second: 180.0
+    propeller_max_deg_per_second: 2160.0
+    landing_gear_state: fixed_retracted
+    window_material_name: window_blue_gray
+camera:
+  chase_distance_m: 24.0
+  chase_height_m: 7.0
+  look_ahead_m: 7.0
+  lateral_offset_m: 0.0
+  smoothing: 8.0
+  min_distance_m: 8.0
+  max_distance_m: 48.0
+  zoom_speed_m: 2.0
+  orbit_sensitivity_x: 0.18
+  orbit_sensitivity_y: 0.14
+  orbit_pitch_min_deg: -25.0
+  orbit_pitch_max_deg: 65.0
+  free_move_speed_mps: 20.0
+  free_fast_multiplier: 4.0
+  field_of_view_deg: 62.0
+world:
+  runway_length_m: 1200.0
+  runway_width_m: 30.0
+  path_altitude_offset_m: 0.5
+  horizontal_scale: 1.0
+  vertical_scale: 0.12
+  ground_size_m: 12000.0
+  grid_spacing_m: 500.0
